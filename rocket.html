@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rocket Engine Analyzer - Andrew Ordway</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/recharts@2.5.0/dist/Recharts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState, useMemo } = React;
+        const { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area, AreaChart } = Recharts;
+        const { Play, Rocket, Flame, Gauge, Thermometer, Zap } = lucide;
+
+        const RocketEngineAnalyzer = () => {
+          const [engineType, setEngineType] = useState('liquid');
+          const [params, setParams] = useState({
+            chamberPressure: 6.89,
+            chamberTemp: 3500,
+            throatDiameter: 0.15,
+            exitDiameter: 0.45,
+            fuelMassFlow: 150,
+            oxidizerMassFlow: 350,
+            mixRatio: 2.33,
+            expansionRatio: 9,
+            nozzleEfficiency: 0.95,
+            coolantTemp: 300,
+            coolantFlow: 50,
+            wallTemp: 800,
+            propellantDensity: 1800,
+            burnRate: 0.01,
+            grainLength: 3,
+            grainDiameter: 0.5
+          });
+          
+          const [calculated, setCalculated] = useState(false);
+
+          const updateParam = (key, value) => {
+            setParams({ ...params, [key]: parseFloat(value) || 0 });
+            setCalculated(false);
+          };
+
+          const results = useMemo(() => {
+            if (!calculated) return null;
+
+            const gamma = 1.2;
+            const R = 287;
+            const g0 = 9.81;
+
+            const totalMassFlow = params.fuelMassFlow + params.oxidizerMassFlow;
+            const throatArea = Math.PI * Math.pow(params.throatDiameter / 2, 2);
+            const exitArea = Math.PI * Math.pow(params.exitDiameter / 2, 2);
+            const cStar = Math.sqrt(gamma * R * params.chamberTemp) / (gamma * Math.sqrt(Math.pow(2 / (gamma + 1), (gamma + 1) / (gamma - 1))));
+            const throatVelocity = Math.sqrt(gamma * R * params.chamberTemp * 2 / (gamma + 1));
+            const pressureRatio = Math.pow(1 + (gamma - 1) / 2, gamma / (gamma - 1));
+            const exitPressure = params.chamberPressure / Math.pow(params.expansionRatio, gamma);
+            const exitTemp = params.chamberTemp / Math.pow(params.expansionRatio, gamma - 1);
+            const exitVelocity = Math.sqrt(2 * gamma / (gamma - 1) * R * params.chamberTemp * (1 - Math.pow(exitPressure / params.chamberPressure, (gamma - 1) / gamma))) * params.nozzleEfficiency;
+            const thrust = totalMassFlow * exitVelocity + (exitPressure * 1e6 - 101325) * exitArea;
+            const isp = thrust / (totalMassFlow * g0);
+            const combustionEff = 0.97;
+            const throatMach = 1.0;
+            const exitMach = Math.sqrt(2 / (gamma - 1) * (Math.pow(params.chamberPressure / exitPressure, (gamma - 1) / gamma) - 1));
+            const chamberVolume = totalMassFlow * cStar / (params.chamberPressure * 1e6);
+            const coolingHeat = totalMassFlow * 2000 * (params.chamberTemp - params.coolantTemp) * 0.15;
+            const coolantTempRise = coolingHeat / (params.coolantFlow * 4.18);
+            const coolingEffectiveness = Math.min(95, (params.wallTemp - params.coolantTemp) / (params.chamberTemp - params.coolantTemp) * 100);
+            const nozzleLength = (params.exitDiameter - params.throatDiameter) / (2 * Math.tan(15 * Math.PI / 180));
+            
+            let burnTime = 0;
+            let totalImpulse = 0;
+            if (engineType === 'solid') {
+              const grainVolume = Math.PI * Math.pow(params.grainDiameter / 2, 2) * params.grainLength;
+              const propellantMass = grainVolume * params.propellantDensity;
+              burnTime = params.grainLength / (params.burnRate * 2);
+              totalImpulse = thrust * burnTime / 1000;
+            }
+
+            return {
+              thrust: (thrust / 1000).toFixed(2),
+              isp: isp.toFixed(1),
+              exitVelocity: exitVelocity.toFixed(0),
+              exitTemp: exitTemp.toFixed(0),
+              exitPressure: exitPressure.toFixed(3),
+              exitMach: exitMach.toFixed(2),
+              throatVelocity: throatVelocity.toFixed(0),
+              cStar: cStar.toFixed(0),
+              totalMassFlow: totalMassFlow.toFixed(1),
+              combustionEff: (combustionEff * 100).toFixed(1),
+              chamberVolume: chamberVolume.toFixed(3),
+              coolingHeat: coolingHeat.toFixed(0),
+              coolantTempRise: coolantTempRise.toFixed(1),
+              coolingEffectiveness: coolingEffectiveness.toFixed(1),
+              nozzleLength: nozzleLength.toFixed(3),
+              thrustToWeight: (thrust / (totalMassFlow * 10)).toFixed(1),
+              burnTime: burnTime > 0 ? burnTime.toFixed(1) : null,
+              totalImpulse: totalImpulse > 0 ? totalImpulse.toFixed(0) : null
+            };
+          }, [calculated, params, engineType]);
+
+          const pressureProfile = useMemo(() => {
+            if (!results) return [];
+            
+            const data = [];
+            const points = 100;
+            const gamma = 1.2;
+            
+            for (let i = 0; i <= points; i++) {
+              const x = i / points;
+              let pressure, temp, mach, area;
+              
+              if (x < 0.3) {
+                pressure = params.chamberPressure;
+                temp = params.chamberTemp;
+                mach = 0.1;
+                area = 1.5;
+              } else if (x < 0.5) {
+                const localX = (x - 0.3) / 0.2;
+                area = 1.5 - localX * 0.5;
+                mach = 0.1 + localX * 0.9;
+                pressure = params.chamberPressure * Math.pow(1 + (gamma - 1) / 2 * mach * mach, -gamma / (gamma - 1));
+                temp = params.chamberTemp / (1 + (gamma - 1) / 2 * mach * mach);
+              } else if (x < 0.55) {
+                area = 1.0;
+                mach = 1.0;
+                pressure = params.chamberPressure * Math.pow(2 / (gamma + 1), gamma / (gamma - 1));
+                temp = params.chamberTemp * 2 / (gamma + 1);
+              } else {
+                const localX = (x - 0.55) / 0.45;
+                area = 1.0 + localX * (params.expansionRatio - 1);
+                mach = Math.sqrt((2 / (gamma - 1)) * (Math.pow(area, (gamma - 1)) - 1));
+                pressure = params.chamberPressure * Math.pow(1 + (gamma - 1) / 2 * mach * mach, -gamma / (gamma - 1));
+                temp = params.chamberTemp / (1 + (gamma - 1) / 2 * mach * mach);
+              }
+              
+              data.push({
+                position: (x * 100).toFixed(1),
+                pressure: pressure.toFixed(3),
+                temperature: temp.toFixed(0),
+                mach: mach.toFixed(2),
+                area: area.toFixed(2)
+              });
+            }
+            
+            return data;
+          }, [results, params]);
+
+          const thermoData = useMemo(() => {
+            if (!results) return [];
+            
+            const data = [];
+            const points = 200;
+            
+            const s1 = 5.0, T1 = 300;
+            const s2 = 5.0, T2 = 350;
+            const s3 = 7.5, T3 = params.chamberTemp;
+            const s4 = 7.5, T4 = parseFloat(results.exitTemp);
+            
+            for (let i = 0; i <= 50; i++) {
+              const frac = i / 50;
+              data.push({
+                s: (s1 + (s2 - s1) * frac).toFixed(2),
+                T: (T1 + (T2 - T1) * frac).toFixed(0)
+              });
+            }
+            
+            for (let i = 0; i <= 50; i++) {
+              const frac = i / 50;
+              data.push({
+                s: (s2 + (s3 - s2) * frac).toFixed(2),
+                T: (T2 + (T3 - T2) * frac).toFixed(0)
+              });
+            }
+            
+            for (let i = 0; i <= 50; i++) {
+              const frac = i / 50;
+              data.push({
+                s: (s3 + (s4 - s3) * frac).toFixed(2),
+                T: (T3 - (T3 - T4) * frac).toFixed(0)
+              });
+            }
+            
+            return data;
+          }, [results, params]);
+
+          return (
+            <div className="min-h-screen bg-gray-950 text-slate-200">
+              <div className="fixed inset-0 bg-gradient-to-br from-orange-950/10 via-transparent to-red-950/10 pointer-events-none"></div>
+              
+              <div className="relative border-b border-slate-800/50 bg-gradient-to-r from-slate-900/80 to-slate-900/60 backdrop-blur">
+                <div className="max-w-7xl mx-auto px-8 py-8">
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className="bg-gradient-to-br from-orange-500 to-red-600 p-3 rounded-2xl shadow-lg">
+                        <Rocket className="text-white" size={36} />
+                      </div>
+                      <div>
+                        <h1 className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                          Rocket Engine Analyzer
+                        </h1>
+                        <p className="text-slate-400 mt-2 text-lg">Advanced propulsion system analysis and visualization</p>
+                      </div>
+                    </div>
+                    
+                    <button
+                      onClick={() => setCalculated(true)}
+                      className="flex items-center gap-3 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 px-8 py-4 rounded-2xl font-bold transition shadow-2xl text-lg"
+                    >
+                      <Play size={24} /> Analyze Engine
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative max-w-7xl mx-auto p-8">
+                <div className="grid grid-cols-12 gap-6">
+                  <div className="col-span-3 space-y-5">
+                    <div className="bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700/50 rounded-2xl p-6 shadow-2xl">
+                      <div className="flex items-center gap-2 mb-4">
+                        <Zap className="text-cyan-400" size={20} />
+                        <h2 className="text-lg font-bold text-cyan-300">Engine Configuration</h2>
+                      </div>
+                      <select
+                        value={engineType}
+                        onChange={(e) => { setEngineType(e.target.value); setCalculated(false); }}
+                        className="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-slate-200 font-semibold focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20"
+                      >
+                        <option value="liquid">Liquid Bipropellant</option>
+                        <option value="solid">Solid Propellant</option>
+                        <option value="hybrid">Hybrid Engine</option>
+                      </select>
+                    </div>
+
+                    <div className="bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700/50 rounded-2xl p-6 shadow-2xl">
+                      <div className="flex items-center gap-2 mb-5">
+                        <Flame className="text-orange-400" size={20} />
+                        <h2 className="text-lg font-bold text-cyan-300">Combustion</h2>
+                      </div>
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">Chamber Pressure (MPa)</label>
+                          <input
+                            type="number"
+                            value={params.chamberPressure}
+                            onChange={(e) => updateParam('chamberPressure', e.target.value)}
+                            className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2.5 text-slate-200 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20"
+                            step="0.1"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">Chamber Temp (K)</label>
+                          <input
+                            type="number"
+                            value={params.chamberTemp}
+                            onChange={(e) => updateParam('chamberTemp', e.target.value)}
+                            className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2.5 text-slate-200 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20"
+                            step="10"
+                          />
+                        </div>
+                        <div className="grid grid-cols-2 gap-3">
+                          <div>
+                            <label className="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">Throat Ø (m)</label>
+                            <input
+                              type="number"
+                              value={params.throatDiameter}
+                              onChange={(e) => updateParam('throatDiameter', e.target.value)}
+                              className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2.5 text-slate-200 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20"
+                              step="0.01"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">Exit Ø (m)</label>
+                            <input
+                              type="number"
+                              value={params.exitDiameter}
+                              onChange={(e) => updateParam('exitDiameter', e.target.value)}
+                              className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2.5 text-slate-200 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20"
+                              step="0.01"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {engineType === 'liquid' && (
+                      <div className="bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700/50 rounded-2xl p-6 shadow-2xl">
+                        <h2 className="text-lg font-bold text-cyan-300 mb-5">Propellant Flow</h2>
+                        <div className="space-y-4">
+                          <div>
+                            <label className="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">Fuel (kg/s)</label>
+                            <input
+                              type="number"
+                              value={params.fuelMassFlow}
+                              onChange={(e) => updateParam('fuelMassFlow', e.target.value)}
+                              className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2.5 text-slate-200 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">Oxidizer (kg/s)</label>
+                            <input
+                              type="number"
+                              value={params.oxidizerMassFlow}
+                              onChange={(e) => updateParam('oxidizerMassFlow', e.target.value)}
+                              className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2.5 text-slate-200 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">Mix Ratio (O/F)</label>
+                            <input
+                              type="number"
+                              value={params.mixRatio}
+                              onChange={(e) => updateParam('mixRatio', e.target.value)}
+                              className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2.5 text-slate-200 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20"
+                              step="0.1"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700/50 rounded-2xl p-6 shadow-2xl">
+                      <div className="flex items-center gap-2 mb-5">
+                        <Thermometer className="text-blue-400" size={20} />
+                        <h2 className="text-lg font-bold text-cyan-300">Cooling</h2>
+                      </div>
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">Coolant Temp (K)</label>
+                          <input
+                            type="number"
+                            value={params.coolantTemp}
+                            onChange={(e) => updateParam('coolantTemp', e.target.value)}
+                            className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2.5 text-slate-200 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                            step="10"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">Coolant Flow (kg/s)</label>
+                          <input
+                            type="number"
+                            value={params.coolantFlow}
+                            onChange={(e) => updateParam('coolantFlow', e.target.value)}
+                            className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2.5 text-slate-200 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">Nozzle Efficiency</label>
+                          <input
+                            type="number"
+                            value={params.nozzleEfficiency}
+                            onChange={(e) => updateParam('nozzleEfficiency', e.target.value)}
+                            className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2.5 text-slate-200 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                            step="0.01"
+                            min="0"
+                            max="1"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-span-9 space-y-6">
+                    {results && (
+                      <>
+                        <div className="grid grid-cols-5 gap-4">
+                          <div className="bg-gradient-to-br from-orange-900/40 to-red-900/40 border-2 border-orange-500/30 rounded-2xl p-4 shadow-2xl">
+                            <div className="text-orange-400 text-[10px] font-bold uppercase tracking-wide mb-1 truncate">Thrust</div>
+                            <div className="text-2xl font-black text-white truncate">{results.thrust}</div>
+                            <div className="text-orange-300 text-[10px] font-semibold mt-1">kN</div>
+                          </div>
+                          <div className="bg-gradient-to-br from-cyan-900/40 to-blue-900/40 border-2 border-cyan-500/30 rounded-2xl p-4 shadow-2xl">
+                            <div className="text-cyan-400 text-[10px] font-bold uppercase tracking-wide mb-1 truncate">Isp</div>
+                            <div className="text-2xl font-black text-white truncate">{results.isp}</div>
+                            <div className="text-cyan-300 text-[10px] font-semibold mt-1">seconds</div>
+                          </div>
+                          <div className="bg-gradient-to-br from-purple-900/40 to-indigo-900/40 border-2 border-purple-500/30 rounded-2xl p-4 shadow-2xl">
+                            <div className="text-purple-400 text-[10px] font-bold uppercase tracking-wide mb-1 truncate">Exit Velocity</div>
+                            <div className="text-2xl font-black text-white truncate">{results.exitVelocity}</div>
+                            <div className="text-purple-300 text-[10px] font-semibold mt-1">m/s</div>
+                          </div>
+                          <div className="bg-gradient-to-br from-green-900/40 to-emerald-900/40 border-2 border-green-500/30 rounded-2xl p-4 shadow-2xl">
+                            <div className="text-green-400 text-[10px] font-bold uppercase tracking-wide mb-1 truncate">Efficiency</div>
+                            <div className="text-2xl font-black text-white truncate">{results.combustionEff}</div>
+                            <div className="text-green-300 text-[10px] font-semibold mt-1">percent</div>
+                          </div>
+                          <div className="bg-gradient-to-br from-yellow-900/40 to-amber-900/40 border-2 border-yellow-500/30 rounded-2xl p-4 shadow-2xl">
+                            <div className="text-yellow-400 text-[10px] font-bold uppercase tracking-wide mb-1 truncate">T/W Ratio</div>
+                            <div className="text-2xl font-black text-white truncate">{results.thrustToWeight}</div>
+                            <div className="text-yellow-300 text-[10px] font-semibold mt-1">ratio</div>
+                          </div>
+                        </div>
+
+                        <div className="bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700/50 rounded-2xl p-6 shadow-2xl">
+                          <h2 className="text-xl font-bold text-cyan-300 mb-4">Engine Schematic</h2>
+                          <div className="overflow-x-auto">
+                            <svg className="w-full min-w-[700px] bg-slate-950/50 rounded-xl border border-slate-800 p-4" viewBox="0 0 800 400">
+                            <rect x="200" y="150" width="150" height="100" fill="#1e293b" stroke="#22d3ee" strokeWidth="3" rx="5" />
+                            <text x="275" y="190" textAnchor="middle" fill="#22d3ee" fontSize="14" fontWeight="bold">CHAMBER</text>
+                            <text x="275" y="210" textAnchor="middle" fill="#94a3b8" fontSize="11">{params.chamberPressure} MPa</text>
+                            <text x="275" y="228" textAnchor="middle" fill="#94a3b8" fontSize="11">{params.chamberTemp} K</text>
+                            
+                            <path d="M 350 150 L 380 180 L 380 220 L 350 250" fill="#334155" stroke="#fbbf24" strokeWidth="3" />
+                            <text x="365" y="205" textAnchor="middle" fill="#fbbf24" fontSize="10" fontWeight="bold">THROAT</text>
+                            
+                            <path d="M 380 180 L 550 100 L 550 300 L 380 220 Z" fill="#1e293b" stroke="#22d3ee" strokeWidth="3" />
+                            <text x="465" y="190" textAnchor="middle" fill="#22d3ee" fontSize="14" fontWeight="bold">NOZZLE</text>
+                            <text x="465" y="210" textAnchor="middle" fill="#94a3b8" fontSize="11">M = {results.exitMach}</text>
+                            
+                            <defs>
+                              <linearGradient id="exhaustGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style={{stopColor: '#fb923c', stopOpacity: 0.9}} />
+                                <stop offset="50%" style={{stopColor: '#f97316', stopOpacity: 0.5}} />
+                                <stop offset="100%" style={{stopColor: '#ea580c', stopOpacity: 0.1}} />
+                              </linearGradient>
+                              <filter id="glow">
+                                <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                                <feMerge>
+                                  <feMergeNode in="coloredBlur"/>
+                                  <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                              </filter>
+                            </defs>
+                            <path d="M 550 100 L 700 50 L 700 350 L 550 300 Z" fill="url(#exhaustGrad)" filter="url(#glow)" />
+                            
+                            <defs>
+                              <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                                <polygon points="0 0, 10 3, 0 6" fill="#22d3ee" />
+                              </marker>
+                            </defs>
+                            
+                            <line x1="150" y1="200" x2="200" y2="200" stroke="#22d3ee" strokeWidth="3" markerEnd="url(#arrowhead)" />
+                            <text x="175" y="188" textAnchor="middle" fill="#22d3ee" fontSize="11" fontWeight="bold">PROPELLANT</text>
+                            
+                            <rect x="200" y="138" width="150" height="8" fill="none" stroke="#3b82f6" strokeWidth="2.5" strokeDasharray="6,4" rx="2" />
+                            <rect x="200" y="254" width="150" height="8" fill="none" stroke="#3b82f6" strokeWidth="2.5" strokeDasharray="6,4" rx="2" />
+                            <text x="275" y="132" textAnchor="middle" fill="#3b82f6" fontSize="10" fontWeight="bold">COOLING JACKET</text>
+                            
+                            <g transform="translate(600, 25)">
+                              <rect x="0" y="0" width="190" height="160" fill="#0f172a" stroke="#22d3ee" strokeWidth="2" rx="8" />
+                              <text x="95" y="25" textAnchor="middle" fill="#22d3ee" fontSize="13" fontWeight="bold">PERFORMANCE</text>
+                              <text x="10" y="48" fill="#94a3b8" fontSize="10" fontWeight="600">Thrust: {results.thrust} kN</text>
+                              <text x="10" y="65" fill="#94a3b8" fontSize="10" fontWeight="600">Isp: {results.isp} s</text>
+                              <text x="10" y="82" fill="#94a3b8" fontSize="10" fontWeight="600">Ve: {results.exitVelocity} m/s</text>
+                              <text x="10" y="99" fill="#94a3b8" fontSize="10" fontWeight="600">Pe: {results.exitPressure} MPa</text>
+                              <text x="10" y="116" fill="#94a3b8" fontSize="10" fontWeight="600">Te: {results.exitTemp} K</text>
+                              <text x="10" y="133" fill="#94a3b8" fontSize="10" fontWeight="600">ṁ: {results.totalMassFlow} kg/s</text>
+                              <text x="10" y="150" fill="#94a3b8" fontSize="10" fontWeight="600">c*: {results.cStar} m/s</text>
+                            </g>
+                            </svg>
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-6">
+                          <div className="bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700/50 rounded-2xl p-6 shadow-2xl">
+                            <h2 className="text-xl font-bold text-cyan-300 mb-4">Nozzle Flow Properties</h2>
+                            <ResponsiveContainer width="100%" height={280}>
+                              <LineChart data={pressureProfile}>
+                                <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                                <XAxis 
+                                  dataKey="position" 
+                                  stroke="#94a3b8" 
+                                  label={{ value: 'Axial Position (%)', position: 'insideBottom', offset: -5, fill: '#94a3b8' }} 
+                                />
+                                <YAxis 
+                                  yAxisId="left"
+                                  stroke="#94a3b8" 
+                                  label={{ value: 'Pressure (MPa) / Mach', angle: -90, position: 'insideLeft', fill: '#94a3b8' }} 
+                                />
+                                <YAxis 
+                                  yAxisId="right"
+                                  orientation="right"
+                                  stroke="#94a3b8" 
+                                  label={{ value: 'Temperature (K)', angle: 90, position: 'insideRight', fill: '#94a3b8' }} 
+                                />
+                                <Tooltip contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #334155', borderRadius: '8px' }} />
+                                <Line yAxisId="left" type="monotone" dataKey="pressure" stroke="#22d3ee" strokeWidth={3} dot={false} name="Pressure" />
+                                <Line yAxisId="left" type="monotone" dataKey="mach" stroke="#a78bfa" strokeWidth={3} dot={false} name="Mach" />
+                                <Line yAxisId="right" type="monotone" dataKey="temperature" stroke="#f59e0b" strokeWidth={3} dot={false} name="Temperature" />
+                              </LineChart>
+                            </ResponsiveContainer>
+                          </div>
+
+                          <div className="bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700/50 rounded-2xl p-6 shadow-2xl">
+                            <h2 className="text-xl font-bold text-cyan-300 mb-4">T-S Diagram (Engine Cycle)</h2>
+                            <ResponsiveContainer width="100%" height={280}>
+                              <AreaChart data={thermoData}>
+                                <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                                <XAxis 
+                                  dataKey="s" 
+                                  stroke="#94a3b8" 
+                                  label={{ value: 'Entropy (kJ/kg·K)', position: 'insideBottom', offset: -5, fill: '#94a3b8' }} 
+                                />
+                                <YAxis 
+                                  stroke="#94a3b8" 
+                                  label={{ value: 'Temperature (K)', angle: -90, position: 'insideLeft', fill: '#94a3b8' }} 
+                                />
+                                <Tooltip contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #334155', borderRadius: '8px' }} />
+                                <defs>
+                                  <linearGradient id="colorTemp" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="5%" stopColor="#f97316" stopOpacity={0.8}/>
+                                    <stop offset="95%" stopColor="#f97316" stopOpacity={0.1}/>
+                                  </linearGradient>
+                                </defs>
+                                <Area type="monotone" dataKey="T" stroke="#f97316" strokeWidth={3} fillOpacity={1} fill="url(#colorTemp)" />
+                              </AreaChart>
+                            </ResponsiveContainer>
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-3 gap-6">
+                          <div className="bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700/50 rounded-2xl p-6 shadow-2xl">
+                            <div className="flex items-center gap-2 mb-5">
+                              <Gauge className="text-cyan-400" size={22} />
+                              <h3 className="text-lg font-bold text-cyan-300">PERFORMANCE</h3>
+                            </div>
+                            <div className="space-y-3">
+                              <div className="pb-3 border-b border-slate-700/50">
+                                <div className="text-slate-400 text-xs font-semibold mb-1">Thrust</div>
+                                <div className="text-white font-bold text-lg">{results.thrust} kN</div>
+                              </div>
+                              <div className="pb-3 border-b border-slate-700/50">
+                                <div className="text-slate-400 text-xs font-semibold mb-1">Specific Impulse</div>
+                                <div className="text-white font-bold text-lg">{results.isp} s</div>
+                              </div>
+                              <div className="pb-3 border-b border-slate-700/50">
+                                <div className="text-slate-400 text-xs font-semibold mb-1">Exit Velocity</div>
+                                <div className="text-white font-bold text-lg">{results.exitVelocity} m/s</div>
+                              </div>
+                              <div className="pb-3 border-b border-slate-700/50">
+                                <div className="text-slate-400 text-xs font-semibold mb-1">Thrust/Weight</div>
+                                <div className="text-white font-bold text-lg">{results.thrustToWeight}</div>
+                              </div>
+                              <div className="pb-3 border-b border-slate-700/50">
+                                <div className="text-slate-400 text-xs font-semibold mb-1">Mass Flow</div>
+                                <div className="text-white font-bold text-lg">{results.totalMassFlow} kg/s</div>
+                              </div>
+                              <div>
+                                <div className="text-slate-400 text-xs font-semibold mb-1">c* Efficiency</div>
+                                <div className="text-white font-bold text-lg">{results.combustionEff}%</div>
+                              </div>
+                              {results.burnTime && (
+                                <>
+                                  <div className="pt-3 border-t border-slate-700/50">
+                                    <div className="text-slate-400 text-xs font-semibold mb-1">Burn Time</div>
+                                    <div className="text-white font-bold text-lg">{results.burnTime} s</div>
+                                  </div>
+                                  <div className="pt-3">
+                                    <div className="text-slate-400 text-xs font-semibold mb-1">Total Impulse</div>
+                                    <div className="text-white font-bold text-lg">{results.totalImpulse} kN·s</div>
+                                  </div>
+                                </>
+                              )}
+                            </div>
+                          </div>
+
+                          <div className="bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700/50 rounded-2xl p-6 shadow-2xl">
+                            <div className="flex items-center gap-2 mb-5">
+                              <Flame className="text-orange-400" size={22} />
+                              <h3 className="text-lg font-bold text-cyan-300">NOZZLE</h3>
+                            </div>
+                            <div className="space-y-3">
+                              <div className="pb-3 border-b border-slate-700/50">
+                                <div className="text-slate-400 text-xs font-semibold mb-1">Exit Pressure</div>
+                                <div className="text-white font-bold text-lg">{results.exitPressure} MPa</div>
+                              </div>
+                              <div className="pb-3 border-b border-slate-700/50">
+                                <div className="text-slate-400 text-xs font-semibold mb-1">Exit Temperature</div>
+                                <div className="text-white font-bold text-lg">{results.exitTemp} K</div>
+                              </div>
+                              <div className="pb-3 border-b border-slate-700/50">
+                                <div className="text-slate-400 text-xs font-semibold mb-1">Exit Mach</div>
+                                <div className="text-white font-bold text-lg">{results.exitMach}</div>
+                              </div>
+                              <div className="pb-3 border-b border-slate-700/50">
+                                <div className="text-slate-400 text-xs font-semibold mb-1">Throat Velocity</div>
+                                <div className="text-white font-bold text-lg">{results.throatVelocity} m/s</div>
+                              </div>
+                              <div className="pb-3 border-b border-slate-700/50">
+                                <div className="text-slate-400 text-xs font-semibold mb-1">c* Velocity</div>
+                                <div className="text-white font-bold text-lg">{results.cStar} m/s</div>
+                              </div>
+                              <div className="pb-3 border-b border-slate-700/50">
+                                <div className="text-slate-400 text-xs font-semibold mb-1">Nozzle Length</div>
+                                <div className="text-white font-bold text-lg">{results.nozzleLength} m</div>
+                              </div>
+                              <div>
+                                <div className="text-slate-400 text-xs font-semibold mb-1">Chamber Volume</div>
+                                <div className="text-white font-bold text-lg">{results.chamberVolume} m³</div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700/50 rounded-2xl p-6 shadow-2xl">
+                            <div className="flex items-center gap-2 mb-5">
+                              <Thermometer className="text-blue-400" size={22} />
+                              <h3 className="text-lg font-bold text-cyan-300">COOLING</h3>
+                            </div>
+                            <div className="space-y-3">
+                              <div className="pb-3 border-b border-slate-700/50">
+                                <div className="text-slate-400 text-xs font-semibold mb-1">Heat Load</div>
+                                <div className="text-white font-bold text-lg">{results.coolingHeat} kW</div>
+                              </div>
+                              <div className="pb-3 border-b border-slate-700/50">
+                                <div className="text-slate-400 text-xs font-semibold mb-1">Coolant ΔT</div>
+                                <div className="text-white font-bold text-lg">{results.coolantTempRise} K</div>
+                              </div>
+                              <div className="pb-3 border-b border-slate-700/50">
+                                <div className="text-slate-400 text-xs font-semibold mb-1">Effectiveness</div>
+                                <div className="text-white font-bold text-lg">{results.coolingEffectiveness}%</div>
+                              </div>
+                              
+                              <div className={`mt-4 rounded-xl p-4 border-2 ${
+                                parseFloat(results.coolingEffectiveness) > 85 ? 'bg-green-900/20 border-green-500/40' :
+                                parseFloat(results.coolingEffectiveness) > 70 ? 'bg-blue-900/20 border-blue-500/40' :
+                                parseFloat(results.coolingEffectiveness) > 50 ? 'bg-yellow-900/20 border-yellow-500/40' :
+                                'bg-red-900/20 border-red-500/40'
+                              }`}>
+                                <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Status</div>
+                                <div className="font-bold">
+                                  {parseFloat(results.coolingEffectiveness) > 85 ? '✓ Excellent cooling' :
+                                   parseFloat(results.coolingEffectiveness) > 70 ? '✓ Good cooling' :
+                                   parseFloat(results.coolingEffectiveness) > 50 ? '⚠ Adequate cooling' :
+                                   '✗ Insufficient cooling'}
+                                </div>
+                              </div>
+                              
+                              <div className="bg-blue-900/20 border border-blue-700/30 rounded-xl p-3 mt-3">
+                                <div className="text-blue-300 text-xs leading-relaxed">
+                                  <strong>Note:</strong> Regenerative cooling circulates propellant through jacket before combustion
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700/50 rounded-2xl p-6 shadow-2xl">
+                          <h3 className="text-lg font-bold text-cyan-300 mb-4">Engine Cycle Phases</h3>
+                          <div className="grid grid-cols-4 gap-4">
+                            <div className="bg-gradient-to-br from-cyan-900/30 to-blue-900/30 border border-cyan-600/30 rounded-xl p-4 text-center">
+                              <div className="text-cyan-400 text-sm font-bold mb-1">1 → 2</div>
+                              <div className="text-white text-lg font-bold mb-1">PUMPING</div>
+                              <div className="text-slate-400 text-xs">Pressurization</div>
+                            </div>
+                            <div className="bg-gradient-to-br from-orange-900/30 to-red-900/30 border border-orange-600/30 rounded-xl p-4 text-center">
+                              <div className="text-orange-400 text-sm font-bold mb-1">2 → 3</div>
+                              <div className="text-white text-lg font-bold mb-1">COMBUSTION</div>
+                              <div className="text-slate-400 text-xs">Heat Addition</div>
+                            </div>
+                            <div className="bg-gradient-to-br from-purple-900/30 to-indigo-900/30 border border-purple-600/30 rounded-xl p-4 text-center">
+                              <div className="text-purple-400 text-sm font-bold mb-1">3 → 4</div>
+                              <div className="text-white text-lg font-bold mb-1">EXPANSION</div>
+                              <div className="text-slate-400 text-xs">Nozzle Flow</div>
+                            </div>
+                            <div className="bg-gradient-to-br from-green-900/30 to-emerald-900/30 border border-green-600/30 rounded-xl p-4 text-center">
+                              <div className="text-green-400 text-sm font-bold mb-1">OUTPUT</div>
+                              <div className="text-white text-lg font-bold mb-1">THRUST</div>
+                              <div className="text-slate-400 text-xs">Net Work</div>
+                            </div>
+                          </div>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        };
+
+        ReactDOM.render(<RocketEngineAnalyzer />, document.getElementById('root'));
+    </script>
+</body>
+</html>
