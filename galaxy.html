@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy Supercluster Simulator - Andrew Ordway</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            overflow: hidden;
+        }
+        #root {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script>
+        const { useEffect, useRef, useState } = React;
+        
+        const GalaxySuperclusterSim = () => {
+          const containerRef = useRef(null);
+          const [info, setInfo] = useState('Supercluster View - Scroll to zoom, drag to rotate');
+          const [scale, setScale] = useState('100 Mpc');
+          const [hoveredObject, setHoveredObject] = useState(null);
+          const controlsRef = useRef(null);
+          
+          useEffect(() => {
+            if (!containerRef.current) return;
+            
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x000005);
+            scene.fog = new THREE.FogExp2(0x000005, 0.0015);
+            
+            const camera = new THREE.PerspectiveCamera(
+              60,
+              containerRef.current.clientWidth / containerRef.current.clientHeight,
+              0.001,
+              100000
+            );
+            camera.position.set(0, 50, 150);
+            
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(containerRef.current.clientWidth, containerRef.current.clientHeight);
+            containerRef.current.appendChild(renderer.domElement);
+            
+            const raycaster = new THREE.Raycaster();
+            const mouse = new THREE.Vector2();
+            
+            let isDragging = false;
+            let previousMousePosition = { x: 0, y: 0 };
+            let cameraRotation = { x: 0, y: 0 };
+            let targetZoom = 150;
+            let currentZoom = 150;
+            let targetPosition = new THREE.Vector3(0, 0, 0);
+            let currentTarget = new THREE.Vector3(0, 0, 0);
+            let zoomLevel = 0;
+            
+            controlsRef.current = {
+              reset: () => {
+                targetZoom = 150;
+                targetPosition.set(0, 0, 0);
+                cameraRotation = { x: 0, y: 0 };
+                setInfo('Supercluster View - Click on objects to zoom in');
+                setScale('100 Mpc');
+              }
+            };
+            
+            const starsGeometry = new THREE.BufferGeometry();
+            const starsMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.5 });
+            const starsVertices = [];
+            for (let i = 0; i
