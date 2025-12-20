@@ -354,29 +354,33 @@
            font-dependent gaps where the glyph doesn't join the line. */
         .sqrt {
             display: inline-flex;
-            align-items: flex-start;
+            align-items: center;
             gap: 6px;
             line-height: 1;
+            white-space: nowrap; /* prevent hook and radicand from splitting across lines */
+            vertical-align: middle;
         }
 
         .sqrt::before {
             content: "";
             display: inline-block;
-            width: 20px;
-            height: 1.0em;
+            width: 1.05em;
+            height: 1.05em;
             background-repeat: no-repeat;
             background-size: contain;
             background-position: left center;
+            flex: 0 0 auto; /* avoid shrinking which can force wrapping */
             /* small inline SVG of a radical hook; uses currentColor */
             background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 24'><path d='M2 14 L6 20 L10 6 L18 6' stroke='currentColor' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
-            margin-top: 0.08em;
+            margin-top: 0;
         }
 
         .sqrt .radicand {
             display: inline-block;
-            border-top: 2px solid currentColor;
-            padding: 0 6px;
-            margin-top: -0.08em;
+            border-top: 0.12em solid currentColor;
+            padding: 0 0.35em;
+            margin-top: 0;
+            white-space: nowrap;
         }
     </style>
 </head>
