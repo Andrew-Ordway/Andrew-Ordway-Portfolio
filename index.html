@@ -282,6 +282,86 @@
                 font-size: 42px;
             }
         }
+        /* Additional BrahMos content styles */
+        .intro-section {
+            margin: 25px 0;
+            text-align: justify;
+        }
+
+        .intro-section p {
+            margin: 15px 0;
+        }
+
+        .diagram-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .diagram-container svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .calc-section {
+            margin: 20px 0;
+            padding: 5px 0;
+        }
+
+        .given-data {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-left: 3px solid #333;
+        }
+
+        .final-answer {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 2px solid #333;
+            font-weight: bold;
+        }
+
+        .explanation {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f0f8ff;
+            border-left: 3px solid #4682b4;
+            text-align: justify;
+        }
+
+        /* ===== FRACTIONS ===== */
+        .fraction {
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .fraction .num {
+            display: block;
+            border-bottom: 1px solid black;
+            padding: 0 4px;
+        }
+
+        .fraction .den {
+            display: block;
+            padding: 0 4px;
+        }
+
+        /* ===== SQUARE ROOT ===== */
+        .sqrt {
+            display: inline-block;
+        }
+
+        .sqrt::before {
+            content: "√";
+        }
+
+        .sqrt .radicand {
+            display: inline-block;
+            text-decoration: overline;
+            padding-left: 4px;
+        }
     </style>
 </head>
 <body>
@@ -498,9 +578,410 @@
                 = 299.3 m/s
             </div>
 
-            <!-- Mass Balance, Initial Conditions, Energy Balance, Thrust, Entropy, Efficiency, Scramjet sections -->
-            <!-- All calculations and diagrams remain exactly as in your original code, formatted consistently -->
-            <!-- Omitted here for brevity but should include everything from your original HTML, seamlessly combined -->
+            <!-- ================= GIVEN DATA ================= -->
+            <div class="given-data">
+                <strong>Typical BrahMos Operating Conditions:</strong><br>
+                Cruise altitude: h = 10 km, M<sub>1</sub> = 2.8<br>
+                P<sub>1</sub> = 26.5 kPa, T<sub>1</sub> = 223 K<br>
+                γ = 1.4, R = 287 J/(kg·K)<br>
+                a<sub>1</sub> =
+                <span class="sqrt">
+                  <span class="radicand">γRT<sub>1</sub></span>
+                </span>
+                = 299.3 m/s
+            </div>
+
+            <!-- ===================== 1 ===================== -->
+            <div class="calc-section">
+            <h2>1. Mass Balance</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                <div>
+                    <strong>Step 1: Freestream velocity</strong><br>
+                    V<sub>1</sub> = M<sub>1</sub> × a<sub>1</sub><br>
+                    V<sub>1</sub> = 2.8 × 299.3 = 838 m/s
+                </div>
+                <div>
+                    <strong>Step 2: Freestream density</strong><br>
+                    ρ<sub>1</sub> = <span class="fraction"><span class="num">P<sub>1</sub></span><span class="den">RT<sub>1</sub></span></span><br>
+                    ρ<sub>1</sub> = <span class="fraction"><span class="num">26,500</span><span class="den">287 × 223</span></span> = 0.414 kg/m³
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                <div>
+                    <strong>Step 3: Air mass flow</strong><br>
+                    ṁ<sub>air</sub> = ρ<sub>1</sub> × A × V<sub>1</sub><br>
+                    ṁ<sub>air</sub> = 0.414 × 0.09 × 838 = 31.2 kg/s
+                </div>
+                <div>
+                    <strong>Step 4: Fuel mass flow</strong><br>
+                    ṁ<sub>fuel</sub> = FAR × ṁ<sub>air</sub><br>
+                    ṁ<sub>fuel</sub> = 0.057 × 31.2 = 1.78 kg/s
+                </div>
+            </div>
+
+            <div style="margin: 15px 0;">
+                <strong>Step 5: Exhaust mass flow</strong><br>
+                ṁ<sub>exhaust</sub> = ṁ<sub>air</sub> + ṁ<sub>fuel</sub><br>
+                ṁ<sub>exhaust</sub> = 31.2 + 1.78 = 33.0 kg/s
+            </div>
+
+            <div class="explanation">
+            Using the specific BrahMos data, I started by finding the mass flow rate of air entering the engine. Using the freestream velocity of the air (838 m/s, calculated from Mach 2.8 and the speed of sound 299.3 m/s) and the engine inlet area (0.09 m²), I determined that about 31.2 kg of air flows through the engine per second. The Fuel–Air Ratio (FAR) –which is the fuel to air mass flow ratio– of 0.057 is then used to calculate the fuel flow rate, giving 1.78 kg/s of fuel. By adding the air and fuel flows, I got a total exhaust mass flow of 33.0 kg/s, which is a number that will be used later to calculate thrust and energy.
+            </div>
+            </div>
+
+            <!-- ===================== 2 ===================== -->
+            <div class="calc-section">
+            <h2>2. Initial (Total) Conditions from Ram Compression</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                <div>
+                    <strong>Step 1: Initial total temperature</strong><br>
+                    <span class="fraction"><span class="num">T<sub>0</sub></span><span class="den">T<sub>1</sub></span></span> = 1 + <span class="fraction"><span class="num">γ-1</span><span class="den">2</span></span> × M<sub>1</sub><sup>2</sup><br>
+                    <span class="fraction"><span class="num">T<sub>0</sub></span><span class="den">T<sub>1</sub></span></span> = 1 + 0.2 × 7.84 = 2.568<br>
+                    T<sub>0</sub> = 223 × 2.568 = 573 K
+                </div>
+                <div>
+                    <strong>Step 2: Initial total pressure</strong><br>
+                    <span class="fraction"><span class="num">P<sub>0</sub></span><span class="den">P<sub>1</sub></span></span> = (<span class="fraction"><span class="num">T<sub>0</sub></span><span class="den">T<sub>1</sub></span></span>)<sup>γ/(γ-1)</sup><br>
+                    <span class="fraction"><span class="num">P<sub>0</sub></span><span class="den">P<sub>1</sub></span></span> = (2.568)<sup>3.5</sup> = 21.8<br>
+                    P<sub>0</sub> = 26.5 × 21.8 = 578 kPa
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                <div>
+                    <strong>Step 3: Shock losses</strong><br>
+                    P<sub>02</sub> = η<sub>d</sub> × P<sub>0</sub><br>
+                    P<sub>02</sub> = 0.72 × 578 = 416 kPa
+                </div>
+                <div>
+                    <strong>Step 4: Static conditions</strong><br>
+                    T<sub>2</sub> = <span class="fraction"><span class="num">T<sub>02</sub></span><span class="den">1 + 0.2M<sub>2</sub><sup>2</sup></span></span><br>
+                    T<sub>2</sub> = <span class="fraction"><span class="num">680</span><span class="den">1.032</span></span> = 659 K
+                </div>
+            </div>
+
+            <div style="margin: 15px 0;">
+                <strong>Step 5: Compression ratio</strong><br>
+                r<sub>p</sub> = <span class="fraction"><span class="num">P<sub>2</sub></span><span class="den">P<sub>1</sub></span></span> = <span class="fraction"><span class="num">372</span><span class="den">26.5</span></span> = 14.0
+            </div>
+
+            <div class="explanation">
+            Next, I calculated the total temperature and pressure of the air after it is compressed in the inlet. The freestream air that enters at 223 K and 26.5 kPa is compressed to 573 K and 578 kPa. After taking into account diffuser efficiency, the pressure drops to 416 kPa and the temperature rises to 659 K. This step illustrates how the engine converts the kinetic energy of high-speed air into pressure and heat, which are both crucial for the later combustion step.
+            </div>
+            </div>
+
+            <!-- ===================== 3 ===================== -->
+            <div class="calc-section">
+            <h2>3. Energy Balance (First Law of Thermodynamics)</h2>
+
+            <div class="diagram-container">
+                <h2 style="margin-top: 0;">Temperature-Entropy (T-s) Diagram</h2>
+                <svg viewBox="0 0 800 500" style="max-width: 750px;">
+                    <!-- Axes -->
+                    <line x1="100" y1="400" x2="700" y2="400" stroke="#000" stroke-width="2"/>
+                    <line x1="100" y1="400" x2="100" y2="50" stroke="#000" stroke-width="2"/>
+                    
+                    <!-- Axis labels -->
+                    <text x="400" y="440" font-size="16" text-anchor="middle" font-weight="bold">Specific Entropy, s (J/kg·K)</text>
+                    <text x="40" y="225" font-size="16" text-anchor="middle" font-weight="bold" transform="rotate(-90 40 225)">Temperature, T (K)</text>
+                    
+                    <!-- Temperature gridlines -->
+                    <line x1="95" y1="375" x2="700" y2="375" stroke="#ddd" stroke-width="1"/>
+                    <text x="85" y="380" font-size="12" text-anchor="end">250 K</text>
+                    
+                    <line x1="95" y1="300" x2="700" y2="300" stroke="#ddd" stroke-width="1"/>
+                    <text x="85" y="305" font-size="12" text-anchor="end">500 K</text>
+                    
+                    <line x1="95" y1="200" x2="700" y2="200" stroke="#ddd" stroke-width="1"/>
+                    <text x="85" y="205" font-size="12" text-anchor="end">1000 K</text>
+                    
+                    <line x1="95" y1="100" x2="700" y2="100" stroke="#ddd" stroke-width="1"/>
+                    <text x="85" y="105" font-size="12" text-anchor="end">1500 K</text>
+                    
+                    <line x1="95" y1="50" x2="700" y2="50" stroke="#ddd" stroke-width="1"/>
+                    <text x="85" y="55" font-size="12" text-anchor="end">2000 K</text>
+                    
+                    <!-- State points -->
+                    <circle cx="200" cy="383" r="7" fill="#3498db"/>
+                    <text x="200" y="370" font-size="16" font-weight="bold" text-anchor="middle">①</text>
+                    
+                    <circle cx="320" cy="230" r="7" fill="#e67e22"/>
+                    <text x="320" y="217" font-size="16" font-weight="bold" text-anchor="middle">②</text>
+                    
+                    <circle cx="520" cy="60" r="7" fill="#e74c3c"/>
+                    <text x="520" y="47" font-size="16" font-weight="bold" text-anchor="middle">③</text>
+                    
+                    <circle cx="640" cy="175" r="7" fill="#27ae60"/>
+                    <text x="640" y="162" font-size="16" font-weight="bold" text-anchor="middle">④</text>
+                    
+                    <!-- Process paths -->
+                    <path d="M 200 383 Q 240 330, 320 230" stroke="#3498db" stroke-width="4" fill="none" marker-end="url(#arrow1)"/>
+                    <path d="M 320 230 Q 420 145, 520 60" stroke="#e67e22" stroke-width="4" fill="none" marker-end="url(#arrow2)"/>
+                    <path d="M 520 60 Q 580 115, 640 175" stroke="#e74c3c" stroke-width="4" fill="none" marker-end="url(#arrow3)"/>
+                    
+                    <!-- Ideal cycle (dashed) -->
+                    <path d="M 200 383 L 260 230" stroke="#999" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                    <path d="M 260 230 L 460 60" stroke="#999" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                    <path d="M 460 60 L 600 383" stroke="#999" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                    
+                    <defs>
+                        <marker id="arrow1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                            <path d="M0,0 L0,6 L9,3 z" fill="#3498db" />
+                        </marker>
+                        <marker id="arrow2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                            <path d="M0,0 L0,6 L9,3 z" fill="#e67e22" />
+                        </marker>
+                        <marker id="arrow3" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                            <path d="M0,0 L0,6 L9,3 z" fill="#e74c3c" />
+                        </marker>
+                    </defs>
+                </svg>
+                
+                <!-- Legend below graph -->
+                <div style="margin-top: 20px; text-align: left; max-width: 750px; margin-left: auto; margin-right: auto;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div>
+                            <strong>State Points:</strong><br>
+                            <span style="color: #3498db;">● ①</span> Freestream: T₁ = 223 K, P₁ = 26.5 kPa<br>
+                            <span style="color: #e67e22;">● ②</span> Diffuser Exit: T₂ = 680 K, P₂ = 360 kPa<br>
+                            <span style="color: #e74c3c;">● ③</span> Combustor Exit: T₃ = 2100 K, P₃ = 340 kPa<br>
+                            <span style="color: #27ae60;">● ④</span> Nozzle Exit: T₄ = 1050 K, P₄ = 26.5 kPa
+                        </div>
+                        <div>
+                            <strong>Processes:</strong><br>
+                            <span style="color: #3498db;">① → ②</span> Compression (Shocks + Ram)<br>
+                            <span style="color: #e67e22;">② → ③</span> Combustion (P ≈ constant)<br>
+                            <span style="color: #e74c3c;">③ → ④</span> Expansion (Nozzle)<br>
+                            <span style="color: #999;">- - -</span> Ideal Cycle
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="explanation" style="margin-top: 20px; text-align: left; max-width: 750px; margin-left: auto; margin-right: auto;">
+                As described above, the ramjet T-s diagram shows a sharp rise in temperature and entropy during compression (① → ②), corresponding to the shocks slowing down the air and increasing its pressure. Next, during combustion (② → ③), the temperature increases further (at roughly constant pressure) as fuel is mixed in with and burned in the airflow. The temperature subsequently drops during expansion through the nozzle (③ → ④) as the air's thermal energy is converted into kinetic energy to generate thrust. Notice that unlike a closed-cycle engine, the diagram is not a loop because the ramjet is an open cycle, meaning that the inflow air exits at the exhaust without ever returning to its initial state.
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                <div>
+                    <strong>Step 1: Fuel energy</strong><br>
+                    Q̇<sub>fuel</sub> = ṁ<sub>fuel</sub> × LHV<br>
+                    Q̇<sub>fuel</sub> = 1.78 × 42 × 10⁶ = 74.8 MW
+                </div>
+                <div>
+                    <strong>Step 2: Inlet KE</strong><br>
+                    KE<sub>in</sub> = ṁ<sub>air</sub> × <span class="fraction"><span class="num">V<sub>1</sub><sup>2</sup></span><span class="den">2</span></span><br>
+                    KE<sub>in</sub> = 31.2 × <span class="fraction"><span class="num">(838)<sup>2</sup></span><span class="den">2</span></span> = 10.95 MW
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                <div>
+                    <strong>Step 3: Inlet enthalpy</strong><br>
+                    H<sub>in</sub> = ṁ<sub>air</sub> × c<sub>p</sub> × T<sub>1</sub><br>
+                    H<sub>in</sub> = 31.2 × 1005 × 223 = 6.99 MW
+                </div>
+                <div>
+                    <strong>Step 4: Total input</strong><br>
+                    E<sub>in</sub> = H<sub>in</sub> + KE<sub>in</sub> + Q̇<sub>fuel</sub><br>
+                    E<sub>in</sub> = 6.99 + 10.95 + 74.8 = 92.7 MW
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                <div>
+                    <strong>Step 5: Exit enthalpy</strong><br>
+                    H<sub>out</sub> = ṁ<sub>exhaust</sub> × c<sub>p</sub> × T<sub>4</sub><br>
+                    H<sub>out</sub> = 33.0 × 1150 × 1050 = 39.8 MW
+                </div>
+                <div>
+                    <strong>Step 6: Exit KE</strong><br>
+                    KE<sub>out</sub> = ṁ<sub>exhaust</sub> × <span class="fraction"><span class="num">V<sub>4</sub><sup>2</sup></span><span class="den">2</span></span><br>
+                    KE<sub>out</sub> = 33.0 × <span class="fraction"><span class="num">(880)<sup>2</sup></span><span class="den">2</span></span> = 12.78 MW
+                </div>
+            </div>
+
+            <div style="margin: 15px 0;">
+                <strong>Step 7: Energy losses</strong><br>
+                E<sub>losses</sub> = E<sub>in</sub> - E<sub>out</sub><br>
+                E<sub>losses</sub> = 92.7 - 52.6 = 40.1 MW (43.3%)
+            </div>
+
+            <div class="explanation">
+            I then combined the energy contributions from fuel, air enthalpy, and the kinetic energy of the incoming air. Combining the fuel's 74.8 MW with the air's kinetic energy 10.95 MW and the air's enthalpy 6.99 MW, the total starting input energy is 92.7 MW. When leaving the nozzle, the energy output is 39.8 MW in enthalpy and 12.78 MW in kinetic energy, meaning that around 43% of the total energy is lost to irreversibilities like shocks and friction. From this percentage, I am able to calculate the fuel's efficiency in converting energy to thrust.
+            </div>
+            </div>
+
+            <!-- ===================== 4 ===================== -->
+            <div class="calc-section">
+            <h2>4. Thrust Calculation</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                <div>
+                    <strong>Step 1: Momentum balance</strong><br>
+                    F = ṁ<sub>exhaust</sub> × V<sub>4</sub> - ṁ<sub>air</sub> × V<sub>1</sub>
+                </div>
+                <div>
+                    <strong>Step 2: Thrust</strong><br>
+                    F = 33.0 × 880 - 31.2 × 838<br>
+                    F = 29,040 - 26,146 = 2,894 N
+                    <div class="final-answer">F ≈ 2.9 kN</div>
+                </div>
+            </div>
+
+            <div style="margin: 15px 0;">
+                <strong>Step 3: Specific impulse</strong><br>
+                I<sub>sp</sub> = <span class="fraction"><span class="num">F</span><span class="den">ṁ<sub>fuel</sub> × g<sub>0</sub></span></span><br>
+                I<sub>sp</sub> = <span class="fraction"><span class="num">2,894</span><span class="den">1.78 × 9.81</span></span> = 166 seconds
+            </div>
+
+            <div class="explanation">
+            The thrust was calculated by comparing the momentum of the exhaust (880 m/s) and the incoming air (838 m/s). This comparison yielded a net thrust of 2.9 kN and a specific impulse of 166 seconds. This step directly demonstrates not only the ability of the BrahMos ramjet to accelerate the missile but it also reflects the efficiency of its said thrust and propulsion.
+            </div>
+            </div>
+
+            <!-- ===================== 5 ===================== -->
+            <div class="calc-section">
+            <h2>5. Entropy Generation</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                <div>
+                    <strong>Step 1: Sources</strong><br>
+                    Oblique shocks: Δs<sub>1</sub> ≈ 120 J/(kg·K)<br>
+                    Normal shock: Δs<sub>2</sub> ≈ 180 J/(kg·K)<br>
+                    Combustion: Δs<sub>3</sub> ≈ 650 J/(kg·K)<br>
+                    Friction/mixing: Δs<sub>4</sub> ≈ 80 J/(kg·K)<br>
+                    Δs<sub>total</sub> = 1,030 J/(kg·K)
+                </div>
+                <div>
+                    <strong>Step 2: Rate of generation</strong><br>
+                    Ṡ<sub>gen</sub> = ṁ<sub>air</sub> × Δs<sub>total</sub><br>
+                    Ṡ<sub>gen</sub> = 31.2 × 1,030 = 32,136 W/K
+                    <div class="final-answer">Ṡ<sub>gen</sub> ≈ 32.1 kW/K</div>
+                </div>
+            </div>
+
+            <div class="explanation">
+            Entropy increases were determined from the oblique shocks, the normal shock, combustion, and friction. The total entropy rise per kilogram of air is 1,030 J/kg·K, with a rate of 32.1 kW/K. The importance of this calculation is twofold. Firstly, this entropy increase reflects (and quantifies) the energy that the BrahMos ramjet loses to irreversibilities. Secondly, these calculations help break down precisely where and by how much the engine is less efficient due to shocks and mixing.
+            </div>
+            </div>
+
+            <!-- ===================== 6 ===================== -->
+            <div class="calc-section">
+            <h2>6. Efficiency Calculations</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                <div>
+                    <strong>Step 1: Ideal efficiency</strong><br>
+                    η<sub>ideal</sub> = 1 - <span class="fraction"><span class="num">1</span><span class="den">r<sub>p</sub><sup>(γ-1)/γ</sup></span></span><br>
+                    η<sub>ideal</sub> = 1 - (14.0)<sup>-0.286</sup> = 1 - 0.462
+                    <div class="final-answer">η<sub>ideal</sub> = 53.8%</div>
+                </div>
+                <div>
+                    <strong>Step 2: Thermal efficiency</strong><br>
+                    η<sub>thermal</sub> = <span class="fraction"><span class="num">H<sub>out</sub> - H<sub>in</sub></span><span class="den">ṁ<sub>fuel</sub> × LHV</span></span><br>
+                    η<sub>thermal</sub> = <span class="fraction"><span class="num">39.8 - 6.99</span><span class="den">74.8</span></span> = <span class="fraction"><span class="num">32.8</span><span class="den">74.8</span></span>
+                    <div class="final-answer">η<sub>thermal</sub> = 43.9%</div>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                <div>
+                    <strong>Step 3: Propulsive efficiency</strong><br>
+                    η<sub>prop</sub> = <span class="fraction"><span class="num">2</span><span class="den">1 + V<sub>exit</sub>/V<sub>∞</sub></span></span><br>
+                    η<sub>prop</sub> = <span class="fraction"><span class="num">2</span><span class="den">1 + 880/838</span></span> = <span class="fraction"><span class="num">2</span><span class="den">2.050</span></span>
+                    <div class="final-answer">η<sub>prop</sub> = 97.6%</div>
+                </div>
+                <div>
+                    <strong>Step 4: Overall efficiency</strong><br>
+                    η<sub>overall</sub> = η<sub>thermal</sub> × η<sub>prop</sub><br>
+                    η<sub>overall</sub> = 0.439 × 0.976 = 0.428
+                    <div class="final-answer">η<sub>overall</sub> = 42.8%</div>
+                </div>
+            </div>
+
+            <div class="explanation">
+            To gauge the efficiency of the BrahMos ramjet, I looked at both the thermal efficiency and propulsive efficiency measures. The thermal efficiency (calculated to be 43.9%) indicates how well the engine converts fuel energy into mechanical energy. The propulsive efficiency (calculated to be 97.6%) reflects how effective the kinetic energy at the exhaust is to actually produce meaningful thrust. Combining these gives an overall efficiency of 42.8%, which represents the fraction of fuel energy that is ultimately converted into useful thrust.
+            </div>
+            </div>
+
+            <!-- ===================== 7 ===================== -->
+            <div class="calc-section">
+            <h2>7. Transition from Ramjet to Scramjet at Hypersonic Speeds</h2>
+
+            <div style="margin: 15px 0;">
+                <strong>Given conditions at Mach 6.7:</strong><br>
+                Altitude: h = 30 km, T<sub>1</sub> = 226.5 K, P<sub>1</sub> = 1.197 kPa, M<sub>1</sub> = 6.7<br>
+                a<sub>1</sub> = <span class="sqrt"><span class="radicand">γRT<sub>1</sub></span></span> = <span class="sqrt"><span class="radicand">1.4 × 287 × 226.5</span></span> = 302 m/s<br>
+                V<sub>1</sub> = M<sub>1</sub> × a<sub>1</sub> = 6.7 × 302 = 2,023 m/s
+            </div>
+
+            <div style="margin: 15px 0;">
+                <strong>Ramjet (Fails)</strong>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                <div>
+                    <strong>Step 1: Stagnation conditions</strong><br>
+                    <span class="fraction"><span class="num">T<sub>0</sub></span><span class="den">T<sub>1</sub></span></span> = 1 + 0.2 × M<sub>1</sub><sup>2</sup><br>
+                    <span class="fraction"><span class="num">T<sub>0</sub></span><span class="den">T<sub>1</sub></span></span> = 1 + 0.2 × (6.7)<sup>2</sup> = 9.978<br>
+                    T<sub>0</sub> = 226.5 × 9.978 = 2,260 K<br><br>
+                    <span class="fraction"><span class="num">P<sub>0</sub></span><span class="den">P<sub>1</sub></span></span> = (9.978)<sup>3.5</sup> = 992<br>
+                    P<sub>0</sub> = 1.197 × 992 = 1,187 kPa
+                </div>
+                <div>
+                    <strong>Step 2: Normal shock losses</strong><br>
+                    For M = 6.7, normal shock relations give:<br>
+                    T<sub>02</sub> = T<sub>0</sub> (total temp conserved)<br><br>
+                    <span class="fraction"><span class="num">P<sub>02</sub></span><span class="den">P<sub>0</sub></span></span> ≈ 0.0023 (severe loss!)<br>
+                    P<sub>02</sub> = 1,187 × 0.0023 = 2.7 kPa
+                </div>
+            </div>
+
+            <div class="final-answer">
+            Ramjet loses ~99.8% of total pressure → combustion infeasible
+            </div>
+
+            <hr>
+
+            <div style="margin: 15px 0;">
+                <strong>Scramjet (Operates)</strong>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                <div>
+                    <strong>Step 1: Supersonic inlet</strong><br>
+                    No normal shock → oblique shocks only
+                </div>
+                <div>
+                    <strong>Step 2: Supersonic combustion</strong><br>
+                    Combustion at M ≈ 2–3
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                <div>
+                    <strong>Step 3: Pressure preservation</strong><br>
+                    P<sub>02</sub>/P<sub>0</sub> ≈ 0.3–0.5
+                </div>
+                <div>
+                    <strong>Step 4: Useful thrust</strong><br>
+                    Net positive thrust at hypersonic speeds
+                </div>
+            </div>
+
+            <div class="final-answer">
+            Scramjets avoid catastrophic shock losses by keeping flow supersonic
+            </div>
+
+            <div class="explanation">
+            A key design change is that when the aircraft speed exceeds about Mach 6, the ramjet must be replaced by a scramjet. At these speeds, a ramjet becomes ineffective because it relies on a normal shock to slow the incoming flow to subsonic speeds before combustion. Starting at around Mach 6, this normal shock produces extremely high initial temperatures and severe total pressure losses, making efficient combustion impractical and net thrust minimal. Instead, a scramjet avoids these new shortcomings by using a series of oblique shocks (eliminating the normal shock entirely) and a long combustor which gives the airflow enough time to mix and burn with the fuel despite its supersonic speeds. As a result, the scramjet allows for supersonic combustion, which not only preserves pressure but also reduces both thermal and entropy losses, as evident in the calculations for a ramjet and scramjet both traveling Mach 6.7.
+            </div>
+            </div>
         </div>
     </div>
 </div>
