@@ -349,18 +349,34 @@
         }
 
         /* ===== SQUARE ROOT ===== */
+        /* Render a clean radical using an inline SVG glyph for the hook
+           and a CSS border as the vinculum (overline). This avoids
+           font-dependent gaps where the glyph doesn't join the line. */
         .sqrt {
-            display: inline-block;
+            display: inline-flex;
+            align-items: flex-start;
+            gap: 6px;
+            line-height: 1;
         }
 
         .sqrt::before {
-            content: "√";
+            content: "";
+            display: inline-block;
+            width: 20px;
+            height: 1.0em;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: left center;
+            /* small inline SVG of a radical hook; uses currentColor */
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 24'><path d='M2 14 L6 20 L10 6 L18 6' stroke='currentColor' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+            margin-top: 0.08em;
         }
 
         .sqrt .radicand {
             display: inline-block;
-            text-decoration: overline;
-            padding-left: 4px;
+            border-top: 2px solid currentColor;
+            padding: 0 6px;
+            margin-top: -0.08em;
         }
     </style>
 </head>
