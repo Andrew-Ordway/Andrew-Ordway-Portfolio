@@ -360,26 +360,19 @@
             white-space: nowrap; /* prevent hook and radicand from splitting across lines */
             vertical-align: middle;
         }
-
         .sqrt::before {
-            content: "";
+            content: "√";
             display: inline-block;
-            width: 1.05em;
-            height: 1.05em;
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: left center;
-            flex: 0 0 auto; /* avoid shrinking which can force wrapping */
-            /* small inline SVG of a radical hook; uses currentColor */
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 24'><path d='M2 14 L6 20 L10 6 L18 6' stroke='currentColor' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
-            margin-top: 0;
+            font-size: 1.2em;
+            line-height: 0.8;
+            margin-right: -2px;
+            vertical-align: middle;
         }
 
         .sqrt .radicand {
             display: inline-block;
-            border-top: 0.12em solid currentColor;
-            padding: 0 0.35em;
-            margin-top: 0;
+            border-top: 1.5px solid currentColor;
+            padding: 2px 6px 0 6px;
             white-space: nowrap;
         }
     </style>
@@ -591,11 +584,7 @@
                 Cruise altitude: h = 10 km, M<sub>1</sub> = 2.8<br>
                 P<sub>1</sub> = 26.5 kPa, T<sub>1</sub> = 223 K<br>
                 γ = 1.4, R = 287 J/(kg·K)<br>
-                a<sub>1</sub> =
-                <span class="sqrt">
-                  <span class="radicand">γRT<sub>1</sub></span>
-                </span>
-                = 299.3 m/s
+                                a₁ = <span class="sqrt"><span class="radicand">γRT₁</span></span> = 299.3 m/s
             </div>
 
             <!-- ===================== 1 ===================== -->
@@ -923,7 +912,7 @@
             <div style="margin: 15px 0;">
                 <strong>Given conditions at Mach 6.7:</strong><br>
                 Altitude: h = 30 km, T<sub>1</sub> = 226.5 K, P<sub>1</sub> = 1.197 kPa, M<sub>1</sub> = 6.7<br>
-                a<sub>1</sub> = <span class="sqrt"><span class="radicand">γRT<sub>1</sub></span></span> = <span class="sqrt"><span class="radicand">1.4 × 287 × 226.5</span></span> = 302 m/s<br>
+                a₁ = <span class="sqrt"><span class="radicand">γRT₁</span></span> = <span class="sqrt"><span class="radicand">1.4 × 287 × 226.5</span></span> = 302 m/s<br>
                 V<sub>1</sub> = M<sub>1</sub> × a<sub>1</sub> = 6.7 × 302 = 2,023 m/s
             </div>
 
