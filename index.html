@@ -393,6 +393,14 @@
             width: 100%;
             object-fit: cover;
         }
+        /* Project 1 specific video sizing */
+        .project1-video {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: cover;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -449,10 +457,10 @@
 
             <div class="video-grid">
                 <!-- First Video: IMG_2236 -->
-                <video src="IMG_2236.MOV" controls style="width:100%; height:100%; object-fit: cover;"></video>
+                <video class="project1-video" src="IMG_2236.MOV" controls preload="metadata"></video>
 
                 <!-- Second Video: IMG_2207 -->
-                <video src="IMG_2207.MOV" controls style="width:100%; height:100%; object-fit: cover;"></video>
+                <video class="project1-video" src="IMG_2207.MOV" controls preload="metadata"></video>
             </div> 
 
             <div class="project-description">
