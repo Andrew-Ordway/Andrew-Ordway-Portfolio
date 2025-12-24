@@ -375,6 +375,24 @@
             padding: 2px 6px 0 6px;
             white-space: nowrap;
         }
+        /* ===== PROJECT 3 MEDIA SIZING ===== */
+        /* Constrain images and videos in Project 3 so they don't exceed the layout */
+        .project3-media img,
+        .project3-media video {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Also limit video elements in the generic video-grid */
+        .video-grid video {
+            max-height: 480px;
+            height: auto;
+            width: 100%;
+            object-fit: cover;
+        }
     </style>
 </head>
 <body>
@@ -991,8 +1009,8 @@
                 <h1>Arduino LED Matrix Pong Game</h1>
             </div>
             
-            <div style="max-width: 800px; margin: 0 auto 60px;">
-                <img src="Images/Arduino_LED_Matrix_Image.jpg" alt="Arduino LED Matrix" style="width:100%; height:auto; object-fit: cover;">
+            <div class="project3-media" style="max-width: 800px; margin: 0 auto 60px;">
+                <img src="Images/Arduino_LED_Matrix_Image.jpg" alt="Arduino LED Matrix">
             </div>
 
             <h2 style="font-size: 48px; text-align: center; margin-bottom: 40px;">The Final Product</h2>
@@ -1003,7 +1021,9 @@
                     
                     <p style="font-size: 18px; line-height: 1.8;">The player controls a paddle using an analog joystick to keep the ball in play. The game simulates basic physics, including bouncing off walls and paddle collision detection. When the player misses the ball, the game responds with a visual indicator (the entire screen lights up red) to signal game over before resetting.</p>
                 </div>
-                <video src="Pong.mov" controls style="width:100%; height:auto;"></video>
+                <div class="project3-media">
+                    <video src="Pong.mov" controls preload="metadata"></video>
+                </div>
             </div>
 
             <h2 style="font-size: 48px; text-align: center; margin: 80px 0 40px;">Circuitry and Coding Components</h2>
