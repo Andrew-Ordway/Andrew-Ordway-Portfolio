@@ -34,6 +34,71 @@
         nav a {
             color: #000;
             text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 60px;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .project-card {
+            background: #fff;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+        }
+
+        .project-title {
+            padding: 25px;
+            font-size: 28px;
+            font-weight: normal;
+        }
+
+        /* About Page */
+        .about-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-section h1 {
+            font-size: 64px;
+            font-weight: normal;
+            margin-bottom: 40px;
+        }
+
+        .about-text {
+            font-size: 18px;
+            line-height: 1.8;
         }
 
         .about-image {
@@ -367,10 +432,6 @@
                    <img src="Images/Arduino_LED_Matrix_Image.jpg" alt="Arduino LED Matrix" style="width:100%; aspect-ratio: 4/3; object-fit: cover;">
                     <div class="project-title">Arduino LED Matrix Pong Game</div>
                 </div>
-                <div class="project-card" onclick="showPage('project5')">
-                    <img class="project-image" src="Images/brslogo.png" alt="Introduction to Mechanical Design">
-                    <div class="project-title">Introduction to Mechanical Design — Client Pitch</div>
-                </div>
             </div>
         </div>
     </div>
@@ -385,29 +446,6 @@
                         <p>Hi, I'm Andrew Ordway, a Mechanical Engineering student at Cornell University. This portfolio showcases my individual projects, highlighting my work in CAD design, mechanical systems, and prototyping. Here, you'll find detailed project breakdowns, CAD models, and media that illustrate my design work and the functionality of my projects. I'm passionate about turning ideas into functional designs and continuously exploring new tools and techniques in mechanical engineering.</p>
                     </div>
                 </div>
-    
-                    <!-- Project 5: Introduction to Mechanical Design (Client Pitch) -->
-                    <div id="project5" class="page">
-                        <div class="container">
-                            <a href="#" onclick="showPage('home')" class="back-button">← Back to Portfolio</a>
-                            <div class="project-detail">
-                                <h1>Introduction to Mechanical Design — Client Pitch</h1>
-                            </div>
-
-                            <div style="max-width:1000px; margin: 20px auto 60px; text-align:center;">
-                                <p style="margin-bottom:12px;">The project document is embedded below. If the PDF doesn't display, use the download link.</p>
-
-                                <!-- Embedded PDF. Place your PDF at Images/intro-mech-design.pdf in the repo. -->
-                                <div style="width:100%; height:820px; max-width:1100px; margin: 0 auto;">
-                                    <iframe src="Images/O3_ClientOutline.pdf" title="Introduction to Mechanical Design PDF" style="width:100%; height:100%; border:1px solid #ddd;" frameborder="0"> 
-                                        This browser does not support embedded PDFs. Download the PDF to view: <a href="Images/intro-mech-design.pdf">Download PDF</a>
-                                    </iframe>
-                                </div>
-
-                                <p style="margin-top:12px; font-size:14px; color:#444;">Or download: <a href="Images/intro-mech-design.pdf" download>intro-mech-design.pdf</a></p>
-                            </div>
-                        </div>
-                    </div>
                <img class="project-image" src="Images/DSC00955.JPG" alt="About Image" style="object-fit: contain; max-height: 800px;">
             </div>
         </div>
@@ -1175,49 +1213,11 @@
 
     <script>
         function showPage(pageId) {
-            try {
-                console.log('showPage called for:', pageId);
-                const pages = document.querySelectorAll('.page');
-                pages.forEach(page => {
-                    page.classList.remove('active');
-                    // ensure pages are hidden by default
-                    page.style.display = '';
-                });
-
-                const target = document.getElementById(pageId);
-                if (!target) {
-                    console.warn('showPage: target not found', pageId);
-                    return;
-                }
-
-                // Ensure the target is visible even if CSS is interfering
-                target.classList.add('active');
-                target.style.display = 'block';
-                target.style.visibility = 'visible';
-                target.style.opacity = '1';
-                // scroll to top of the page content area
-                window.scrollTo({ top: 0, behavior: 'instant' });
-                // update URL hash for shareability without navigating away
-                try { history.replaceState(null, '', '?project=' + encodeURIComponent(pageId)); } catch (e) { /* ignore */ }
-                console.log('showPage: activated', pageId);
-            } catch (err) {
-                console.error('showPage error:', err);
-            }
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
         }
-
-        // On load, check for ?project=... query and open that page automatically
-        (function openFromQuery() {
-            try {
-                const params = new URLSearchParams(window.location.search);
-                const project = params.get('project');
-                if (project) {
-                    // small timeout to ensure DOM is fully parsed
-                    setTimeout(() => showPage(project), 50);
-                }
-            } catch (e) {
-                // no-op
-            }
-        })();
     </script>
 </body>
 </html>
