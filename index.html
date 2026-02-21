@@ -1281,11 +1281,49 @@
 
     <script>
         function showPage(pageId) {
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => page.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
-            window.scrollTo(0, 0);
+            try {
+                console.log('showPage called for:', pageId);
+                const pages = document.querySelectorAll('.page');
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                    // ensure pages are hidden by default
+                    page.style.display = '';
+                });
+
+                const target = document.getElementById(pageId);
+                if (!target) {
+                    console.warn('showPage: target not found', pageId);
+                    return;
+                }
+
+                // Ensure the target is visible even if CSS is interfering
+                target.classList.add('active');
+                target.style.display = 'block';
+                target.style.visibility = 'visible';
+                target.style.opacity = '1';
+                // scroll to top of the page content area
+                window.scrollTo({ top: 0, behavior: 'instant' });
+                // update URL hash for shareability without navigating away
+                try { history.replaceState(null, '', '?project=' + encodeURIComponent(pageId)); } catch (e) { /* ignore */ }
+                console.log('showPage: activated', pageId);
+            } catch (err) {
+                console.error('showPage error:', err);
+            }
         }
+
+        // On load, check for ?project=... query and open that page automatically
+        (function openFromQuery() {
+            try {
+                const params = new URLSearchParams(window.location.search);
+                const project = params.get('project');
+                if (project) {
+                    // small timeout to ensure DOM is fully parsed
+                    setTimeout(() => showPage(project), 50);
+                }
+            } catch (e) {
+                // no-op
+            }
+        })();
     </script>
 </body>
 </html>
