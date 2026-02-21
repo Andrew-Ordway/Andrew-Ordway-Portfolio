@@ -556,60 +556,100 @@
                         <h1>Intro to Mechanical Design — Client Pitch</h1>
                     </div>
 
-                    <!-- Title image / logo -->
-                    <div style="max-width: 900px; margin: 30px auto 40px; text-align: center;">
-                        <img src="Images/brslogo.png" alt="Intro to Mechanical Design Logo" style="max-width: 420px; width:100%; height:auto; object-fit: contain;">
-                    </div>
+                    <!-- Scoped styles for Project 5 (prefix selectors with #project5 .proj-doc to avoid global overrides) -->
+                    <style>
+                    /* Scoped CSS: targets only content inside #project5 .proj-doc */
+                    #project5 .proj-doc { background: #fff; color: #000; font-family: "Times New Roman", Times, serif; font-size: 12pt; line-height: 1.55; max-width: 740px; margin: 0 auto; padding: 72px 80px 80px; }
+                    #project5 .proj-doc h1.doc-title { font-size: 20pt; font-weight: bold; margin-bottom: 2px; }
+                    #project5 .proj-doc .team-line { font-size: 12pt; margin-bottom: 14px; }
+                    #project5 .proj-doc h2 { font-size: 13pt; font-weight: bold; margin-top: 14px; margin-bottom: 3px; }
+                    #project5 .proj-doc p { margin-bottom: 6px; font-size: 12pt; }
+                    #project5 .proj-doc ul { margin: 4px 0 6px 28px; list-style-type: disc; }
+                    #project5 .proj-doc ul li { margin-bottom: 3px; font-size: 12pt; }
+                    #project5 .proj-doc ol { margin: 4px 0 6px 22px; }
+                    #project5 .proj-doc ol li { margin-bottom: 10px; font-size: 12pt; }
+                    #project5 .proj-doc ol li .q { font-weight: bold; }
+                    #project5 .proj-doc ol li .da { font-style: italic; }
+                    #project5 .proj-doc .refs-list { list-style: none; margin: 4px 0 0 0; padding: 0; }
+                    #project5 .proj-doc .refs-list li { margin-bottom: 8px; padding-left: 28px; text-indent: -28px; font-size: 12pt; line-height: 1.5; }
+                    #project5 .proj-doc .figure-wrap { margin-top: 20px; }
+                    #project5 .proj-doc .chart-outer { display: flex; align-items: stretch; gap: 0; }
+                    #project5 .proj-doc .y-label { writing-mode: vertical-rl; transform: rotate(180deg); font-size: 9.5pt; text-align: center; white-space: nowrap; margin-right: 4px; flex-shrink: 0; }
+                    #project5 .proj-doc .chart-box { flex: 1; border: 1.5px solid #888; padding: 14px 14px 28px; position: relative; }
+                    #project5 .proj-doc .legend-row { display: flex; justify-content: center; margin-bottom: 10px; font-size: 9.5pt; }
+                    #project5 .proj-doc .legend-item { border: 1px solid #888; padding: 2px 12px; display: flex; align-items: center; gap: 5px; }
+                    #project5 .proj-doc .legend-item + .legend-item { border-left: none; }
+                    #project5 .proj-doc .swatch { display: inline-block; width: 22px; height: 3px; border-radius: 1px; background: #8B2500; }
+                    #project5 .proj-doc .chart-svg-wrap { display: flex; align-items: flex-end; gap: 0; height: 220px; }
+                    #project5 .proj-doc .y-ticks { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-end; width: 26px; height: 100%; padding-right: 5px; flex-shrink: 0; font-size: 9pt; padding-bottom: 0; }
+                    #project5 .proj-doc .chart-svg-inner { flex: 1; height: 100%; }
+                    #project5 .proj-doc .chart-svg-inner svg { width: 100%; height: 100%; overflow: visible; }
+                    #project5 .proj-doc .figure-caption { text-align: center; font-size: 10.5pt; margin-top: 10px; }
+                    @media print { #project5 .proj-doc { padding: 0; } }
+                    </style>
 
-                    <!-- Inserted client pitch content (stripped of top-level DOCTYPE/head/header/script) -->
-                    <div style="max-width: 1000px; margin: 0 auto 60px;">
-                        <div class="project-description">
-                            <p>This is the full client pitch content pasted into Project 5. The original page-level header and stylesheet were removed to avoid duplicating site header and global styles. Any local image references should be placed under <code>Images/</code> as referenced below.</p>
-                        </div>
+                    <!-- Project document content (scoped inside .proj-doc) -->
+                    <div class="proj-doc">
 
-                        <div class="intro-section">
-                            <p><strong>Introduction</strong></p>
-                            <p>For this client pitch, I present a concise overview of the "Intro to Mechanical Design" module, including design goals, deliverables, and an illustrative figure. The content below is the project write-up and supporting diagrams. Replace any placeholder images with the actual files in <code>Images/</code>.</p>
-                        </div>
+  <h1 class="doc-title">Client Pitch</h1>
+  <p class="team-line"><strong>Team:</strong> <em>Big Red Stompers</em> &nbsp; <strong>Clients:</strong> Cornell CALS Extension / E&amp;J Gallo Winery / National Grape</p>
 
-                        <h2 style="text-align:center; margin-top:40px;">Client Pitch — Introduction to Mechanical Design</h2>
+  <h2>Problem Statement</h2>
+  <p>Spotted lanternflies (SLF) mainly target grapevines. As a result, grape farmers are trying to manage SLF populations in vineyards and nearby trees. SLF egg masses contain around 30-60 eggs, creating rapid population growth that affects later growing seasons. Current SLF population reduction methods, such as netting and manual egg removal are difficult to scale across larger vineyards.</p>
 
-                        <div class="intro-section">
-                            <p>This pitch outlines a short course module to introduce first-year engineering students to mechanical design fundamentals. The module focuses on hands-on projects, CAD modeling, and client-style deliverables that progressively build design literacy and practical prototyping skills.</p>
-                        </div>
+  <h2>Impact</h2>
+  <p>Elimination of SLF eggs prevents the development of adult populations causing the most damage to vineyards. The average SLFs per vine starts low, increasing sharply following the transition from nymph to adult stages (Figure 1). As a result, attacking the root cause would protect regions like Lake Erie and the Finger Lakes from losses between $1.5 million in year one and $8.8 million by year three of infestation (Hayes).</p>
 
-                        <div class="diagram-container">
-                            <img src="Images/avg_slf_per_vine.png" alt="Figure: Average Self-Per Vine" style="max-width:100%; height:auto; display:block; margin: 0 auto;">
-                            <p style="font-size:13px; color:#666; text-align:center; margin-top:8px;">Figure: Placeholder diagram — replace with final image at <code>Images/avg_slf_per_vine.png</code>.</p>
-                        </div>
+  <h2>Proposed Concept: Stomp n' Scrape</h2>
+  <p><strong>What it is:</strong> Handheld egg removal device.</p>
+  <p><strong>How it would be used:</strong> Designed to crush SLF egg mass shells and immediately scrape them into a rubbing-alcohol-filled vessel to prevent hatching.</p>
 
-                        <div class="calc-section">
-                            <h2>Course Structure</h2>
-                            <ul style="margin-left:20px; line-height:1.8;">
-                                <li>Week 1–2: Intro to CAD and basic sketches</li>
-                                <li>Week 3–5: Constrained design & fast prototyping (3D printing)</li>
-                                <li>Week 6–8: Simple mechanisms and assemblies</li>
-                                <li>Week 9–10: Final client-style deliverables and presentations</li>
-                            </ul>
-                        </div>
+  <h2>Why it's better than the status quo:</h2>
+  <ul>
+    <li>Reduces the chance of leaving viable eggs behind.</li>
+    <li>Minimizes mess and user discomfort by sealing egg material instantly.</li>
+    <li>Improved output and efficiency compared to manual scraping alone.</li>
+  </ul>
 
-                        <div class="given-data">
-                            <strong>Deliverables:</strong>
-                            <ul style="margin-left:20px; line-height:1.8;">
-                                <li>CAD model and exploded drawing</li>
-                                <li>Build instructions and bill of materials</li>
-                                <li>Prototype demonstration video</li>
-                                <li>Client-facing one-page design summary</li>
-                            </ul>
-                        </div>
+  <p><strong>End-of-semester proof-of-concept:</strong> A functional prototype with a crushing feature, integrated scraper, and removable alcohol container, fabricated using 3D-printed components and accessible materials, and tested on simulated SLF egg masses to evaluate effectiveness and ease of cleaning.</p>
 
-                        <div class="explanation">
-                            <p>Students will be assessed on both design intent and manufacturability. Projects emphasize documenting design decisions, performing basic calculations for strength and fit, and communicating results to non-technical stakeholders.</p>
-                        </div>
+  <h2>Key Risks / Unknowns</h2>
+  <ul>
+    <li>1 - Egg masses harden, making it difficult to ensure they are fully damaged. Two methods to kill the egg masses: crushing them and then scraping them into rubbing alcohol to kill the remaining ones.</li>
+    <li>2 &mdash; Public aversion to kill/interact with SLF, as crushing egg masses may be off-putting. Test with user trials and gauge user comfort.</li>
+    <li>3 &mdash; Many eggs are laid on high surfaces; 98% of eggs are found at unreachable heights (+10 feet) on trees (Krawczyk). Test attachments to extendable tools for users to reach higher egg masses.</li>
+  </ul>
 
-                        <div style="margin-top:40px; text-align:center;">
-                            <a href="#" onclick="showPage('home')" class="back-button">← Back to Portfolio</a>
-                        </div>
+  <h2>Questions for Client</h2>
+  <ol>
+    <li>
+      <span class="q">What is preventing you from currently targeting egg masses? Is it location, time or resources?</span><br>
+      <span class="da"><em>Decision affected:</em> This would affect the aspects we want to emphasize in our design, like making it accessible to higher areas of the tree and ease to clean, based on client demand.</span>
+    </li>
+    <li>
+      <span class="q">Are there methods for reaching high areas that you are currently using?</span><br>
+      <span class="da"><em>Decision affected:</em> This would affect whether our product must account for reaching high-up areas, or if it can be used with existing tools.</span>
+    </li>
+    <li>
+      <span class="q">How much would you need to reduce SLF at the egg stage to be considered effective?</span><br>
+      <span class="da"><em>Decision affected:</em> This would affect how we determine the force needed and how we design our crushing/scraping mechanism.</span>
+    </li>
+  </ol>
+
+  <h2>References</h2>
+  <ul class="refs-list">
+    <li>New York State Integrated Pest Management. (n.d.). Spotted lanternfly management. https://cals.cornell.edu/integrated-pest-management/outreach-education/whats-bugging-you/spotted-lanternfly</li>
+    <li>Hayes, C. (2025, January 27). Spotted lanternflies could cost NYS grape industry millions. Cornell Chronicle. https://news.cornell.edu/stories/2025/01/spotted- lanternflies-could-cost-nys-grape-industry-millions#:~:text=Using%20data%20from%20two%20key,and%20third%20years%20of%20infestation%2C.</li>
+    <li>Krawczyk, G. (2023, August 30). What should you do with spotted lanternfly egg masses? PennState Extension. https://extension.psu.edu/what-should-you-do-with-spotted-lanternfly-egg-masses</li>
+  </ul>
+
+  <!-- FIGURE -->
+  <div class="figure-wrap">
+    <h2>Figure</h2>
+    <img src="Images/avg_slf_per_vine.png" alt="Figure 1: Average SLFs per Vine (2018-2020)" style="width:100%; display:block;">
+    <p class="figure-caption">Figure 1: Average SLFs per Vine (2018-2020)</p>
+  </div>
+
                     </div>
                 </div>
             </div>
