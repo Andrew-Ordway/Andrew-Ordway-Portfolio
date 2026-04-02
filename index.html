@@ -349,15 +349,12 @@
         }
 
         /* ===== SQUARE ROOT ===== */
-        /* Render a clean radical using an inline SVG glyph for the hook
-           and a CSS border as the vinculum (overline). This avoids
-           font-dependent gaps where the glyph doesn't join the line. */
         .sqrt {
             display: inline-flex;
             align-items: center;
             gap: 6px;
             line-height: 1;
-            white-space: nowrap; /* prevent hook and radicand from splitting across lines */
+            white-space: nowrap;
             vertical-align: middle;
         }
         .sqrt::before {
@@ -376,7 +373,6 @@
             white-space: nowrap;
         }
         /* ===== PROJECT 3 MEDIA SIZING ===== */
-        /* Constrain images and videos in Project 3 so they don't exceed the layout */
         .project3-media img,
         .project3-media video {
             width: 100%;
@@ -386,7 +382,6 @@
             display: block;
         }
 
-        /* Also limit video elements in the generic video-grid */
         .video-grid video {
             max-height: 480px;
             height: auto;
@@ -455,238 +450,383 @@
         </div>
     </div>
 
+    <!-- Project 4: Mechanical Orrery -->
+    <div id="project4" class="page">
+        <div class="container">
+            <a href="#" onclick="showPage('home')" class="back-button">← Back to Portfolio</a>
+            <div class="project-detail">
+                <h1>Mechanical Orrery Assembly</h1>
+            </div>
 
-            <!-- Project 4: Mechanical Orrery -->
-            <div id="project4" class="page">
-                <div class="container">
-                    <a href="#" onclick="showPage('home')" class="back-button">← Back to Portfolio</a>
-                    <div class="project-detail">
-                        <h1>Mechanical Orrery Assembly</h1>
-                    </div>
+            <div style="max-width: 800px; margin: 0 auto 60px;">
+                <div class="cad-embed" style="aspect-ratio: 16/9;">
+                    <iframe title="Mechanical Orrery Assembly" frameborder="0" allowfullscreen
+                        mozallowfullscreen="true" webkitallowfullscreen="true"
+                        allow="autoplay; fullscreen; xr-spatial-tracking"
+                        width="100%" height="100%"
+                        src="https://sketchfab.com/models/6fe87f3f43894101a4ceb4a4a6df992e/embed">
+                    </iframe>
+                </div>
+                <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
+                    <a href="https://sketchfab.com/3d-models/mechanical-orrery-assembly-6fe87f3f43894101a4ceb4a4a6df992e" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Mechanical Orrery Assembly</a> by
+                    <a href="https://sketchfab.com/AndrewOrdway" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Andrew Ordway</a> on
+                    <a href="https://sketchfab.com" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                </p>
+            </div>
 
-                    <!-- First Demo replaced with Sketchfab -->
-                    <div style="max-width: 800px; margin: 0 auto 60px;">
-                        <div class="cad-embed" style="aspect-ratio: 16/9;">
-                            <iframe title="Mechanical Orrery Assembly" frameborder="0" allowfullscreen
+            <div class="project-description">
+                I designed this gravity-driven desktop orrery mechanism to demonstrate planetary motion through a counterbalanced lever system. This project allowed me to apply mechanical design principles and explore dynamic motion through weighted components.
+            </div>
+
+            <div style="max-width: 1200px; margin: 80px auto;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;">
+                    <div>
+                        <div class="cad-embed" style="margin-bottom: 40px; aspect-ratio: 1;">
+                            <iframe title="Orrery Lever Arm And Platform" frameborder="0" allowfullscreen
                                 mozallowfullscreen="true" webkitallowfullscreen="true"
                                 allow="autoplay; fullscreen; xr-spatial-tracking"
                                 width="100%" height="100%"
-                                src="https://sketchfab.com/models/6fe87f3f43894101a4ceb4a4a6df992e/embed">
+                                src="https://sketchfab.com/models/ff33b85fba1549bcb51fcd713417cbbb/embed">
                             </iframe>
                         </div>
                         <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-                            <a href="https://sketchfab.com/3d-models/mechanical-orrery-assembly-6fe87f3f43894101a4ceb4a4a6df992e" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Mechanical Orrery Assembly</a> by
+                            <a href="https://sketchfab.com/3d-models/orrery-lever-arm-and-platform-ff33b85fba1549bcb51fcd713417cbbb" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Orrery Lever Arm And Platform</a> by
+                            <a href="https://sketchfab.com/AndrewOrdway" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Andrew Ordway</a> on
+                            <a href="https://sketchfab.com" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                        </p>
+
+                        <div class="cad-embed" style="aspect-ratio: 1;">
+                            <iframe title="Orrery Fixed Gear Ratio" frameborder="0" allowfullscreen
+                                mozallowfullscreen="true" webkitallowfullscreen="true"
+                                allow="autoplay; fullscreen; xr-spatial-tracking"
+                                width="100%" height="100%"
+                                src="https://sketchfab.com/models/b69bb8addea34dafbc2ddb7e6a69c5ed/embed">
+                            </iframe>
+                        </div>
+                        <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
+                            <a href="https://sketchfab.com/3d-models/orrery-fixed-gear-ratio-b69bb8addea34dafbc2ddb7e6a69c5ed" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Orrery Fixed Gear Ratio</a> by
                             <a href="https://sketchfab.com/AndrewOrdway" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Andrew Ordway</a> on
                             <a href="https://sketchfab.com" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
                         </p>
                     </div>
 
-                    <div class="project-description">
-                        I designed this gravity-driven desktop orrery mechanism to demonstrate planetary motion through a counterbalanced lever system. This project allowed me to apply mechanical design principles and explore dynamic motion through weighted components.
-                    </div>
+                    <div>
+                        <h3 style="font-size: 32px; margin-bottom: 30px;">Key Features:</h3>
+                        <ul style="font-size: 18px; line-height: 2; margin-bottom: 40px; margin-left: 20px;">
+                            <li>I developed a custom gear ring with accurate tooth geometry to translate the lever's arc into smooth rotation</li>
+                            <li>I designed an organic lever arm with integrated counterweight system for continuous motion</li>
+                            <li>I created a precision circular base housing with integrated mounting features and gear mechanism</li>
+                            <li>I used a modular component approach for easy assembly and maintenance</li>
+                        </ul>
 
-                    <!-- CAD Section -->
-                    <div style="max-width: 1200px; margin: 80px auto;">
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;">
+                        <h3 style="font-size: 32px; margin-bottom: 30px;">Design Process:</h3>
+                        <ul style="font-size: 18px; line-height: 2; margin-bottom: 40px; margin-left: 20px;">
+                            <li>I calculated the counterweight balance to achieve smooth, controlled motion</li>
+                            <li>I incorporated smooth filleted transitions throughout for both aesthetics and stress distribution</li>
+                            <li>I designed the base platform to support the dynamic forces during operation</li>
+                            <li>I focused on a clean, minimal aesthetic that emphasizes the mechanical functionality</li>
+                        </ul>
 
-                            <!-- Left Column: CAD Models -->
-                            <div>
-                                <!-- CAD Placeholder 1: Orrery Lever Arm and Platform -->
-                                <div class="cad-embed" style="margin-bottom: 40px; aspect-ratio: 1;">
-                                    <iframe title="Orrery Lever Arm And Platform" frameborder="0" allowfullscreen
-                                        mozallowfullscreen="true" webkitallowfullscreen="true"
-                                        allow="autoplay; fullscreen; xr-spatial-tracking"
-                                        width="100%" height="100%"
-                                        src="https://sketchfab.com/models/ff33b85fba1549bcb51fcd713417cbbb/embed">
-                                    </iframe>
-                                </div>
-                                <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-                                    <a href="https://sketchfab.com/3d-models/orrery-lever-arm-and-platform-ff33b85fba1549bcb51fcd713417cbbb" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Orrery Lever Arm And Platform</a> by
-                                    <a href="https://sketchfab.com/AndrewOrdway" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Andrew Ordway</a> on
-                                    <a href="https://sketchfab.com" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
-                                </p>
-
-                                <!-- CAD Placeholder 2: Orrery Fixed Gear Ratio -->
-                                <div class="cad-embed" style="aspect-ratio: 1;">
-                                    <iframe title="Orrery Fixed Gear Ratio" frameborder="0" allowfullscreen
-                                        mozallowfullscreen="true" webkitallowfullscreen="true"
-                                        allow="autoplay; fullscreen; xr-spatial-tracking"
-                                        width="100%" height="100%"
-                                        src="https://sketchfab.com/models/b69bb8addea34dafbc2ddb7e6a69c5ed/embed">
-                                    </iframe>
-                                </div>
-                                <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-                                    <a href="https://sketchfab.com/3d-models/orrery-fixed-gear-ratio-b69bb8addea34dafbc2ddb7e6a69c5ed" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Orrery Fixed Gear Ratio</a> by
-                                    <a href="https://sketchfab.com/AndrewOrdway" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Andrew Ordway</a> on
-                                    <a href="https://sketchfab.com" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
-                                </p>
-                            </div>
-
-                            <!-- Right Column: Project Details -->
-                            <div>
-                                <h3 style="font-size: 32px; margin-bottom: 30px;">Key Features:</h3>
-                                <ul style="font-size: 18px; line-height: 2; margin-bottom: 40px; margin-left: 20px;">
-                                    <li>I developed a custom gear ring with accurate tooth geometry to translate the lever's arc into smooth rotation</li>
-                                    <li>I designed an organic lever arm with integrated counterweight system for continuous motion</li>
-                                    <li>I created a precision circular base housing with integrated mounting features and gear mechanism</li>
-                                    <li>I used a modular component approach for easy assembly and maintenance</li>
-                                </ul>
-
-                                <h3 style="font-size: 32px; margin-bottom: 30px;">Design Process:</h3>
-                                <ul style="font-size: 18px; line-height: 2; margin-bottom: 40px; margin-left: 20px;">
-                                    <li>I calculated the counterweight balance to achieve smooth, controlled motion</li>
-                                    <li>I incorporated smooth filleted transitions throughout for both aesthetics and stress distribution</li>
-                                    <li>I designed the base platform to support the dynamic forces during operation</li>
-                                    <li>I focused on a clean, minimal aesthetic that emphasizes the mechanical functionality</li>
-                                </ul>
-
-                                <p style="font-size: 18px; line-height: 1.8;"><strong>Tools Used:</strong> Onshape</p>
-                            </div>
-
-                        </div>
+                        <p style="font-size: 18px; line-height: 1.8;"><strong>Tools Used:</strong> Onshape</p>
                     </div>
                 </div>
             </div>
-
-                        <!-- Project 5: Intro to Mechanical Design (Client Pitch) -->
-                        <div id="project5" class="page">
-                                <div class="container">
-                                        <a href="#" onclick="showPage('home')" class="back-button">← Back to Portfolio</a>
-
-                                        <!-- Hide the large generic project title for this project -->
-                                        <style>
-                                        /* Hide the oversized project-detail heading only for project5 */
-                                        #project5 .project-detail { display: none; }
-                                        </style>
-
-                                        <!-- Scoped styles for Project 5 (use user's provided styling but scoped to avoid global overrides) -->
-                                        <style>
-                                            /* Base box reset for the scoped doc */
-                                            #project5 .proj-doc * { box-sizing: border-box; }
-
-                                            #project5 .proj-doc { background: #fff; color: #000; font-family: "Times New Roman", Times, serif; font-size: 12pt; line-height: 1.55; max-width: 100%; margin: 0 auto; padding: 48px 8% 80px; }
-
-                                            #project5 .proj-doc h1.doc-title { font-size: 20pt; font-weight: bold; margin-bottom: 2px; }
-
-                                            #project5 .proj-doc .team-line { font-size: 12pt; margin-bottom: 14px; }
-
-                                            #project5 .proj-doc h2 { font-size: 13pt; font-weight: bold; margin-top: 14px; margin-bottom: 3px; }
-
-                                            #project5 .proj-doc p { margin-bottom: 6px; font-size: 12pt; }
-
-                                            #project5 .proj-doc ul { margin: 4px 0 6px 28px; list-style-type: disc; }
-
-                                            #project5 .proj-doc ul li { margin-bottom: 3px; font-size: 12pt; }
-
-                                            #project5 .proj-doc ol { margin: 4px 0 6px 22px; }
-
-                                            #project5 .proj-doc ol li { margin-bottom: 10px; font-size: 12pt; }
-
-                                            #project5 .proj-doc ol li .q { font-weight: bold; }
-
-                                            #project5 .proj-doc ol li .da { font-style: italic; }
-
-                                            #project5 .proj-doc .refs-list { list-style: none; margin: 4px 0 0 0; padding: 0; }
-
-                                            #project5 .proj-doc .refs-list li { margin-bottom: 8px; padding-left: 28px; text-indent: -28px; font-size: 12pt; line-height: 1.5; }
-
-                                            /* FIGURE */
-                                            #project5 .proj-doc .figure-wrap { margin-top: 20px; }
-
-                                            #project5 .proj-doc .chart-outer { display: flex; align-items: stretch; gap: 0; }
-
-                                            #project5 .proj-doc .y-label { writing-mode: vertical-rl; transform: rotate(180deg); font-size: 9.5pt; text-align: center; white-space: nowrap; margin-right: 4px; flex-shrink: 0; }
-
-                                            #project5 .proj-doc .chart-box { flex: 1; border: 1.5px solid #888; padding: 14px 14px 28px; position: relative; }
-
-                                            #project5 .proj-doc .legend-row { display: flex; justify-content: center; margin-bottom: 10px; font-size: 9.5pt; }
-
-                                            #project5 .proj-doc .legend-item { border: 1px solid #888; padding: 2px 12px; display: flex; align-items: center; gap: 5px; }
-
-                                            #project5 .proj-doc .legend-item + .legend-item { border-left: none; }
-
-                                            #project5 .proj-doc .swatch { display: inline-block; width: 22px; height: 3px; border-radius: 1px; background: #8B2500; }
-
-                                            #project5 .proj-doc .chart-svg-wrap { display: flex; align-items: flex-end; gap: 0; height: 220px; }
-
-                                            #project5 .proj-doc .y-ticks { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-end; width: 26px; height: 100%; padding-right: 5px; flex-shrink: 0; font-size: 9pt; padding-bottom: 0; }
-
-                                            #project5 .proj-doc .chart-svg-inner { flex: 1; height: 100%; }
-
-                                            #project5 .proj-doc .chart-svg-inner svg { width: 100%; height: 100%; overflow: visible; }
-
-                                            #project5 .proj-doc .figure-caption { text-align: center; font-size: 10.5pt; margin-top: 10px; }
-
-                                            @media print { #project5 .proj-doc { padding: 0; } }
-                                        </style>
-
-                                        <!-- Project document content (scoped inside .proj-doc) -->
-                                        <div class="proj-doc">
-
-    <h1 class="doc-title">Client Pitch</h1>
-    <p class="team-line"><strong>Team:</strong> <em>Big Red Stompers</em> &nbsp; <strong>Clients:</strong> Cornell CALS Extension / E&amp;J Gallo Winery / National Grape</p>
-
-    <h2>Problem Statement</h2>
-    <p>Spotted lanternflies (SLF) mainly target grapevines. As a result, grape farmers are trying to manage SLF populations in vineyards and nearby trees. SLF egg masses contain around 30-60 eggs, creating rapid population growth that affects later growing seasons. Current SLF population reduction methods, such as netting and manual egg removal are difficult to scale across larger vineyards.</p>
-
-    <h2>Impact</h2>
-    <p>Elimination of SLF eggs prevents the development of adult populations causing the most damage to vineyards. The average SLFs per vine starts low, increasing sharply following the transition from nymph to adult stages (Figure 1). As a result, attacking the root cause would protect regions like Lake Erie and the Finger Lakes from losses between $1.5 million in year one and $8.8 million by year three of infestation (Hayes).</p>
-
-    <h2>Proposed Concept: Stomp n' Scrape</h2>
-    <p><strong>What it is:</strong> Handheld egg removal device.</p>
-    <p><strong>How it would be used:</strong> Designed to crush SLF egg mass shells and immediately scrape them into a rubbing-alcohol-filled vessel to prevent hatching.</p>
-
-    <h2>Why it's better than the status quo:</h2>
-    <ul>
-        <li>Reduces the chance of leaving viable eggs behind.</li>
-        <li>Minimizes mess and user discomfort by sealing egg material instantly.</li>
-        <li>Improved output and efficiency compared to manual scraping alone.</li>
-    </ul>
-
-    <p><strong>End-of-semester proof-of-concept:</strong> A functional prototype with a crushing feature, integrated scraper, and removable alcohol container, fabricated using 3D-printed components and accessible materials, and tested on simulated SLF egg masses to evaluate effectiveness and ease of cleaning.</p>
-
-    <h2>Key Risks / Unknowns</h2>
-    <ul>
-        <li>1 - Egg masses harden, making it difficult to ensure they are fully damaged. Two methods to kill the egg masses: crushing them and then scraping them into rubbing alcohol to kill the remaining ones.</li>
-        <li>2 &mdash; Public aversion to kill/interact with SLF, as crushing egg masses may be off-putting. Test with user trials and gauge user comfort.</li>
-        <li>3 &mdash; Many eggs are laid on high surfaces; 98% of eggs are found at unreachable heights (+10 feet) on trees (Krawczyk). Test attachments to extendable tools for users to reach higher egg masses.</li>
-    </ul>
-
-    <h2>Questions for Client</h2>
-    <ol>
-        <li>
-            <span class="q">What is preventing you from currently targeting egg masses? Is it location, time or resources?</span><br>
-            <span class="da"><em>Decision affected:</em> This would affect the aspects we want to emphasize in our design, like making it accessible to higher areas of the tree and ease to clean, based on client demand.</span>
-        </li>
-        <li>
-            <span class="q">Are there methods for reaching high areas that you are currently using?</span><br>
-            <span class="da"><em>Decision affected:</em> This would affect whether our product must account for reaching high-up areas, or if it can be used with existing tools.</span>
-        </li>
-        <li>
-            <span class="q">How much would you need to reduce SLF at the egg stage to be considered effective?</span><br>
-            <span class="da"><em>Decision affected:</em> This would affect how we determine the force needed and how we design our crushing/scraping mechanism.</span>
-        </li>
-    </ol>
-
-    <h2>References</h2>
-    <ul class="refs-list">
-        <li>New York State Integrated Pest Management. (n.d.). Spotted lanternfly management. https://cals.cornell.edu/integrated-pest-management/outreach-education/whats-bugging-you/spotted-lanternfly</li>
-        <li>Hayes, C. (2025, January 27). Spotted lanternflies could cost NYS grape industry millions. Cornell Chronicle. https://news.cornell.edu/stories/2025/01/spotted- lanternflies-could-cost-nys-grape-industry-millions#:~:text=Using%20data%20from%20two%20key,and%20third%20years%20of%20infestation%2C.</li>
-        <li>Krawczyk, G. (2023, August 30). What should you do with spotted lanternfly egg masses? PennState Extension. https://extension.psu.edu/what-should-you-do-with-spotted-lanternfly-egg-masses</li>
-    </ul>
-
-    <!-- FIGURE -->
-    <div class="figure-wrap">
-        <h2>Figure</h2>
-        <img src="Images/avg_slf_per_vine.png" alt="Figure 1: Average SLFs per Vine (2018-2020)" style="width:100%; display:block;">
-        <p class="figure-caption">Figure 1: Average SLFs per Vine (2018-2020)</p>
+        </div>
     </div>
 
-                                        </div>
-                                </div>
-                        </div>
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- Project 5: Intro to Mechanical Design (Client Pitch + Prototype)   -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <div id="project5" class="page">
+        <div class="container">
+            <a href="#" onclick="showPage('home')" class="back-button">← Back to Portfolio</a>
 
-            <!-- Project 1: Seattle Hologram -->
+            <!-- Scoped styles for Project 5 -->
+            <style>
+                #project5 .proj-doc * { box-sizing: border-box; }
+                #project5 .proj-doc { background: #fff; color: #000; font-family: "Times New Roman", Times, serif; font-size: 12pt; line-height: 1.55; max-width: 100%; margin: 0 auto; padding: 32px 8% 60px; }
+                #project5 .proj-doc h1.doc-title { font-size: 20pt; font-weight: bold; margin-bottom: 2px; }
+                #project5 .proj-doc .team-line { font-size: 12pt; margin-bottom: 14px; }
+                #project5 .proj-doc h2 { font-size: 13pt; font-weight: bold; margin-top: 14px; margin-bottom: 3px; }
+                #project5 .proj-doc p { margin-bottom: 6px; font-size: 12pt; }
+                #project5 .proj-doc ul { margin: 4px 0 6px 28px; list-style-type: disc; }
+                #project5 .proj-doc ul li { margin-bottom: 3px; font-size: 12pt; }
+                #project5 .proj-doc ol { margin: 4px 0 6px 22px; }
+                #project5 .proj-doc ol li { margin-bottom: 10px; font-size: 12pt; }
+                #project5 .proj-doc ol li .q { font-weight: bold; }
+                #project5 .proj-doc ol li .da { font-style: italic; }
+                #project5 .proj-doc .refs-list { list-style: none; margin: 4px 0 0 0; padding: 0; }
+                #project5 .proj-doc .refs-list li { margin-bottom: 8px; padding-left: 28px; text-indent: -28px; font-size: 12pt; line-height: 1.5; }
+                #project5 .proj-doc .figure-wrap { margin-top: 20px; }
+                #project5 .proj-doc .figure-caption { text-align: center; font-size: 10.5pt; margin-top: 10px; }
+
+                /* TABLE OF CONTENTS */
+                #project5 .p5-toc {
+                    background: #fff;
+                    border: 2px solid #8B1A1A;
+                    border-radius: 4px;
+                    padding: 28px 36px;
+                    margin-bottom: 48px;
+                    max-width: 600px;
+                }
+                #project5 .p5-toc h2 {
+                    font-family: Georgia, serif;
+                    font-size: 20px;
+                    font-weight: normal;
+                    margin-bottom: 18px;
+                    padding-bottom: 10px;
+                    border-bottom: 1px solid #ddd;
+                    color: #000;
+                }
+                #project5 .p5-toc-list {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                }
+                #project5 .p5-toc-list li {
+                    margin-bottom: 10px;
+                    font-size: 17px;
+                }
+                #project5 .p5-toc-list a {
+                    color: #8B1A1A;
+                    text-decoration: none;
+                    font-family: Georgia, serif;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    transition: opacity 0.2s;
+                }
+                #project5 .p5-toc-list a:hover { opacity: 0.7; text-decoration: underline; }
+                #project5 .p5-toc-list .toc-num {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 26px;
+                    height: 26px;
+                    border-radius: 50%;
+                    background: #8B1A1A;
+                    color: #fff;
+                    font-size: 12px;
+                    font-family: Georgia, serif;
+                    flex-shrink: 0;
+                }
+
+                /* SECTION HEADERS */
+                #project5 .p5-section-header {
+                    font-family: Georgia, serif;
+                    font-size: 34px;
+                    font-weight: normal;
+                    border-bottom: 2px solid #8B1A1A;
+                    padding-bottom: 10px;
+                    margin-bottom: 28px;
+                    margin-top: 56px;
+                    color: #000;
+                    scroll-margin-top: 30px;
+                }
+
+                /* FUNCTIONAL PROTOTYPE DOC */
+                #project5 .fp-doc {
+                    font-family: "Times New Roman", Times, serif;
+                    font-size: 12pt;
+                    line-height: 1.6;
+                    color: #000;
+                    background: #fff;
+                    padding: 32px 8% 60px;
+                }
+                #project5 .fp-doc h3 { font-size: 13pt; font-weight: bold; margin-top: 18px; margin-bottom: 4px; }
+                #project5 .fp-doc p { margin-bottom: 8px; }
+                #project5 .fp-doc ul { margin: 4px 0 10px 28px; list-style-type: disc; }
+                #project5 .fp-doc ul li { margin-bottom: 4px; }
+                #project5 .fp-doc ol { margin: 4px 0 10px 24px; }
+                #project5 .fp-doc ol li { margin-bottom: 8px; }
+                #project5 .fp-doc .fp-header-block {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    margin-bottom: 20px;
+                    gap: 20px;
+                }
+                #project5 .fp-doc .fp-header-block img { width: 80px; height: auto; flex-shrink: 0; }
+                #project5 .fp-doc hr { border: none; border-top: 1px solid #aaa; margin: 18px 0; }
+                #project5 .fp-doc .outcome-box {
+                    background: #f9f9f9;
+                    border-left: 4px solid #8B1A1A;
+                    padding: 16px 20px;
+                    margin-top: 16px;
+                    font-size: 12pt;
+                    line-height: 1.6;
+                }
+            </style>
+
+            <!-- Page title -->
+            <h1 style="font-family: Georgia, serif; font-size: 48px; font-weight: normal; margin-bottom: 10px;">Intro to Mechanical Design</h1>
+            <p style="font-family: Georgia, serif; font-size: 18px; color: #555; margin-bottom: 36px;">Team: <em>Big Red Stompers</em> &nbsp;·&nbsp; MAE 2250</p>
+
+            <!-- ── TABLE OF CONTENTS (immediately visible, no scrolling needed) ── -->
+            <div class="p5-toc">
+                <h2>Project Milestones</h2>
+                <ul class="p5-toc-list">
+                    <li>
+                        <a href="#p5-client-pitch">
+                            <span class="toc-num">1</span>
+                            Client Pitch
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#p5-functional-prototype">
+                            <span class="toc-num">2</span>
+                            Functional Prototype
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- ── MILESTONE 1: CLIENT PITCH ── -->
+            <h2 id="p5-client-pitch" class="p5-section-header">1 &nbsp; Client Pitch</h2>
+
+            <div class="proj-doc">
+                <h1 class="doc-title">Client Pitch</h1>
+                <p class="team-line"><strong>Team:</strong> <em>Big Red Stompers</em> &nbsp; <strong>Clients:</strong> Cornell CALS Extension / E&amp;J Gallo Winery / National Grape</p>
+
+                <h2>Problem Statement</h2>
+                <p>Spotted lanternflies (SLF) mainly target grapevines. As a result, grape farmers are trying to manage SLF populations in vineyards and nearby trees. SLF egg masses contain around 30-60 eggs, creating rapid population growth that affects later growing seasons. Current SLF population reduction methods, such as netting and manual egg removal are difficult to scale across larger vineyards.</p>
+
+                <h2>Impact</h2>
+                <p>Elimination of SLF eggs prevents the development of adult populations causing the most damage to vineyards. The average SLFs per vine starts low, increasing sharply following the transition from nymph to adult stages (Figure 1). As a result, attacking the root cause would protect regions like Lake Erie and the Finger Lakes from losses between $1.5 million in year one and $8.8 million by year three of infestation (Hayes).</p>
+
+                <h2>Proposed Concept: Stomp n' Scrape</h2>
+                <p><strong>What it is:</strong> Handheld egg removal device.</p>
+                <p><strong>How it would be used:</strong> Designed to crush SLF egg mass shells and immediately scrape them into a rubbing-alcohol-filled vessel to prevent hatching.</p>
+
+                <h2>Why it's better than the status quo:</h2>
+                <ul>
+                    <li>Reduces the chance of leaving viable eggs behind.</li>
+                    <li>Minimizes mess and user discomfort by sealing egg material instantly.</li>
+                    <li>Improved output and efficiency compared to manual scraping alone.</li>
+                </ul>
+
+                <p><strong>End-of-semester proof-of-concept:</strong> A functional prototype with a crushing feature, integrated scraper, and removable alcohol container, fabricated using 3D-printed components and accessible materials, and tested on simulated SLF egg masses to evaluate effectiveness and ease of cleaning.</p>
+
+                <h2>Key Risks / Unknowns</h2>
+                <ul>
+                    <li>1 - Egg masses harden, making it difficult to ensure they are fully damaged. Two methods to kill the egg masses: crushing them and then scraping them into rubbing alcohol to kill the remaining ones.</li>
+                    <li>2 &mdash; Public aversion to kill/interact with SLF, as crushing egg masses may be off-putting. Test with user trials and gauge user comfort.</li>
+                    <li>3 &mdash; Many eggs are laid on high surfaces; 98% of eggs are found at unreachable heights (+10 feet) on trees (Krawczyk). Test attachments to extendable tools for users to reach higher egg masses.</li>
+                </ul>
+
+                <h2>Questions for Client</h2>
+                <ol>
+                    <li>
+                        <span class="q">What is preventing you from currently targeting egg masses? Is it location, time or resources?</span><br>
+                        <span class="da"><em>Decision affected:</em> This would affect the aspects we want to emphasize in our design, like making it accessible to higher areas of the tree and ease to clean, based on client demand.</span>
+                    </li>
+                    <li>
+                        <span class="q">Are there methods for reaching high areas that you are currently using?</span><br>
+                        <span class="da"><em>Decision affected:</em> This would affect whether our product must account for reaching high-up areas, or if it can be used with existing tools.</span>
+                    </li>
+                    <li>
+                        <span class="q">How much would you need to reduce SLF at the egg stage to be considered effective?</span><br>
+                        <span class="da"><em>Decision affected:</em> This would affect how we determine the force needed and how we design our crushing/scraping mechanism.</span>
+                    </li>
+                </ol>
+
+                <h2>References</h2>
+                <ul class="refs-list">
+                    <li>New York State Integrated Pest Management. (n.d.). Spotted lanternfly management. <a href="https://cals.cornell.edu/integrated-pest-management/outreach-education/whats-bugging-you/spotted-lanternfly" target="_blank">https://cals.cornell.edu/integrated-pest-management/outreach-education/whats-bugging-you/spotted-lanternfly</a></li>
+                    <li>Hayes, C. (2025, January 27). Spotted lanternflies could cost NYS grape industry millions. Cornell Chronicle. <a href="https://news.cornell.edu/stories/2025/01/spotted-lanternflies-could-cost-nys-grape-industry-millions" target="_blank">https://news.cornell.edu/stories/2025/01/spotted-lanternflies-could-cost-nys-grape-industry-millions</a></li>
+                    <li>Krawczyk, G. (2023, August 30). What should you do with spotted lanternfly egg masses? PennState Extension. <a href="https://extension.psu.edu/what-should-you-do-with-spotted-lanternfly-egg-masses" target="_blank">https://extension.psu.edu/what-should-you-do-with-spotted-lanternfly-egg-masses</a></li>
+                </ul>
+
+                <div class="figure-wrap">
+                    <h2>Figure</h2>
+                    <img src="Images/avg_slf_per_vine.png" alt="Figure 1: Average SLFs per Vine (2018-2020)" style="width:100%; display:block;">
+                    <p class="figure-caption">Figure 1: Average SLFs per Vine (2018-2020)</p>
+                </div>
+            </div>
+
+            <!-- ── MILESTONE 2: FUNCTIONAL PROTOTYPE ── -->
+            <h2 id="p5-functional-prototype" class="p5-section-header">2 &nbsp; Functional Prototype</h2>
+
+            <div class="fp-doc">
+                <div class="fp-header-block">
+                    <div>
+                        <p><strong>Big Red Stompers &nbsp;·&nbsp; Functional Prototype Assignment</strong></p>
+                        <p>Joaquin Perez (jep369), Keira He (kph55), Andrew Ordway (aso39), Felicity Wu (fyw5), Wasif Atcha (wa79)</p>
+                        <p><strong>MAE 2250</strong></p>
+                    </div>
+                    <img src="Images/brslogo.png" alt="Big Red Stompers Logo">
+                </div>
+                <hr>
+
+                <h3>Design Intent and Functionality</h3>
+                <p>The prototype is intended to combine three main functions into one handheld device:</p>
+                <ol>
+                    <li><strong>Scraping</strong>: the scraper removes the spotted lanternfly egg mass off the surface.</li>
+                    <li><strong>Crushing / Stomping</strong>: a spring-loaded internal stomper compresses the egg mass material to destroy the eggs.</li>
+                    <li><strong>Collection</strong>: the lower opening funnels egg residue into an attached bottle for containment and later neutralization.</li>
+                </ol>
+
+                <h3>Parts List and Fabrication Details</h3>
+                <p>The functional prototype consists of the following parts:</p>
+                <ul>
+                    <li><strong>Housing</strong> – 3D printed at RPL; contains the sliding rail, supports the scraper assembly, and connects to the bottle interface.</li>
+                    <li><strong>Stomper Face</strong> – 3D printed at RPL; translates along the internal rail and compresses the egg mass during actuation.</li>
+                    <li><strong>Compression Spring</strong> – initially tested using McMaster spring <strong>8969T983</strong>; additional spring options evaluated based on force and travel requirements.</li>
+                    <li><strong>Scraper Blade</strong> – thin metal or hard plastic blade seated in a channel on the housing; interfaces with the egg mass surface.</li>
+                    <li><strong>Bottle Interface</strong> – 3D printed funnel adapter connecting the housing exit to a standard rubbing alcohol bottle for containment.</li>
+                    <li><strong>Fasteners / Assembly Hardware</strong> – standard hardware (screws, pins) used to secure printed components during testing.</li>
+                </ul>
+
+                <!-- Prototype Images -->
+                <div style="margin: 30px 0 10px;">
+                    <h3>Design Sketches and CAD Models</h3>
+                </div>
+
+                <!-- Full-width prototype sketch -->
+                <div style="margin-bottom: 30px;">
+                    <img src="Images/Prototype_Sketch.png" alt="Components and Function Illustration" style="width:100%; height:auto; display:block;">
+                    <p style="text-align:center; font-style:italic; font-size:11pt; margin-top:8px; color:#444;">Components and Function Illustration</p>
+                </div>
+
+                <!-- Two CAD sketches side by side -->
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:30px; margin-bottom:30px;">
+                    <div>
+                        <img src="Images/CAD_Sketch__1.png" alt="CAD Sketch #1" style="width:100%; height:auto; display:block;">
+                        <p style="text-align:center; font-style:italic; font-size:11pt; margin-top:8px; color:#444;">CAD Sketch #1: View of the Whole Assembly in CAD</p>
+                    </div>
+                    <div>
+                        <img src="Images/CAD_Sketch__2.png" alt="CAD Sketch #2" style="width:100%; height:auto; display:block;">
+                        <p style="text-align:center; font-style:italic; font-size:11pt; margin-top:8px; color:#444;">CAD Sketch #2: Scraper and Inside Assembly</p>
+                    </div>
+                </div>
+
+                <!-- Sketch #4 full width -->
+                <div style="margin-bottom:30px;">
+                    <img src="Images/Sketch__4.png" alt="Sketch #4" style="width:100%; height:auto; display:block;">
+                    <p style="text-align:center; font-style:italic; font-size:11pt; margin-top:8px; color:#444;">Sketch #4</p>
+                </div>
+
+                <h3>Purpose of the Prototype</h3>
+                <p>The functional prototype was built to validate the core Stomp n' Scrape mechanism: the ability to simultaneously scrape an SLF egg mass from a surface, crush it with a spring-loaded stomper, and direct the material into a sealed containment vessel — all in a single handheld operation. The goal was to confirm that these three functions could be integrated without requiring fine motor precision from the user.</p>
+
+                <h3>What Was Tested</h3>
+                <ul>
+                    <li><strong>Scraping effectiveness</strong> – the prototype was tested against simulated SLF egg mass surfaces to evaluate how cleanly the blade removed egg mass material.</li>
+                    <li><strong>Crushing force</strong> – the spring-loaded stomper was actuated repeatedly to assess whether the compression force was sufficient to rupture egg mass shells.</li>
+                    <li><strong>Containment</strong> – the funnel interface was tested to confirm that displaced egg material was directed into the bottle rather than escaping to the environment.</li>
+                    <li><strong>Usability</strong> – team members and test users operated the device to assess grip comfort, actuation effort, and ease of cleaning between uses.</li>
+                </ul>
+
+                <h3>Outcome</h3>
+                <div class="outcome-box">
+                    <p>The prototype successfully demonstrated the integrated scrape-crush-collect workflow. The spring-loaded stomper provided sufficient force to compress simulated egg masses, and the funnel interface contained the displaced material effectively. Areas identified for improvement in future iterations include tightening the scraper blade seating to reduce flex during use, refining the spring selection for more consistent actuation force, and improving the seal at the bottle interface to prevent leakage during transport. Overall, the functional prototype confirmed the viability of the core concept and provided clear direction for the next design iteration.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Project 1: Seattle Hologram -->
     <div id="project1" class="page">
         <div class="container">
             <a href="#" onclick="showPage('home')" class="back-button">← Back to Portfolio</a>
@@ -695,10 +835,7 @@
             </div>                        
 
             <div class="video-grid">
-                <!-- First Video: IMG_2236 -->
                 <video class="project1-video" src="IMG_2236.MOV" controls preload="metadata"></video>
-
-                <!-- Second Video: IMG_2207 -->
                 <video class="project1-video" src="IMG_2207.MOV" controls preload="metadata"></video>
             </div> 
 
@@ -709,7 +846,6 @@
             <div class="cad-section">
                 <h2>CAD Design Components</h2>
                 <div class="cad-grid">
-                    <!-- CAD Embed 1 -->
                     <div class="cad-card">
                         <div class="cad-embed" style="aspect-ratio: 16/9;">
                             <iframe title="Hologram City 3D Model" frameborder="0" allowfullscreen
@@ -723,7 +859,6 @@
                         <div class="cad-description">Complete hologram display system showing the assembled box housing with angled glass positioned at 45 degrees, rotating platform mechanism, and integrated components that create the optical illusion effect.</div>
                     </div>
 
-                    <!-- CAD Embed 2 -->
                     <div class="cad-card">
                         <div class="cad-embed" style="aspect-ratio: 16/9;">
                             <iframe title="Seattle Space Needle Assembly" frameborder="0" allowfullscreen
@@ -737,7 +872,6 @@
                         <div class="cad-description">3D model of Seattle's iconic Space Needle featuring the distinctive observation deck, tapered shaft, and tripod base that defines the city's skyline.</div>
                     </div>
 
-                    <!-- CAD Embed 3 -->
                     <div class="cad-card">
                         <div class="cad-embed" style="aspect-ratio: 16/9;">
                             <iframe title="Assembly 1 (2) by Andy Ordway" frameborder="0" allowfullscreen
@@ -763,490 +897,392 @@
         </div>
     </div>
 
-   <!-- Project 2: BrahMos Ramjet -->
-<div id="project2" class="page">
-    <div class="container">
-        <a href="#" onclick="showPage('home')" class="back-button">← Back to Portfolio</a>
-        <div class="project-detail">
-            <h1>BrahMos Ramjet Thermodynamic Analysis</h1>
-        </div>
-
-        <!-- Side-by-side BrahMos Images -->
-        <div class="brahmos-images">
-            <img src="Images/BrahMos Image.png" alt="BrahMos Ramjet Diagram 1">
-            <img src="Images/Ramjet_Schematic.png" alt="BrahMos Ramjet Diagram 2">
-        </div>
-
-        <!-- Full Analysis Content -->
-        <div style="max-width: 900px; margin: 0 auto;">
-            <div class="intro-section">
-                <p>With my newfound knowledge of thermodynamics from ENGRD 2210, I decided to apply what I learned to analyze ramjets and specifically the BrahMos Ramjet. On a high level, ramjet engines are open Brayton cycle engines used when aircraft are already traveling at incredibly fast supersonic speeds; however, ramjets have a couple key differences.</p>
-                <p>Firstly, instead of relying on a compressor as is used in conventional open Brayton cycles, the ramjet rather uses the aircraft's high speeds to compress incoming air. Because the ramjet does not have a compressor, it also does not have a turbine (which is typically needed to drive the compressor), allowing for all of the engine's work to be transferred into thrust. With no turbine, compressor, or shaft connecting the two, ramjets actually have no moving parts. Consequently, ramjets are only beneficial for aircraft traveling at speeds upwards of Mach 2 (meaning also that these aircraft must have some other booster to initially reach these supersonic speeds). In other words, ramjets are primarily used to "feed" off the aircraft's speed, becoming exponentially more powerful the faster the aircraft is moving.</p>
+    <!-- Project 2: BrahMos Ramjet -->
+    <div id="project2" class="page">
+        <div class="container">
+            <a href="#" onclick="showPage('home')" class="back-button">← Back to Portfolio</a>
+            <div class="project-detail">
+                <h1>BrahMos Ramjet Thermodynamic Analysis</h1>
             </div>
 
-            <!-- Control Volume Diagram -->
-            <div class="diagram-container">
-                <h2>Control Volume: Heat, Mass, and Work Transfers</h2>
-                <svg viewBox="0 0 900 350" style="max-width: 850px;">
-                    <defs>
-                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
-                            <polygon points="0 0, 10 3.5, 0 7" fill="black"/>
-                        </marker>
-                        <marker id="arrowheadBlue" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
-                            <polygon points="0 0, 10 3.5, 0 7" fill="#3498db"/>
-                        </marker>
-                        <marker id="arrowheadRed" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
-                            <polygon points="0 0, 10 3.5, 0 7" fill="#e74c3c"/>
-                        </marker>
-                        <marker id="arrowheadGreen" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
-                            <polygon points="0 0, 10 3.5, 0 7" fill="#27ae60"/>
-                        </marker>
-                    </defs>
-                    
-                    <rect x="200" y="80" width="500" height="120" fill="none" stroke="#000" stroke-width="2"/>
-                    <line x1="350" y1="80" x2="350" y2="200" stroke="#888" stroke-width="1"/>
-                    <line x1="520" y1="80" x2="520" y2="200" stroke="#888" stroke-width="1"/>
-                    
-                    <text x="275" y="145" text-anchor="middle" font-size="14" font-weight="bold">Diffuser</text>
-                    <text x="435" y="145" text-anchor="middle" font-size="14" font-weight="bold">Combustor</text>
-                    <text x="610" y="145" text-anchor="middle" font-size="14" font-weight="bold">Nozzle</text>
-                    
-                    <circle cx="200" cy="140" r="4" fill="#000"/>
-                    <circle cx="350" cy="140" r="4" fill="#000"/>
-                    <circle cx="520" cy="140" r="4" fill="#000"/>
-                    <circle cx="700" cy="140" r="4" fill="#000"/>
-                    
-                    <line x1="80" y1="140" x2="195" y2="140" stroke="#3498db" stroke-width="2" marker-end="url(#arrowheadBlue)"/>
-                    <text x="100" y="125" font-size="14" fill="#3498db" font-weight="bold">ṁ<tspan baseline-shift="sub">air,in</tspan></text>
-                    
-                    <line x1="435" y1="20" x2="435" y2="75" stroke="#3498db" stroke-width="2" marker-end="url(#arrowheadBlue)"/>
-                    <text x="445" y="45" font-size="14" fill="#3498db" font-weight="bold">ṁ<tspan baseline-shift="sub">fuel,in</tspan></text>
-                    
-                    <line x1="705" y1="140" x2="820" y2="140" stroke="#3498db" stroke-width="2" marker-end="url(#arrowheadBlue)"/>
-                    <text x="760" y="125" font-size="14" fill="#3498db" font-weight="bold">ṁ<tspan baseline-shift="sub">out</tspan></text>
-                    
-                    <line x1="435" y1="270" x2="435" y2="205" stroke="#e74c3c" stroke-width="2" marker-end="url(#arrowheadRed)"/>
-                    <text x="445" y="250" fill="#e74c3c" font-size="14" font-weight="bold">Q̇<tspan baseline-shift="sub">comb</tspan></text>
-                    
-                    <rect x="50" y="290" width="800" height="50" fill="#f9f9f9" stroke="#666" stroke-width="1"/>
-                    <text x="450" y="310" font-size="13" text-anchor="middle" font-weight="bold">Notes:</text>
-                    <text x="80" y="330" font-size="12" fill="#3498db">• Blue arrows: mass transfer</text>
-                    <text x="320" y="330" font-size="12" fill="#e74c3c">• Red arrow: heat addition (combustion)</text>
-                    <text x="600" y="330" font-size="12" fill="#27ae60">• No shaft work (ramjet has no moving parts)</text>
-                </svg>
+            <div class="brahmos-images">
+                <img src="Images/BrahMos Image.png" alt="BrahMos Ramjet Diagram 1">
+                <img src="Images/Ramjet_Schematic.png" alt="BrahMos Ramjet Diagram 2">
             </div>
 
-            <!-- Introduction to Thermodynamic Steps -->
-            <div class="intro-section">
-                <p>So what exactly happens in a Brayton cycle with no compressor or turbine? First, the forward speed of the aircraft compresses air into the inlet. From there, the inlet directs the air into a diffuser, which slows it down—converting much of the air's kinetic energy to potential energy in the form of pressure and in turn heat. When a ramjet flies at supersonic speed, the incoming air must be slowed down before fuel can burn properly. This is done using a series of oblique shock waves that gradually reduce the air's speed, followed by a normal shock that brings the airflow to subsonic speed before combustion.</p>
-                <p>Once the pressure is great enough—typically when the air has slowed to Mach 0.3-0.5—the compressed air is mixed and ignited with fuel in a combustion heat exchanger. Through the combustor, energy is added to the airflow, and the resulting high-energy flow is accelerated through a converging-diverging nozzle to produce thrust.</p>
-                <p>A used change in design is that when the aircraft speed reaches above Mach 5, the ramjet engine begins to fail because the normal shock required to achieve subsonic speeds before combustion causes extremely high temperatures and low pressures.</p>
-            </div>
-
-            <!-- ================= GIVEN DATA ================= -->
-            <div class="given-data">
-                <strong>Typical BrahMos Operating Conditions:</strong><br>
-                Cruise altitude: h = 10 km, M<sub>1</sub> = 2.8<br>
-                P<sub>1</sub> = 26.5 kPa, T<sub>1</sub> = 223 K<br>
-                γ = 1.4, R = 287 J/(kg·K)<br>
-                                a₁ = <span class="sqrt"><span class="radicand">γRT₁</span></span> = 299.3 m/s
-            </div>
-
-            <!-- ===================== 1 ===================== -->
-            <div class="calc-section">
-            <h2>1. Mass Balance</h2>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
-                <div>
-                    <strong>Step 1: Freestream velocity</strong><br>
-                    V<sub>1</sub> = M<sub>1</sub> × a<sub>1</sub><br>
-                    V<sub>1</sub> = 2.8 × 299.3 = 838 m/s
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div class="intro-section">
+                    <p>With my newfound knowledge of thermodynamics from ENGRD 2210, I decided to apply what I learned to analyze ramjets and specifically the BrahMos Ramjet. On a high level, ramjet engines are open Brayton cycle engines used when aircraft are already traveling at incredibly fast supersonic speeds; however, ramjets have a couple key differences.</p>
+                    <p>Firstly, instead of relying on a compressor as is used in conventional open Brayton cycles, the ramjet rather uses the aircraft's high speeds to compress incoming air. Because the ramjet does not have a compressor, it also does not have a turbine (which is typically needed to drive the compressor), allowing for all of the engine's work to be transferred into thrust. With no turbine, compressor, or shaft connecting the two, ramjets actually have no moving parts. Consequently, ramjets are only beneficial for aircraft traveling at speeds upwards of Mach 2 (meaning also that these aircraft must have some other booster to initially reach these supersonic speeds). In other words, ramjets are primarily used to "feed" off the aircraft's speed, becoming exponentially more powerful the faster the aircraft is moving.</p>
                 </div>
-                <div>
-                    <strong>Step 2: Freestream density</strong><br>
-                    ρ<sub>1</sub> = <span class="fraction"><span class="num">P<sub>1</sub></span><span class="den">RT<sub>1</sub></span></span><br>
-                    ρ<sub>1</sub> = <span class="fraction"><span class="num">26,500</span><span class="den">287 × 223</span></span> = 0.414 kg/m³
+
+                <div class="diagram-container">
+                    <h2>Control Volume: Heat, Mass, and Work Transfers</h2>
+                    <svg viewBox="0 0 900 350" style="max-width: 850px;">
+                        <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="black"/>
+                            </marker>
+                            <marker id="arrowheadBlue" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#3498db"/>
+                            </marker>
+                            <marker id="arrowheadRed" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#e74c3c"/>
+                            </marker>
+                            <marker id="arrowheadGreen" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#27ae60"/>
+                            </marker>
+                        </defs>
+                        
+                        <rect x="200" y="80" width="500" height="120" fill="none" stroke="#000" stroke-width="2"/>
+                        <line x1="350" y1="80" x2="350" y2="200" stroke="#888" stroke-width="1"/>
+                        <line x1="520" y1="80" x2="520" y2="200" stroke="#888" stroke-width="1"/>
+                        
+                        <text x="275" y="145" text-anchor="middle" font-size="14" font-weight="bold">Diffuser</text>
+                        <text x="435" y="145" text-anchor="middle" font-size="14" font-weight="bold">Combustor</text>
+                        <text x="610" y="145" text-anchor="middle" font-size="14" font-weight="bold">Nozzle</text>
+                        
+                        <circle cx="200" cy="140" r="4" fill="#000"/>
+                        <circle cx="350" cy="140" r="4" fill="#000"/>
+                        <circle cx="520" cy="140" r="4" fill="#000"/>
+                        <circle cx="700" cy="140" r="4" fill="#000"/>
+                        
+                        <line x1="80" y1="140" x2="195" y2="140" stroke="#3498db" stroke-width="2" marker-end="url(#arrowheadBlue)"/>
+                        <text x="100" y="125" font-size="14" fill="#3498db" font-weight="bold">ṁ<tspan baseline-shift="sub">air,in</tspan></text>
+                        
+                        <line x1="435" y1="20" x2="435" y2="75" stroke="#3498db" stroke-width="2" marker-end="url(#arrowheadBlue)"/>
+                        <text x="445" y="45" font-size="14" fill="#3498db" font-weight="bold">ṁ<tspan baseline-shift="sub">fuel,in</tspan></text>
+                        
+                        <line x1="705" y1="140" x2="820" y2="140" stroke="#3498db" stroke-width="2" marker-end="url(#arrowheadBlue)"/>
+                        <text x="760" y="125" font-size="14" fill="#3498db" font-weight="bold">ṁ<tspan baseline-shift="sub">out</tspan></text>
+                        
+                        <line x1="435" y1="270" x2="435" y2="205" stroke="#e74c3c" stroke-width="2" marker-end="url(#arrowheadRed)"/>
+                        <text x="445" y="250" fill="#e74c3c" font-size="14" font-weight="bold">Q̇<tspan baseline-shift="sub">comb</tspan></text>
+                        
+                        <rect x="50" y="290" width="800" height="50" fill="#f9f9f9" stroke="#666" stroke-width="1"/>
+                        <text x="450" y="310" font-size="13" text-anchor="middle" font-weight="bold">Notes:</text>
+                        <text x="80" y="330" font-size="12" fill="#3498db">• Blue arrows: mass transfer</text>
+                        <text x="320" y="330" font-size="12" fill="#e74c3c">• Red arrow: heat addition (combustion)</text>
+                        <text x="600" y="330" font-size="12" fill="#27ae60">• No shaft work (ramjet has no moving parts)</text>
+                    </svg>
                 </div>
-            </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
-                <div>
-                    <strong>Step 3: Air mass flow</strong><br>
-                    ṁ<sub>air</sub> = ρ<sub>1</sub> × A × V<sub>1</sub><br>
-                    ṁ<sub>air</sub> = 0.414 × 0.09 × 838 = 31.2 kg/s
+                <div class="intro-section">
+                    <p>So what exactly happens in a Brayton cycle with no compressor or turbine? First, the forward speed of the aircraft compresses air into the inlet. From there, the inlet directs the air into a diffuser, which slows it down—converting much of the air's kinetic energy to potential energy in the form of pressure and in turn heat. When a ramjet flies at supersonic speed, the incoming air must be slowed down before fuel can burn properly. This is done using a series of oblique shock waves that gradually reduce the air's speed, followed by a normal shock that brings the airflow to subsonic speed before combustion.</p>
+                    <p>Once the pressure is great enough—typically when the air has slowed to Mach 0.3-0.5—the compressed air is mixed and ignited with fuel in a combustion heat exchanger. Through the combustor, energy is added to the airflow, and the resulting high-energy flow is accelerated through a converging-diverging nozzle to produce thrust.</p>
+                    <p>A used change in design is that when the aircraft speed reaches above Mach 5, the ramjet engine begins to fail because the normal shock required to achieve subsonic speeds before combustion causes extremely high temperatures and low pressures.</p>
                 </div>
-                <div>
-                    <strong>Step 4: Fuel mass flow</strong><br>
-                    ṁ<sub>fuel</sub> = FAR × ṁ<sub>air</sub><br>
-                    ṁ<sub>fuel</sub> = 0.057 × 31.2 = 1.78 kg/s
+
+                <div class="given-data">
+                    <strong>Typical BrahMos Operating Conditions:</strong><br>
+                    Cruise altitude: h = 10 km, M<sub>1</sub> = 2.8<br>
+                    P<sub>1</sub> = 26.5 kPa, T<sub>1</sub> = 223 K<br>
+                    γ = 1.4, R = 287 J/(kg·K)<br>
+                    a₁ = <span class="sqrt"><span class="radicand">γRT₁</span></span> = 299.3 m/s
                 </div>
-            </div>
 
-            <div style="margin: 15px 0;">
-                <strong>Step 5: Exhaust mass flow</strong><br>
-                ṁ<sub>exhaust</sub> = ṁ<sub>air</sub> + ṁ<sub>fuel</sub><br>
-                ṁ<sub>exhaust</sub> = 31.2 + 1.78 = 33.0 kg/s
-            </div>
-
-            <div class="explanation">
-            Using the specific BrahMos data, I started by finding the mass flow rate of air entering the engine. Using the freestream velocity of the air (838 m/s, calculated from Mach 2.8 and the speed of sound 299.3 m/s) and the engine inlet area (0.09 m²), I determined that about 31.2 kg of air flows through the engine per second. The Fuel–Air Ratio (FAR) –which is the fuel to air mass flow ratio– of 0.057 is then used to calculate the fuel flow rate, giving 1.78 kg/s of fuel. By adding the air and fuel flows, I got a total exhaust mass flow of 33.0 kg/s, which is a number that will be used later to calculate thrust and energy.
-            </div>
-            </div>
-
-            <!-- ===================== 2 ===================== -->
-            <div class="calc-section">
-            <h2>2. Initial (Total) Conditions from Ram Compression</h2>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
-                <div>
-                    <strong>Step 1: Initial total temperature</strong><br>
-                    <span class="fraction"><span class="num">T<sub>0</sub></span><span class="den">T<sub>1</sub></span></span> = 1 + <span class="fraction"><span class="num">γ-1</span><span class="den">2</span></span> × M<sub>1</sub><sup>2</sup><br>
-                    <span class="fraction"><span class="num">T<sub>0</sub></span><span class="den">T<sub>1</sub></span></span> = 1 + 0.2 × 7.84 = 2.568<br>
-                    T<sub>0</sub> = 223 × 2.568 = 573 K
-                </div>
-                <div>
-                    <strong>Step 2: Initial total pressure</strong><br>
-                    <span class="fraction"><span class="num">P<sub>0</sub></span><span class="den">P<sub>1</sub></span></span> = (<span class="fraction"><span class="num">T<sub>0</sub></span><span class="den">T<sub>1</sub></span></span>)<sup>γ/(γ-1)</sup><br>
-                    <span class="fraction"><span class="num">P<sub>0</sub></span><span class="den">P<sub>1</sub></span></span> = (2.568)<sup>3.5</sup> = 21.8<br>
-                    P<sub>0</sub> = 26.5 × 21.8 = 578 kPa
-                </div>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
-                <div>
-                    <strong>Step 3: Shock losses</strong><br>
-                    P<sub>02</sub> = η<sub>d</sub> × P<sub>0</sub><br>
-                    P<sub>02</sub> = 0.72 × 578 = 416 kPa
-                </div>
-                <div>
-                    <strong>Step 4: Static conditions</strong><br>
-                    T<sub>2</sub> = <span class="fraction"><span class="num">T<sub>02</sub></span><span class="den">1 + 0.2M<sub>2</sub><sup>2</sup></span></span><br>
-                    T<sub>2</sub> = <span class="fraction"><span class="num">680</span><span class="den">1.032</span></span> = 659 K
-                </div>
-            </div>
-
-            <div style="margin: 15px 0;">
-                <strong>Step 5: Compression ratio</strong><br>
-                r<sub>p</sub> = <span class="fraction"><span class="num">P<sub>2</sub></span><span class="den">P<sub>1</sub></span></span> = <span class="fraction"><span class="num">372</span><span class="den">26.5</span></span> = 14.0
-            </div>
-
-            <div class="explanation">
-            Next, I calculated the total temperature and pressure of the air after it is compressed in the inlet. The freestream air that enters at 223 K and 26.5 kPa is compressed to 573 K and 578 kPa. After taking into account diffuser efficiency, the pressure drops to 416 kPa and the temperature rises to 659 K. This step illustrates how the engine converts the kinetic energy of high-speed air into pressure and heat, which are both crucial for the later combustion step.
-            </div>
-            </div>
-
-            <!-- ===================== 3 ===================== -->
-            <div class="calc-section">
-            <h2>3. Energy Balance (First Law of Thermodynamics)</h2>
-
-            <div class="diagram-container">
-                <h2 style="margin-top: 0;">Temperature-Entropy (T-s) Diagram</h2>
-                <svg viewBox="0 0 800 500" style="max-width: 750px;">
-                    <!-- Axes -->
-                    <line x1="100" y1="400" x2="700" y2="400" stroke="#000" stroke-width="2"/>
-                    <line x1="100" y1="400" x2="100" y2="50" stroke="#000" stroke-width="2"/>
-                    
-                    <!-- Axis labels -->
-                    <text x="400" y="440" font-size="16" text-anchor="middle" font-weight="bold">Specific Entropy, s (J/kg·K)</text>
-                    <text x="40" y="225" font-size="16" text-anchor="middle" font-weight="bold" transform="rotate(-90 40 225)">Temperature, T (K)</text>
-                    
-                    <!-- Temperature gridlines -->
-                    <line x1="95" y1="375" x2="700" y2="375" stroke="#ddd" stroke-width="1"/>
-                    <text x="85" y="380" font-size="12" text-anchor="end">250 K</text>
-                    
-                    <line x1="95" y1="300" x2="700" y2="300" stroke="#ddd" stroke-width="1"/>
-                    <text x="85" y="305" font-size="12" text-anchor="end">500 K</text>
-                    
-                    <line x1="95" y1="200" x2="700" y2="200" stroke="#ddd" stroke-width="1"/>
-                    <text x="85" y="205" font-size="12" text-anchor="end">1000 K</text>
-                    
-                    <line x1="95" y1="100" x2="700" y2="100" stroke="#ddd" stroke-width="1"/>
-                    <text x="85" y="105" font-size="12" text-anchor="end">1500 K</text>
-                    
-                    <line x1="95" y1="50" x2="700" y2="50" stroke="#ddd" stroke-width="1"/>
-                    <text x="85" y="55" font-size="12" text-anchor="end">2000 K</text>
-                    
-                    <!-- State points -->
-                    <circle cx="200" cy="383" r="7" fill="#3498db"/>
-                    <text x="200" y="370" font-size="16" font-weight="bold" text-anchor="middle">①</text>
-                    
-                    <circle cx="320" cy="230" r="7" fill="#e67e22"/>
-                    <text x="320" y="217" font-size="16" font-weight="bold" text-anchor="middle">②</text>
-                    
-                    <circle cx="520" cy="60" r="7" fill="#e74c3c"/>
-                    <text x="520" y="47" font-size="16" font-weight="bold" text-anchor="middle">③</text>
-                    
-                    <circle cx="640" cy="175" r="7" fill="#27ae60"/>
-                    <text x="640" y="162" font-size="16" font-weight="bold" text-anchor="middle">④</text>
-                    
-                    <!-- Process paths -->
-                    <path d="M 200 383 Q 240 330, 320 230" stroke="#3498db" stroke-width="4" fill="none" marker-end="url(#arrow1)"/>
-                    <path d="M 320 230 Q 420 145, 520 60" stroke="#e67e22" stroke-width="4" fill="none" marker-end="url(#arrow2)"/>
-                    <path d="M 520 60 Q 580 115, 640 175" stroke="#e74c3c" stroke-width="4" fill="none" marker-end="url(#arrow3)"/>
-                    
-                    <!-- Ideal cycle (dashed) -->
-                    <path d="M 200 383 L 260 230" stroke="#999" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
-                    <path d="M 260 230 L 460 60" stroke="#999" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
-                    <path d="M 460 60 L 600 383" stroke="#999" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
-                    
-                    <defs>
-                        <marker id="arrow1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-                            <path d="M0,0 L0,6 L9,3 z" fill="#3498db" />
-                        </marker>
-                        <marker id="arrow2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-                            <path d="M0,0 L0,6 L9,3 z" fill="#e67e22" />
-                        </marker>
-                        <marker id="arrow3" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-                            <path d="M0,0 L0,6 L9,3 z" fill="#e74c3c" />
-                        </marker>
-                    </defs>
-                </svg>
-                
-                <!-- Legend below graph -->
-                <div style="margin-top: 20px; text-align: left; max-width: 750px; margin-left: auto; margin-right: auto;">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                        <div>
-                            <strong>State Points:</strong><br>
-                            <span style="color: #3498db;">● ①</span> Freestream: T₁ = 223 K, P₁ = 26.5 kPa<br>
-                            <span style="color: #e67e22;">● ②</span> Diffuser Exit: T₂ = 680 K, P₂ = 360 kPa<br>
-                            <span style="color: #e74c3c;">● ③</span> Combustor Exit: T₃ = 2100 K, P₃ = 340 kPa<br>
-                            <span style="color: #27ae60;">● ④</span> Nozzle Exit: T₄ = 1050 K, P₄ = 26.5 kPa
-                        </div>
-                        <div>
-                            <strong>Processes:</strong><br>
-                            <span style="color: #3498db;">① → ②</span> Compression (Shocks + Ram)<br>
-                            <span style="color: #e67e22;">② → ③</span> Combustion (P ≈ constant)<br>
-                            <span style="color: #e74c3c;">③ → ④</span> Expansion (Nozzle)<br>
-                            <span style="color: #999;">- - -</span> Ideal Cycle
-                        </div>
+                <div class="calc-section">
+                <h2>1. Mass Balance</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                    <div>
+                        <strong>Step 1: Freestream velocity</strong><br>
+                        V<sub>1</sub> = M<sub>1</sub> × a<sub>1</sub><br>
+                        V<sub>1</sub> = 2.8 × 299.3 = 838 m/s
+                    </div>
+                    <div>
+                        <strong>Step 2: Freestream density</strong><br>
+                        ρ<sub>1</sub> = <span class="fraction"><span class="num">P<sub>1</sub></span><span class="den">RT<sub>1</sub></span></span><br>
+                        ρ<sub>1</sub> = <span class="fraction"><span class="num">26,500</span><span class="den">287 × 223</span></span> = 0.414 kg/m³
                     </div>
                 </div>
-                
-                <div class="explanation" style="margin-top: 20px; text-align: left; max-width: 750px; margin-left: auto; margin-right: auto;">
-                As described above, the ramjet T-s diagram shows a sharp rise in temperature and entropy during compression (① → ②), corresponding to the shocks slowing down the air and increasing its pressure. Next, during combustion (② → ③), the temperature increases further (at roughly constant pressure) as fuel is mixed in with and burned in the airflow. The temperature subsequently drops during expansion through the nozzle (③ → ④) as the air's thermal energy is converted into kinetic energy to generate thrust. Notice that unlike a closed-cycle engine, the diagram is not a loop because the ramjet is an open cycle, meaning that the inflow air exits at the exhaust without ever returning to its initial state.
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                    <div>
+                        <strong>Step 3: Air mass flow</strong><br>
+                        ṁ<sub>air</sub> = ρ<sub>1</sub> × A × V<sub>1</sub><br>
+                        ṁ<sub>air</sub> = 0.414 × 0.09 × 838 = 31.2 kg/s
+                    </div>
+                    <div>
+                        <strong>Step 4: Fuel mass flow</strong><br>
+                        ṁ<sub>fuel</sub> = FAR × ṁ<sub>air</sub><br>
+                        ṁ<sub>fuel</sub> = 0.057 × 31.2 = 1.78 kg/s
+                    </div>
                 </div>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
-                <div>
-                    <strong>Step 1: Fuel energy</strong><br>
-                    Q̇<sub>fuel</sub> = ṁ<sub>fuel</sub> × LHV<br>
-                    Q̇<sub>fuel</sub> = 1.78 × 42 × 10⁶ = 74.8 MW
+                <div style="margin: 15px 0;">
+                    <strong>Step 5: Exhaust mass flow</strong><br>
+                    ṁ<sub>exhaust</sub> = ṁ<sub>air</sub> + ṁ<sub>fuel</sub><br>
+                    ṁ<sub>exhaust</sub> = 31.2 + 1.78 = 33.0 kg/s
                 </div>
-                <div>
-                    <strong>Step 2: Inlet KE</strong><br>
-                    KE<sub>in</sub> = ṁ<sub>air</sub> × <span class="fraction"><span class="num">V<sub>1</sub><sup>2</sup></span><span class="den">2</span></span><br>
-                    KE<sub>in</sub> = 31.2 × <span class="fraction"><span class="num">(838)<sup>2</sup></span><span class="den">2</span></span> = 10.95 MW
+                <div class="explanation">
+                Using the specific BrahMos data, I started by finding the mass flow rate of air entering the engine. Using the freestream velocity of the air (838 m/s, calculated from Mach 2.8 and the speed of sound 299.3 m/s) and the engine inlet area (0.09 m²), I determined that about 31.2 kg of air flows through the engine per second. The Fuel–Air Ratio (FAR) –which is the fuel to air mass flow ratio– of 0.057 is then used to calculate the fuel flow rate, giving 1.78 kg/s of fuel. By adding the air and fuel flows, I got a total exhaust mass flow of 33.0 kg/s, which is a number that will be used later to calculate thrust and energy.
                 </div>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
-                <div>
-                    <strong>Step 3: Inlet enthalpy</strong><br>
-                    H<sub>in</sub> = ṁ<sub>air</sub> × c<sub>p</sub> × T<sub>1</sub><br>
-                    H<sub>in</sub> = 31.2 × 1005 × 223 = 6.99 MW
                 </div>
-                <div>
-                    <strong>Step 4: Total input</strong><br>
-                    E<sub>in</sub> = H<sub>in</sub> + KE<sub>in</sub> + Q̇<sub>fuel</sub><br>
-                    E<sub>in</sub> = 6.99 + 10.95 + 74.8 = 92.7 MW
+
+                <div class="calc-section">
+                <h2>2. Initial (Total) Conditions from Ram Compression</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                    <div>
+                        <strong>Step 1: Initial total temperature</strong><br>
+                        <span class="fraction"><span class="num">T<sub>0</sub></span><span class="den">T<sub>1</sub></span></span> = 1 + <span class="fraction"><span class="num">γ-1</span><span class="den">2</span></span> × M<sub>1</sub><sup>2</sup><br>
+                        <span class="fraction"><span class="num">T<sub>0</sub></span><span class="den">T<sub>1</sub></span></span> = 1 + 0.2 × 7.84 = 2.568<br>
+                        T<sub>0</sub> = 223 × 2.568 = 573 K
+                    </div>
+                    <div>
+                        <strong>Step 2: Initial total pressure</strong><br>
+                        <span class="fraction"><span class="num">P<sub>0</sub></span><span class="den">P<sub>1</sub></span></span> = (<span class="fraction"><span class="num">T<sub>0</sub></span><span class="den">T<sub>1</sub></span></span>)<sup>γ/(γ-1)</sup><br>
+                        <span class="fraction"><span class="num">P<sub>0</sub></span><span class="den">P<sub>1</sub></span></span> = (2.568)<sup>3.5</sup> = 21.8<br>
+                        P<sub>0</sub> = 26.5 × 21.8 = 578 kPa
+                    </div>
                 </div>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
-                <div>
-                    <strong>Step 5: Exit enthalpy</strong><br>
-                    H<sub>out</sub> = ṁ<sub>exhaust</sub> × c<sub>p</sub> × T<sub>4</sub><br>
-                    H<sub>out</sub> = 33.0 × 1150 × 1050 = 39.8 MW
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                    <div>
+                        <strong>Step 3: Shock losses</strong><br>
+                        P<sub>02</sub> = η<sub>d</sub> × P<sub>0</sub><br>
+                        P<sub>02</sub> = 0.72 × 578 = 416 kPa
+                    </div>
+                    <div>
+                        <strong>Step 4: Static conditions</strong><br>
+                        T<sub>2</sub> = <span class="fraction"><span class="num">T<sub>02</sub></span><span class="den">1 + 0.2M<sub>2</sub><sup>2</sup></span></span><br>
+                        T<sub>2</sub> = <span class="fraction"><span class="num">680</span><span class="den">1.032</span></span> = 659 K
+                    </div>
                 </div>
-                <div>
-                    <strong>Step 6: Exit KE</strong><br>
-                    KE<sub>out</sub> = ṁ<sub>exhaust</sub> × <span class="fraction"><span class="num">V<sub>4</sub><sup>2</sup></span><span class="den">2</span></span><br>
-                    KE<sub>out</sub> = 33.0 × <span class="fraction"><span class="num">(880)<sup>2</sup></span><span class="den">2</span></span> = 12.78 MW
+                <div style="margin: 15px 0;">
+                    <strong>Step 5: Compression ratio</strong><br>
+                    r<sub>p</sub> = <span class="fraction"><span class="num">P<sub>2</sub></span><span class="den">P<sub>1</sub></span></span> = <span class="fraction"><span class="num">372</span><span class="den">26.5</span></span> = 14.0
                 </div>
-            </div>
-
-            <div style="margin: 15px 0;">
-                <strong>Step 7: Energy losses</strong><br>
-                E<sub>losses</sub> = E<sub>in</sub> - E<sub>out</sub><br>
-                E<sub>losses</sub> = 92.7 - 52.6 = 40.1 MW (43.3%)
-            </div>
-
-            <div class="explanation">
-            I then combined the energy contributions from fuel, air enthalpy, and the kinetic energy of the incoming air. Combining the fuel's 74.8 MW with the air's kinetic energy 10.95 MW and the air's enthalpy 6.99 MW, the total starting input energy is 92.7 MW. When leaving the nozzle, the energy output is 39.8 MW in enthalpy and 12.78 MW in kinetic energy, meaning that around 43% of the total energy is lost to irreversibilities like shocks and friction. From this percentage, I am able to calculate the fuel's efficiency in converting energy to thrust.
-            </div>
-            </div>
-
-            <!-- ===================== 4 ===================== -->
-            <div class="calc-section">
-            <h2>4. Thrust Calculation</h2>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
-                <div>
-                    <strong>Step 1: Momentum balance</strong><br>
-                    F = ṁ<sub>exhaust</sub> × V<sub>4</sub> - ṁ<sub>air</sub> × V<sub>1</sub>
+                <div class="explanation">
+                Next, I calculated the total temperature and pressure of the air after it is compressed in the inlet. The freestream air that enters at 223 K and 26.5 kPa is compressed to 573 K and 578 kPa. After taking into account diffuser efficiency, the pressure drops to 416 kPa and the temperature rises to 659 K. This step illustrates how the engine converts the kinetic energy of high-speed air into pressure and heat, which are both crucial for the later combustion step.
                 </div>
-                <div>
-                    <strong>Step 2: Thrust</strong><br>
-                    F = 33.0 × 880 - 31.2 × 838<br>
-                    F = 29,040 - 26,146 = 2,894 N
-                    <div class="final-answer">F ≈ 2.9 kN</div>
                 </div>
-            </div>
 
-            <div style="margin: 15px 0;">
-                <strong>Step 3: Specific impulse</strong><br>
-                I<sub>sp</sub> = <span class="fraction"><span class="num">F</span><span class="den">ṁ<sub>fuel</sub> × g<sub>0</sub></span></span><br>
-                I<sub>sp</sub> = <span class="fraction"><span class="num">2,894</span><span class="den">1.78 × 9.81</span></span> = 166 seconds
-            </div>
-
-            <div class="explanation">
-            The thrust was calculated by comparing the momentum of the exhaust (880 m/s) and the incoming air (838 m/s). This comparison yielded a net thrust of 2.9 kN and a specific impulse of 166 seconds. This step directly demonstrates not only the ability of the BrahMos ramjet to accelerate the missile but it also reflects the efficiency of its said thrust and propulsion.
-            </div>
-            </div>
-
-            <!-- ===================== 5 ===================== -->
-            <div class="calc-section">
-            <h2>5. Entropy Generation</h2>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
-                <div>
-                    <strong>Step 1: Sources</strong><br>
-                    Oblique shocks: Δs<sub>1</sub> ≈ 120 J/(kg·K)<br>
-                    Normal shock: Δs<sub>2</sub> ≈ 180 J/(kg·K)<br>
-                    Combustion: Δs<sub>3</sub> ≈ 650 J/(kg·K)<br>
-                    Friction/mixing: Δs<sub>4</sub> ≈ 80 J/(kg·K)<br>
-                    Δs<sub>total</sub> = 1,030 J/(kg·K)
+                <div class="calc-section">
+                <h2>3. Energy Balance (First Law of Thermodynamics)</h2>
+                <div class="diagram-container">
+                    <h2 style="margin-top: 0;">Temperature-Entropy (T-s) Diagram</h2>
+                    <svg viewBox="0 0 800 500" style="max-width: 750px;">
+                        <line x1="100" y1="400" x2="700" y2="400" stroke="#000" stroke-width="2"/>
+                        <line x1="100" y1="400" x2="100" y2="50" stroke="#000" stroke-width="2"/>
+                        <text x="400" y="440" font-size="16" text-anchor="middle" font-weight="bold">Specific Entropy, s (J/kg·K)</text>
+                        <text x="40" y="225" font-size="16" text-anchor="middle" font-weight="bold" transform="rotate(-90 40 225)">Temperature, T (K)</text>
+                        <line x1="95" y1="375" x2="700" y2="375" stroke="#ddd" stroke-width="1"/>
+                        <text x="85" y="380" font-size="12" text-anchor="end">250 K</text>
+                        <line x1="95" y1="300" x2="700" y2="300" stroke="#ddd" stroke-width="1"/>
+                        <text x="85" y="305" font-size="12" text-anchor="end">500 K</text>
+                        <line x1="95" y1="200" x2="700" y2="200" stroke="#ddd" stroke-width="1"/>
+                        <text x="85" y="205" font-size="12" text-anchor="end">1000 K</text>
+                        <line x1="95" y1="100" x2="700" y2="100" stroke="#ddd" stroke-width="1"/>
+                        <text x="85" y="105" font-size="12" text-anchor="end">1500 K</text>
+                        <line x1="95" y1="50" x2="700" y2="50" stroke="#ddd" stroke-width="1"/>
+                        <text x="85" y="55" font-size="12" text-anchor="end">2000 K</text>
+                        <circle cx="200" cy="383" r="7" fill="#3498db"/>
+                        <text x="200" y="370" font-size="16" font-weight="bold" text-anchor="middle">①</text>
+                        <circle cx="320" cy="230" r="7" fill="#e67e22"/>
+                        <text x="320" y="217" font-size="16" font-weight="bold" text-anchor="middle">②</text>
+                        <circle cx="520" cy="60" r="7" fill="#e74c3c"/>
+                        <text x="520" y="47" font-size="16" font-weight="bold" text-anchor="middle">③</text>
+                        <circle cx="640" cy="175" r="7" fill="#27ae60"/>
+                        <text x="640" y="162" font-size="16" font-weight="bold" text-anchor="middle">④</text>
+                        <path d="M 200 383 Q 240 330, 320 230" stroke="#3498db" stroke-width="4" fill="none"/>
+                        <path d="M 320 230 Q 420 145, 520 60" stroke="#e67e22" stroke-width="4" fill="none"/>
+                        <path d="M 520 60 Q 580 115, 640 175" stroke="#e74c3c" stroke-width="4" fill="none"/>
+                        <path d="M 200 383 L 260 230" stroke="#999" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                        <path d="M 260 230 L 460 60" stroke="#999" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                        <path d="M 460 60 L 600 383" stroke="#999" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                    </svg>
+                    <div style="margin-top: 20px; text-align: left; max-width: 750px; margin-left: auto; margin-right: auto;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div>
+                                <strong>State Points:</strong><br>
+                                <span style="color: #3498db;">● ①</span> Freestream: T₁ = 223 K, P₁ = 26.5 kPa<br>
+                                <span style="color: #e67e22;">● ②</span> Diffuser Exit: T₂ = 680 K, P₂ = 360 kPa<br>
+                                <span style="color: #e74c3c;">● ③</span> Combustor Exit: T₃ = 2100 K, P₃ = 340 kPa<br>
+                                <span style="color: #27ae60;">● ④</span> Nozzle Exit: T₄ = 1050 K, P₄ = 26.5 kPa
+                            </div>
+                            <div>
+                                <strong>Processes:</strong><br>
+                                <span style="color: #3498db;">① → ②</span> Compression (Shocks + Ram)<br>
+                                <span style="color: #e67e22;">② → ③</span> Combustion (P ≈ constant)<br>
+                                <span style="color: #e74c3c;">③ → ④</span> Expansion (Nozzle)<br>
+                                <span style="color: #999;">- - -</span> Ideal Cycle
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation" style="margin-top: 20px; text-align: left; max-width: 750px; margin-left: auto; margin-right: auto;">
+                    As described above, the ramjet T-s diagram shows a sharp rise in temperature and entropy during compression (① → ②), corresponding to the shocks slowing down the air and increasing its pressure. Next, during combustion (② → ③), the temperature increases further (at roughly constant pressure) as fuel is mixed in with and burned in the airflow. The temperature subsequently drops during expansion through the nozzle (③ → ④) as the air's thermal energy is converted into kinetic energy to generate thrust. Notice that unlike a closed-cycle engine, the diagram is not a loop because the ramjet is an open cycle, meaning that the inflow air exits at the exhaust without ever returning to its initial state.
+                    </div>
                 </div>
-                <div>
-                    <strong>Step 2: Rate of generation</strong><br>
-                    Ṡ<sub>gen</sub> = ṁ<sub>air</sub> × Δs<sub>total</sub><br>
-                    Ṡ<sub>gen</sub> = 31.2 × 1,030 = 32,136 W/K
-                    <div class="final-answer">Ṡ<sub>gen</sub> ≈ 32.1 kW/K</div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                    <div>
+                        <strong>Step 1: Fuel energy</strong><br>
+                        Q̇<sub>fuel</sub> = ṁ<sub>fuel</sub> × LHV<br>
+                        Q̇<sub>fuel</sub> = 1.78 × 42 × 10⁶ = 74.8 MW
+                    </div>
+                    <div>
+                        <strong>Step 2: Inlet KE</strong><br>
+                        KE<sub>in</sub> = ṁ<sub>air</sub> × <span class="fraction"><span class="num">V<sub>1</sub><sup>2</sup></span><span class="den">2</span></span><br>
+                        KE<sub>in</sub> = 31.2 × <span class="fraction"><span class="num">(838)<sup>2</sup></span><span class="den">2</span></span> = 10.95 MW
+                    </div>
                 </div>
-            </div>
-
-            <div class="explanation">
-            Entropy increases were determined from the oblique shocks, the normal shock, combustion, and friction. The total entropy rise per kilogram of air is 1,030 J/kg·K, with a rate of 32.1 kW/K. The importance of this calculation is twofold. Firstly, this entropy increase reflects (and quantifies) the energy that the BrahMos ramjet loses to irreversibilities. Secondly, these calculations help break down precisely where and by how much the engine is less efficient due to shocks and mixing.
-            </div>
-            </div>
-
-            <!-- ===================== 6 ===================== -->
-            <div class="calc-section">
-            <h2>6. Efficiency Calculations</h2>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
-                <div>
-                    <strong>Step 1: Ideal efficiency</strong><br>
-                    η<sub>ideal</sub> = 1 - <span class="fraction"><span class="num">1</span><span class="den">r<sub>p</sub><sup>(γ-1)/γ</sup></span></span><br>
-                    η<sub>ideal</sub> = 1 - (14.0)<sup>-0.286</sup> = 1 - 0.462
-                    <div class="final-answer">η<sub>ideal</sub> = 53.8%</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                    <div>
+                        <strong>Step 3: Inlet enthalpy</strong><br>
+                        H<sub>in</sub> = ṁ<sub>air</sub> × c<sub>p</sub> × T<sub>1</sub><br>
+                        H<sub>in</sub> = 31.2 × 1005 × 223 = 6.99 MW
+                    </div>
+                    <div>
+                        <strong>Step 4: Total input</strong><br>
+                        E<sub>in</sub> = H<sub>in</sub> + KE<sub>in</sub> + Q̇<sub>fuel</sub><br>
+                        E<sub>in</sub> = 6.99 + 10.95 + 74.8 = 92.7 MW
+                    </div>
                 </div>
-                <div>
-                    <strong>Step 2: Thermal efficiency</strong><br>
-                    η<sub>thermal</sub> = <span class="fraction"><span class="num">H<sub>out</sub> - H<sub>in</sub></span><span class="den">ṁ<sub>fuel</sub> × LHV</span></span><br>
-                    η<sub>thermal</sub> = <span class="fraction"><span class="num">39.8 - 6.99</span><span class="den">74.8</span></span> = <span class="fraction"><span class="num">32.8</span><span class="den">74.8</span></span>
-                    <div class="final-answer">η<sub>thermal</sub> = 43.9%</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                    <div>
+                        <strong>Step 5: Exit enthalpy</strong><br>
+                        H<sub>out</sub> = ṁ<sub>exhaust</sub> × c<sub>p</sub> × T<sub>4</sub><br>
+                        H<sub>out</sub> = 33.0 × 1150 × 1050 = 39.8 MW
+                    </div>
+                    <div>
+                        <strong>Step 6: Exit KE</strong><br>
+                        KE<sub>out</sub> = ṁ<sub>exhaust</sub> × <span class="fraction"><span class="num">V<sub>4</sub><sup>2</sup></span><span class="den">2</span></span><br>
+                        KE<sub>out</sub> = 33.0 × <span class="fraction"><span class="num">(880)<sup>2</sup></span><span class="den">2</span></span> = 12.78 MW
+                    </div>
                 </div>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
-                <div>
-                    <strong>Step 3: Propulsive efficiency</strong><br>
-                    η<sub>prop</sub> = <span class="fraction"><span class="num">2</span><span class="den">1 + V<sub>exit</sub>/V<sub>∞</sub></span></span><br>
-                    η<sub>prop</sub> = <span class="fraction"><span class="num">2</span><span class="den">1 + 880/838</span></span> = <span class="fraction"><span class="num">2</span><span class="den">2.050</span></span>
-                    <div class="final-answer">η<sub>prop</sub> = 97.6%</div>
+                <div style="margin: 15px 0;">
+                    <strong>Step 7: Energy losses</strong><br>
+                    E<sub>losses</sub> = E<sub>in</sub> - E<sub>out</sub><br>
+                    E<sub>losses</sub> = 92.7 - 52.6 = 40.1 MW (43.3%)
                 </div>
-                <div>
-                    <strong>Step 4: Overall efficiency</strong><br>
-                    η<sub>overall</sub> = η<sub>thermal</sub> × η<sub>prop</sub><br>
-                    η<sub>overall</sub> = 0.439 × 0.976 = 0.428
-                    <div class="final-answer">η<sub>overall</sub> = 42.8%</div>
+                <div class="explanation">
+                I then combined the energy contributions from fuel, air enthalpy, and the kinetic energy of the incoming air. Combining the fuel's 74.8 MW with the air's kinetic energy 10.95 MW and the air's enthalpy 6.99 MW, the total starting input energy is 92.7 MW. When leaving the nozzle, the energy output is 39.8 MW in enthalpy and 12.78 MW in kinetic energy, meaning that around 43% of the total energy is lost to irreversibilities like shocks and friction. From this percentage, I am able to calculate the fuel's efficiency in converting energy to thrust.
                 </div>
-            </div>
-
-            <div class="explanation">
-            To gauge the efficiency of the BrahMos ramjet, I looked at both the thermal efficiency and propulsive efficiency measures. The thermal efficiency (calculated to be 43.9%) indicates how well the engine converts fuel energy into mechanical energy. The propulsive efficiency (calculated to be 97.6%) reflects how effective the kinetic energy at the exhaust is to actually produce meaningful thrust. Combining these gives an overall efficiency of 42.8%, which represents the fraction of fuel energy that is ultimately converted into useful thrust.
-            </div>
-            </div>
-
-            <!-- ===================== 7 ===================== -->
-            <div class="calc-section">
-            <h2>7. Transition from Ramjet to Scramjet at Hypersonic Speeds</h2>
-
-            <div style="margin: 15px 0;">
-                <strong>Given conditions at Mach 6.7:</strong><br>
-                Altitude: h = 30 km, T<sub>1</sub> = 226.5 K, P<sub>1</sub> = 1.197 kPa, M<sub>1</sub> = 6.7<br>
-                a₁ = <span class="sqrt"><span class="radicand">γRT₁</span></span> = <span class="sqrt"><span class="radicand">1.4 × 287 × 226.5</span></span> = 302 m/s<br>
-                V<sub>1</sub> = M<sub>1</sub> × a<sub>1</sub> = 6.7 × 302 = 2,023 m/s
-            </div>
-
-            <div style="margin: 15px 0;">
-                <strong>Ramjet (Fails)</strong>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
-                <div>
-                    <strong>Step 1: Stagnation conditions</strong><br>
-                    <span class="fraction"><span class="num">T<sub>0</sub></span><span class="den">T<sub>1</sub></span></span> = 1 + 0.2 × M<sub>1</sub><sup>2</sup><br>
-                    <span class="fraction"><span class="num">T<sub>0</sub></span><span class="den">T<sub>1</sub></span></span> = 1 + 0.2 × (6.7)<sup>2</sup> = 9.978<br>
-                    T<sub>0</sub> = 226.5 × 9.978 = 2,260 K<br><br>
-                    <span class="fraction"><span class="num">P<sub>0</sub></span><span class="den">P<sub>1</sub></span></span> = (9.978)<sup>3.5</sup> = 992<br>
-                    P<sub>0</sub> = 1.197 × 992 = 1,187 kPa
                 </div>
-                <div>
-                    <strong>Step 2: Normal shock losses</strong><br>
-                    For M = 6.7, normal shock relations give:<br>
-                    T<sub>02</sub> = T<sub>0</sub> (total temp conserved)<br><br>
-                    <span class="fraction"><span class="num">P<sub>02</sub></span><span class="den">P<sub>0</sub></span></span> ≈ 0.0023 (severe loss!)<br>
-                    P<sub>02</sub> = 1,187 × 0.0023 = 2.7 kPa
+
+                <div class="calc-section">
+                <h2>4. Thrust Calculation</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                    <div>
+                        <strong>Step 1: Momentum balance</strong><br>
+                        F = ṁ<sub>exhaust</sub> × V<sub>4</sub> - ṁ<sub>air</sub> × V<sub>1</sub>
+                    </div>
+                    <div>
+                        <strong>Step 2: Thrust</strong><br>
+                        F = 33.0 × 880 - 31.2 × 838<br>
+                        F = 29,040 - 26,146 = 2,894 N
+                        <div class="final-answer">F ≈ 2.9 kN</div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="final-answer">
-            Ramjet loses ~99.8% of total pressure → combustion infeasible
-            </div>
-
-            <hr>
-
-            <div style="margin: 15px 0;">
-                <strong>Scramjet (Operates)</strong>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
-                <div>
-                    <strong>Step 1: Supersonic inlet</strong><br>
-                    No normal shock → oblique shocks only
+                <div style="margin: 15px 0;">
+                    <strong>Step 3: Specific impulse</strong><br>
+                    I<sub>sp</sub> = <span class="fraction"><span class="num">F</span><span class="den">ṁ<sub>fuel</sub> × g<sub>0</sub></span></span><br>
+                    I<sub>sp</sub> = <span class="fraction"><span class="num">2,894</span><span class="den">1.78 × 9.81</span></span> = 166 seconds
                 </div>
-                <div>
-                    <strong>Step 2: Supersonic combustion</strong><br>
-                    Combustion at M ≈ 2–3
+                <div class="explanation">
+                The thrust was calculated by comparing the momentum of the exhaust (880 m/s) and the incoming air (838 m/s). This comparison yielded a net thrust of 2.9 kN and a specific impulse of 166 seconds. This step directly demonstrates not only the ability of the BrahMos ramjet to accelerate the missile but it also reflects the efficiency of its said thrust and propulsion.
                 </div>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
-                <div>
-                    <strong>Step 3: Pressure preservation</strong><br>
-                    P<sub>02</sub>/P<sub>0</sub> ≈ 0.3–0.5
                 </div>
-                <div>
-                    <strong>Step 4: Useful thrust</strong><br>
-                    Net positive thrust at hypersonic speeds
+
+                <div class="calc-section">
+                <h2>5. Entropy Generation</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                    <div>
+                        <strong>Step 1: Sources</strong><br>
+                        Oblique shocks: Δs<sub>1</sub> ≈ 120 J/(kg·K)<br>
+                        Normal shock: Δs<sub>2</sub> ≈ 180 J/(kg·K)<br>
+                        Combustion: Δs<sub>3</sub> ≈ 650 J/(kg·K)<br>
+                        Friction/mixing: Δs<sub>4</sub> ≈ 80 J/(kg·K)<br>
+                        Δs<sub>total</sub> = 1,030 J/(kg·K)
+                    </div>
+                    <div>
+                        <strong>Step 2: Rate of generation</strong><br>
+                        Ṡ<sub>gen</sub> = ṁ<sub>air</sub> × Δs<sub>total</sub><br>
+                        Ṡ<sub>gen</sub> = 31.2 × 1,030 = 32,136 W/K
+                        <div class="final-answer">Ṡ<sub>gen</sub> ≈ 32.1 kW/K</div>
+                    </div>
                 </div>
-            </div>
+                <div class="explanation">
+                Entropy increases were determined from the oblique shocks, the normal shock, combustion, and friction. The total entropy rise per kilogram of air is 1,030 J/kg·K, with a rate of 32.1 kW/K. The importance of this calculation is twofold. Firstly, this entropy increase reflects (and quantifies) the energy that the BrahMos ramjet loses to irreversibilities. Secondly, these calculations help break down precisely where and by how much the engine is less efficient due to shocks and mixing.
+                </div>
+                </div>
 
-            <div class="final-answer">
-            Scramjets avoid catastrophic shock losses by keeping flow supersonic
-            </div>
+                <div class="calc-section">
+                <h2>6. Efficiency Calculations</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                    <div>
+                        <strong>Step 1: Ideal efficiency</strong><br>
+                        η<sub>ideal</sub> = 1 - <span class="fraction"><span class="num">1</span><span class="den">r<sub>p</sub><sup>(γ-1)/γ</sup></span></span><br>
+                        η<sub>ideal</sub> = 1 - (14.0)<sup>-0.286</sup> = 1 - 0.462
+                        <div class="final-answer">η<sub>ideal</sub> = 53.8%</div>
+                    </div>
+                    <div>
+                        <strong>Step 2: Thermal efficiency</strong><br>
+                        η<sub>thermal</sub> = <span class="fraction"><span class="num">H<sub>out</sub> - H<sub>in</sub></span><span class="den">ṁ<sub>fuel</sub> × LHV</span></span><br>
+                        η<sub>thermal</sub> = <span class="fraction"><span class="num">39.8 - 6.99</span><span class="den">74.8</span></span> = <span class="fraction"><span class="num">32.8</span><span class="den">74.8</span></span>
+                        <div class="final-answer">η<sub>thermal</sub> = 43.9%</div>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                    <div>
+                        <strong>Step 3: Propulsive efficiency</strong><br>
+                        η<sub>prop</sub> = <span class="fraction"><span class="num">2</span><span class="den">1 + V<sub>exit</sub>/V<sub>∞</sub></span></span><br>
+                        η<sub>prop</sub> = <span class="fraction"><span class="num">2</span><span class="den">1 + 880/838</span></span> = <span class="fraction"><span class="num">2</span><span class="den">2.050</span></span>
+                        <div class="final-answer">η<sub>prop</sub> = 97.6%</div>
+                    </div>
+                    <div>
+                        <strong>Step 4: Overall efficiency</strong><br>
+                        η<sub>overall</sub> = η<sub>thermal</sub> × η<sub>prop</sub><br>
+                        η<sub>overall</sub> = 0.439 × 0.976 = 0.428
+                        <div class="final-answer">η<sub>overall</sub> = 42.8%</div>
+                    </div>
+                </div>
+                <div class="explanation">
+                To gauge the efficiency of the BrahMos ramjet, I looked at both the thermal efficiency and propulsive efficiency measures. The thermal efficiency (calculated to be 43.9%) indicates how well the engine converts fuel energy into mechanical energy. The propulsive efficiency (calculated to be 97.6%) reflects how effective the kinetic energy at the exhaust is to actually produce meaningful thrust. Combining these gives an overall efficiency of 42.8%, which represents the fraction of fuel energy that is ultimately converted into useful thrust.
+                </div>
+                </div>
 
-            <div class="explanation">
-            A key design change is that when the aircraft speed exceeds about Mach 6, the ramjet must be replaced by a scramjet. At these speeds, a ramjet becomes ineffective because it relies on a normal shock to slow the incoming flow to subsonic speeds before combustion. Starting at around Mach 6, this normal shock produces extremely high initial temperatures and severe total pressure losses, making efficient combustion impractical and net thrust minimal. Instead, a scramjet avoids these new shortcomings by using a series of oblique shocks (eliminating the normal shock entirely) and a long combustor which gives the airflow enough time to mix and burn with the fuel despite its supersonic speeds. As a result, the scramjet allows for supersonic combustion, which not only preserves pressure but also reduces both thermal and entropy losses, as evident in the calculations for a ramjet and scramjet both traveling Mach 6.7.
-            </div>
+                <div class="calc-section">
+                <h2>7. Transition from Ramjet to Scramjet at Hypersonic Speeds</h2>
+                <div style="margin: 15px 0;">
+                    <strong>Given conditions at Mach 6.7:</strong><br>
+                    Altitude: h = 30 km, T<sub>1</sub> = 226.5 K, P<sub>1</sub> = 1.197 kPa, M<sub>1</sub> = 6.7<br>
+                    a₁ = <span class="sqrt"><span class="radicand">γRT₁</span></span> = <span class="sqrt"><span class="radicand">1.4 × 287 × 226.5</span></span> = 302 m/s<br>
+                    V<sub>1</sub> = M<sub>1</sub> × a<sub>1</sub> = 6.7 × 302 = 2,023 m/s
+                </div>
+                <div style="margin: 15px 0;"><strong>Ramjet (Fails)</strong></div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                    <div>
+                        <strong>Step 1: Stagnation conditions</strong><br>
+                        T<sub>0</sub>/T<sub>1</sub> = 1 + 0.2 × (6.7)² = 9.978<br>
+                        T<sub>0</sub> = 226.5 × 9.978 = 2,260 K<br><br>
+                        P<sub>0</sub>/P<sub>1</sub> = (9.978)<sup>3.5</sup> = 992<br>
+                        P<sub>0</sub> = 1.197 × 992 = 1,187 kPa
+                    </div>
+                    <div>
+                        <strong>Step 2: Normal shock losses</strong><br>
+                        For M = 6.7, normal shock relations give:<br>
+                        T<sub>02</sub> = T<sub>0</sub> (total temp conserved)<br><br>
+                        P<sub>02</sub>/P<sub>0</sub> ≈ 0.0023 (severe loss!)<br>
+                        P<sub>02</sub> = 1,187 × 0.0023 = 2.7 kPa
+                    </div>
+                </div>
+                <div class="final-answer">Ramjet loses ~99.8% of total pressure → combustion infeasible</div>
+                <hr style="margin: 20px 0;">
+                <div style="margin: 15px 0;"><strong>Scramjet (Operates)</strong></div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                    <div><strong>Step 1: Supersonic inlet</strong><br>No normal shock → oblique shocks only</div>
+                    <div><strong>Step 2: Supersonic combustion</strong><br>Combustion at M ≈ 2–3</div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
+                    <div><strong>Step 3: Pressure preservation</strong><br>P<sub>02</sub>/P<sub>0</sub> ≈ 0.3–0.5</div>
+                    <div><strong>Step 4: Useful thrust</strong><br>Net positive thrust at hypersonic speeds</div>
+                </div>
+                <div class="final-answer">Scramjets avoid catastrophic shock losses by keeping flow supersonic</div>
+                <div class="explanation">
+                A key design change is that when the aircraft speed exceeds about Mach 6, the ramjet must be replaced by a scramjet. At these speeds, a ramjet becomes ineffective because it relies on a normal shock to slow the incoming flow to subsonic speeds before combustion. Starting at around Mach 6, this normal shock produces extremely high initial temperatures and severe total pressure losses, making efficient combustion impractical and net thrust minimal. Instead, a scramjet avoids these new shortcomings by using a series of oblique shocks (eliminating the normal shock entirely) and a long combustor which gives the airflow enough time to mix and burn with the fuel despite its supersonic speeds. As a result, the scramjet allows for supersonic combustion, which not only preserves pressure but also reduces both thermal and entropy losses, as evident in the calculations for a ramjet and scramjet both traveling Mach 6.7.
+                </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
 
     <!-- Project 3: Arduino LED Matrix -->
     <div id="project3" class="page">
@@ -1265,7 +1301,6 @@
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-bottom: 60px;">
                 <div>
                     <p style="font-size: 18px; line-height: 1.8; margin-bottom: 30px;">This project is a minimalist, hardware-based version of the classic Pong game, built using an Arduino UNO, a joystick module, and an 8x8 LED matrix display. The game runs entirely on Arduino, using no external screen or PC, and features interactive visual feedback for game events.</p>
-                    
                     <p style="font-size: 18px; line-height: 1.8;">The player controls a paddle using an analog joystick to keep the ball in play. The game simulates basic physics, including bouncing off walls and paddle collision detection. When the player misses the ball, the game responds with a visual indicator (the entire screen lights up red) to signal game over before resetting.</p>
                 </div>
                 <div class="project3-media">
@@ -1284,9 +1319,7 @@
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 80px;">
                 <div>
                     <h3 style="font-size: 32px; margin-bottom: 30px;">Circuitry</h3>
-                    
                     <p style="font-size: 18px; line-height: 1.8; margin-bottom: 30px;">The circuit uses a breadboard-based prototyping setup that organizes connections between the Arduino, joystick, and LED matrix:</p>
-                    
                     <div style="margin-bottom: 30px;">
                         <p style="font-size: 20px; font-weight: bold; margin-bottom: 15px;">Joystick Connections:</p>
                         <ul style="font-size: 18px; line-height: 2; margin-left: 20px;">
@@ -1296,7 +1329,6 @@
                             <li>VRy (teal) → Arduino A1 (available for future features)</li>
                         </ul>
                     </div>
-
                     <div style="margin-bottom: 30px;">
                         <p style="font-size: 20px; font-weight: bold; margin-bottom: 15px;">LED Matrix Connections:</p>
                         <ul style="font-size: 18px; line-height: 2; margin-left: 20px;">
@@ -1305,15 +1337,12 @@
                             <li>GND (white) → Arduino GND</li>
                         </ul>
                     </div>
-
                     <p style="font-size: 18px; line-height: 1.8;">The joystick module is mounted directly on the breadboard for easy access during gameplay, while color-coded jumper wires provide clean signal routing between components. USB power supplies sufficient current for the LED matrix at the reduced brightness level used in gameplay.</p>
                 </div>
 
                 <div>
                     <h3 style="font-size: 32px; margin-bottom: 30px;">Software Architecture</h3>
-                    
                     <p style="font-size: 18px; line-height: 1.8; margin-bottom: 30px;">The game is programmed in C++ using the Arduino framework and Adafruit NeoPixel library for LED control. Key software features include:</p>
-                    
                     <div style="margin-bottom: 30px;">
                         <p style="font-size: 20px; font-weight: bold; margin-bottom: 15px;">Game State Management:</p>
                         <ul style="font-size: 18px; line-height: 2; margin-left: 20px;">
@@ -1322,7 +1351,6 @@
                             <li>Game-over state handling with visual feedback</li>
                         </ul>
                     </div>
-
                     <div style="margin-bottom: 30px;">
                         <p style="font-size: 20px; font-weight: bold; margin-bottom: 15px;">Input Processing:</p>
                         <ul style="font-size: 18px; line-height: 2; margin-left: 20px;">
@@ -1331,7 +1359,6 @@
                             <li>Smooth, responsive control at 10Hz update rate</li>
                         </ul>
                     </div>
-
                     <div style="margin-bottom: 30px;">
                         <p style="font-size: 20px; font-weight: bold; margin-bottom: 15px;">Display Rendering:</p>
                         <ul style="font-size: 18px; line-height: 2; margin-left: 20px;">
@@ -1339,7 +1366,6 @@
                             <li>Frame-based animation at configurable update rates</li>
                         </ul>
                     </div>
-
                     <div style="margin-bottom: 30px;">
                         <p style="font-size: 20px; font-weight: bold; margin-bottom: 15px;">Physics Engine:</p>
                         <ul style="font-size: 18px; line-height: 2; margin-left: 20px;">
@@ -1360,6 +1386,18 @@
             document.getElementById(pageId).classList.add('active');
             window.scrollTo(0, 0);
         }
+
+        // Handle anchor links within project5 without triggering page navigation
+        document.addEventListener('click', function(e) {
+            const a = e.target.closest('a[href^="#p5-"]');
+            if (a) {
+                e.preventDefault();
+                const target = document.getElementById(a.getAttribute('href').slice(1));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
     </script>
 </body>
 </html>
