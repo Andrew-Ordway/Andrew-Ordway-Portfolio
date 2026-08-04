@@ -24,17 +24,17 @@
             --shadow-md: 0 10px 30px rgba(23, 24, 28, 0.08);
             --shadow-lg: 0 24px 60px rgba(23, 24, 28, 0.14);
         }
- 
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
- 
+
         html {
             scroll-behavior: smooth;
         }
- 
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: var(--bg);
@@ -43,18 +43,18 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
- 
+
         h1, h2, h3 {
             font-family: 'Fraunces', Georgia, serif;
             font-weight: 500;
             letter-spacing: -0.01em;
             color: var(--ink);
         }
- 
+
         a { color: inherit; }
- 
+
         img, video { max-width: 100%; }
- 
+
         header {
             position: sticky;
             top: 0;
@@ -68,7 +68,7 @@
             align-items: center;
             border-bottom: 1px solid var(--line);
         }
- 
+
         .logo {
             font-family: 'Fraunces', Georgia, serif;
             font-size: 19px;
@@ -76,17 +76,17 @@
             letter-spacing: -0.01em;
             cursor: pointer;
         }
- 
+
         .logo span {
             color: var(--accent);
         }
- 
+
         nav {
             display: flex;
             align-items: center;
             gap: 6px;
         }
- 
+
         nav a {
             color: var(--ink-soft);
             text-decoration: none;
@@ -96,23 +96,23 @@
             border-radius: 999px;
             transition: color 0.2s ease, background 0.2s ease;
         }
- 
+
         nav a:hover {
             color: var(--ink);
             background: var(--accent-soft);
         }
- 
+
         nav a.active {
             color: #fff;
             background: var(--accent);
         }
- 
+
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 72px 60px 100px;
         }
- 
+
         .eyebrow {
             display: inline-flex;
             align-items: center;
@@ -124,7 +124,7 @@
             color: var(--accent);
             margin-bottom: 18px;
         }
- 
+
         .eyebrow::before {
             content: "";
             width: 22px;
@@ -132,24 +132,24 @@
             background: var(--accent);
             display: inline-block;
         }
- 
+
         .page-intro {
             max-width: 640px;
             margin-bottom: 56px;
         }
- 
+
         .page-intro h1 {
             font-size: 46px;
             font-weight: 500;
             margin-bottom: 14px;
         }
- 
+
         .page-intro p {
             font-size: 17px;
             color: var(--ink-soft);
             line-height: 1.7;
         }
- 
+
         /* Portfolio Grid */
         .portfolio-grid {
             display: grid;
@@ -157,7 +157,7 @@
             gap: 32px;
             margin-top: 8px;
         }
- 
+
         .project-card {
             background: var(--surface);
             border: 1px solid var(--line);
@@ -167,20 +167,20 @@
             box-shadow: var(--shadow-sm);
             transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
         }
- 
+
         .project-card:hover {
             transform: translateY(-6px);
             box-shadow: var(--shadow-lg);
             border-color: transparent;
         }
- 
+
         .project-card .card-media {
             position: relative;
             overflow: hidden;
             aspect-ratio: 4/3;
             background: #eae7df;
         }
- 
+
         .project-image {
             width: 100%;
             height: 100%;
@@ -189,11 +189,11 @@
             display: block;
             transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
- 
+
         .project-card:hover .project-image {
             transform: scale(1.06);
         }
- 
+
         .card-number {
             position: absolute;
             top: 14px;
@@ -208,7 +208,7 @@
             border-radius: 999px;
             letter-spacing: 0.04em;
         }
- 
+
         .project-title {
             padding: 24px 24px 28px;
             font-size: 19px;
@@ -219,7 +219,7 @@
             align-items: flex-end;
             gap: 12px;
         }
- 
+
         .project-title .arrow {
             font-family: Inter, sans-serif;
             font-size: 18px;
@@ -227,11 +227,11 @@
             flex-shrink: 0;
             transition: transform 0.3s ease;
         }
- 
+
         .project-card:hover .project-title .arrow {
             transform: translateX(4px);
         }
- 
+
         /* About Page */
         .about-section {
             display: grid;
@@ -239,19 +239,19 @@
             gap: 80px;
             align-items: center;
         }
- 
+
         .about-section h1 {
             font-size: 52px;
             font-weight: 500;
             margin-bottom: 28px;
         }
- 
+
         .about-text {
             font-size: 18px;
             line-height: 1.85;
             color: var(--ink-soft);
         }
- 
+
         .about-image {
             width: 100%;
             height: auto;
@@ -263,27 +263,27 @@
             box-shadow: var(--shadow-md);
             border: 1px solid var(--line);
         }
- 
+
         /* Project Detail Page */
         .project-detail {
             text-align: center;
             max-width: 780px;
             margin: 0 auto 48px;
         }
- 
+
         .project-detail h1 {
             font-size: 54px;
             font-weight: 500;
             line-height: 1.15;
         }
- 
+
         .video-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 32px;
             margin-bottom: 64px;
         }
- 
+
         .project-description {
             font-size: 18px;
             line-height: 1.85;
@@ -292,28 +292,28 @@
             max-width: 880px;
             margin: 0 auto 80px;
         }
- 
+
         .section-heading {
             font-size: 36px;
             font-weight: 500;
             text-align: center;
             margin: 0 0 44px;
         }
- 
+
         .cad-section h2 {
             font-size: 36px;
             font-weight: 500;
             text-align: center;
             margin-bottom: 48px;
         }
- 
+
         .cad-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 32px;
             margin-bottom: 72px;
         }
- 
+
         .cad-card {
             background: var(--surface);
             border: 1px solid var(--line);
@@ -322,12 +322,12 @@
             box-shadow: var(--shadow-sm);
             transition: box-shadow 0.3s ease, transform 0.3s ease;
         }
- 
+
         .cad-card:hover {
             box-shadow: var(--shadow-md);
             transform: translateY(-3px);
         }
- 
+
         .cad-embed {
             width: 100%;
             aspect-ratio: 1;
@@ -336,30 +336,30 @@
             border-radius: var(--radius-md);
             overflow: hidden;
         }
- 
+
         .cad-title {
             font-family: 'Fraunces', serif;
             font-size: 21px;
             font-weight: 500;
             margin-bottom: 12px;
         }
- 
+
         .cad-description {
             font-size: 15px;
             line-height: 1.65;
             color: var(--ink-soft);
         }
- 
+
         .other-section {
             margin-top: 56px;
         }
- 
+
         .other-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 32px;
         }
- 
+
         .other-grid img {
             width: 100%;
             height: auto;
@@ -370,16 +370,16 @@
             border: 1px solid var(--line);
             box-shadow: var(--shadow-sm);
         }
- 
+
         /* Page Navigation */
         .page {
             display: none;
         }
- 
+
         .page.active {
             display: block;
         }
- 
+
         .back-button {
             display: inline-flex;
             align-items: center;
@@ -395,13 +395,13 @@
             background: var(--surface);
             transition: all 0.2s ease;
         }
- 
+
         .back-button:hover {
             color: var(--ink);
             border-color: var(--accent);
             box-shadow: var(--shadow-sm);
         }
- 
+
         /* BrahMos Image Grid */
         .brahmos-images {
             display: grid;
@@ -409,7 +409,7 @@
             gap: 32px;
             margin-bottom: 64px;
         }
- 
+
         .brahmos-images img {
             width: 100%;
             height: auto;
@@ -420,43 +420,43 @@
             border: 1px solid var(--line);
             box-shadow: var(--shadow-sm);
         }
- 
+
         @media (max-width: 1024px) {
             .portfolio-grid, .cad-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
- 
+
             .about-section, .video-grid, .brahmos-images {
                 grid-template-columns: 1fr;
             }
- 
+
         }
- 
+
         @media (max-width: 768px) {
             header {
                 padding: 18px 24px;
             }
- 
+
             .container {
                 padding: 44px 24px 72px;
             }
- 
+
             .portfolio-grid, .cad-grid, .other-grid, .brahmos-images {
                 grid-template-columns: 1fr;
             }
- 
+
             .project-detail h1 {
                 font-size: 36px;
             }
- 
+
             .about-section h1 {
                 font-size: 34px;
             }
- 
+
             .page-intro h1 {
                 font-size: 34px;
             }
- 
+
             .section-heading, .cad-section h2 {
                 font-size: 28px;
             }
@@ -467,11 +467,11 @@
             text-align: justify;
             color: var(--ink-soft);
         }
- 
+
         .intro-section p {
             margin: 15px 0;
         }
- 
+
         .diagram-container {
             text-align: center;
             margin: 48px 0;
@@ -480,17 +480,17 @@
             border-radius: var(--radius-lg);
             padding: 32px 24px;
         }
- 
+
         .diagram-container svg {
             max-width: 100%;
             height: auto;
         }
- 
+
         .calc-section {
             margin: 32px 0;
             padding: 5px 0;
         }
- 
+
         .given-data {
             margin: 20px 0;
             padding: 18px 20px;
@@ -499,7 +499,7 @@
             border-left: 3px solid var(--accent);
             border-radius: 0 var(--radius-md) var(--radius-md) 0;
         }
- 
+
         .final-answer {
             margin: 10px 0;
             padding: 12px 16px;
@@ -509,7 +509,7 @@
             font-weight: 600;
             color: var(--accent);
         }
- 
+
         .explanation {
             margin: 20px 0;
             padding: 18px 20px;
@@ -519,25 +519,25 @@
             text-align: justify;
             color: var(--ink-soft);
         }
- 
+
         /* ===== FRACTIONS ===== */
         .fraction {
             display: inline-block;
             text-align: center;
             vertical-align: middle;
         }
- 
+
         .fraction .num {
             display: block;
             border-bottom: 1px solid black;
             padding: 0 4px;
         }
- 
+
         .fraction .den {
             display: block;
             padding: 0 4px;
         }
- 
+
         /* ===== SQUARE ROOT ===== */
         .sqrt {
             display: inline-flex;
@@ -555,7 +555,7 @@
             margin-right: -3px;
             vertical-align: middle;
         }
- 
+
         .sqrt .radicand {
             display: inline-block;
             border-top: 1.5px solid currentColor;
@@ -591,7 +591,7 @@
             <a href="#" data-page="about" onclick="showPage('about')">About</a>
         </nav>
     </header>
- 
+
     <!-- Home Page -->
     <div id="home" class="page active">
         <div class="container">
@@ -608,16 +608,23 @@
                     </div>
                     <div class="project-title">Introduction to Mechanical Design: Open Design Project <span class="arrow">→</span></div>
                 </div>
+                <div class="project-card" onclick="showPage('project6')">
+                    <div class="card-media" style="background:#fff;">
+                        <span class="card-number">02</span>
+                        <img class="project-image" src="Images/ga_thumbnail.png" alt="Genetic Algorithm Airfoil Optimization" style="object-fit: contain; padding: 24px;">
+                    </div>
+                    <div class="project-title">Genetic Algorithm Airfoil Optimization <span class="arrow">→</span></div>
+                </div>
                 <div class="project-card" onclick="showPage('project2')">
                     <div class="card-media">
-                        <span class="card-number">02</span>
+                        <span class="card-number">03</span>
                         <img class="project-image" src="Images/BrahMos Image.png" alt="BrahMos Ramjet">
                     </div>
                     <div class="project-title">BrahMos Ramjet Thermodynamic Analysis <span class="arrow">→</span></div>
                 </div>
                 <div class="project-card" onclick="showPage('project1')">
                     <div class="card-media">
-                        <span class="card-number">03</span>
+                        <span class="card-number">04</span>
                         <img class="project-image" src="Images/IMG_4A55CA53B7A8-1.jpeg" alt="Project Image">
                     </div>
                     <div class="project-title">Seattle Hologram: 3D-Printed CAD City Model <span class="arrow">→</span></div>
@@ -625,7 +632,7 @@
             </div>
         </div>
     </div>
- 
+
     <!-- About Page -->
     <div id="about" class="page">
         <div class="container">
@@ -641,15 +648,72 @@
             </div>
         </div>
     </div>
- 
- 
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- Project 6: Genetic Algorithm Airfoil Optimization                   -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <div id="project6" class="page">
+        <div class="container">
+            <a href="#" onclick="showPage('home')" class="back-button">← Back to Portfolio</a>
+            <div class="project-detail">
+                <h1>Genetic Algorithm Airfoil Optimization</h1>
+            </div>
+
+            <div class="project-description">
+                A self-directed project combining evolutionary computation with aerodynamics: I wrote a genetic algorithm in Python that evolves NACA 4-digit airfoil shapes to maximize lift-to-drag ratio, using classical thin-airfoil theory to evaluate lift and an empirical skin-friction / form-factor buildup to evaluate drag. Starting from a population of random wing shapes, the algorithm converged on a low-thickness, moderately cambered profile that outperforms the best random guess and beats the worst starting design by roughly 3×.
+            </div>
+
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div class="intro-section">
+                    <p><strong>How it works.</strong> Each airfoil is defined by three genes: max camber (m), the chordwise location of max camber (p), and max thickness (t) &mdash; the same parameters that define a NACA 4-digit airfoil. A population of 24 random airfoils is evaluated at a fixed 5° angle of attack, the top performers are carried forward (elitism), and the rest of the next generation is produced by tournament selection, crossover, and Gaussian mutation. This repeats for 50 generations.</p>
+                    <p><strong>Evaluating each airfoil.</strong> Lift coefficient comes from Glauert's thin-airfoil theory: the camber line's slope is expanded into a Fourier series, and C<sub>l</sub> = π(2A₀ + A₁), with a cap applied near C<sub>l</sub> ≈ 1.45 to stand in for stall, which linear theory doesn't otherwise capture. Drag coefficient comes from a flat-plate skin-friction estimate scaled by a thickness form factor (a standard conceptual-design drag buildup), plus a small term that grows with C<sub>l</sub>² to penalize very high-lift, high-drag shapes. Fitness is simply C<sub>l</sub>/C<sub>d</sub>.</p>
+                </div>
+
+                <div class="given-data">
+                    <strong>Genetic algorithm settings:</strong><br>
+                    Population: 24 individuals &nbsp;·&nbsp; Generations: 50 &nbsp;·&nbsp; Elitism: top 3<br>
+                    Selection: tournament (k = 3) &nbsp;·&nbsp; Mutation rate: 30% per gene<br>
+                    Operating point: α = 5°, Re = 5×10⁵ &nbsp;·&nbsp; Genes: camber m ∈ [0, 0.12], position p ∈ [0.10, 0.90], thickness t ∈ [0.05, 0.24]
+                </div>
+
+                <div class="explanation">
+                Within about 5 generations the population mean lift-to-drag ratio jumped from roughly 29 to 42 and then held steady, while the best individual improved more modestly since a few lucky random airfoils already started near the optimum. The clearest result is the spread: the single worst airfoil in the starting population (high camber, thick, badly placed) scored an L/D of about 10.5, while the converged optimum reached an L/D of about 42 &mdash; a ~299% improvement, achieved by the algorithm consistently pushing toward low thickness and moderate, forward-loaded camber.
+                </div>
+
+                <div class="diagram-container">
+                    <img src="Images/ga_shape_evolution.png" alt="Best airfoil shape across generations" style="max-width: 100%; height: auto; border-radius: 12px;">
+                    <p style="font-size: 13px; color: #5a5d64; margin-top: 12px;">Best-of-generation airfoil shape at generations 0, 10, 25, and 50. The population converges from a higher-camber guess toward a flatter, more efficient section.</p>
+                </div>
+
+                <div class="diagram-container">
+                    <img src="Images/ga_ld_vs_generation.png" alt="Lift-to-drag ratio versus generation" style="max-width: 100%; height: auto; border-radius: 12px;">
+                    <p style="font-size: 13px; color: #5a5d64; margin-top: 12px;">Population-mean and best-individual L/D versus generation, showing rapid convergence within the first ~5 generations.</p>
+                </div>
+
+                <div class="diagram-container">
+                    <img src="Images/ga_streamlines.png" alt="Streamlines around the evolved airfoil" style="max-width: 100%; height: auto; border-radius: 12px;">
+                    <p style="font-size: 13px; color: #5a5d64; margin-top: 12px;">Flow streamlines around the evolved airfoil, generated by superimposing free-stream flow with the same thin-airfoil vortex sheet used to compute lift &mdash; darker streamlines indicate higher local speed, consistent with faster flow (and lower pressure) over the upper surface.</p>
+                </div>
+
+                <div class="diagram-container">
+                    <img src="Images/ga_best_vs_worst.png" alt="Comparison of worst starting design and evolved optimum" style="max-width: 100%; height: auto; border-radius: 12px;">
+                    <p style="font-size: 13px; color: #5a5d64; margin-top: 12px;">Head-to-head comparison of the worst airfoil in the initial random population against the final evolved design.</p>
+                </div>
+
+                <div class="intro-section">
+                    <p><strong>Tools used:</strong> Python, NumPy, and Matplotlib for the genetic algorithm, aerodynamic model, and all figures above.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- ═══════════════════════════════════════════════════════════════════ -->
     <!-- Project 5: Intro to Mechanical Design (Client Pitch + Prototype)   -->
     <!-- ═══════════════════════════════════════════════════════════════════ -->
     <div id="project5" class="page">
         <div class="container">
             <a href="#" onclick="showPage('home')" class="back-button">← Back to Portfolio</a>
- 
+
             <!-- Scoped styles for Project 5 -->
             <style>
                 #project5 .proj-doc * { box-sizing: border-box; }
@@ -668,7 +732,7 @@
                 #project5 .proj-doc .refs-list li { margin-bottom: 8px; padding-left: 28px; text-indent: -28px; font-size: 12pt; line-height: 1.5; }
                 #project5 .proj-doc .figure-wrap { margin-top: 20px; }
                 #project5 .proj-doc .figure-caption { text-align: center; font-size: 10.5pt; margin-top: 10px; }
- 
+
                 /* TABLE OF CONTENTS */
                 #project5 .p5-toc {
                     background: #fff;
@@ -719,7 +783,7 @@
                     font-family: Georgia, serif;
                     flex-shrink: 0;
                 }
- 
+
                 /* SECTION HEADERS */
                 #project5 .p5-section-header {
                     font-family: Georgia, serif;
@@ -732,7 +796,7 @@
                     color: #000;
                     scroll-margin-top: 30px;
                 }
- 
+
                 /* FUNCTIONAL PROTOTYPE DOC */
                 #project5 .fp-doc {
                     font-family: "Times New Roman", Times, serif;
@@ -774,11 +838,11 @@
                     line-height: 1.6;
                 }
             </style>
- 
+
             <!-- Page title -->
             <h1 style="font-family: Georgia, serif; font-size: 48px; font-weight: normal; margin-bottom: 10px;">Intro to Mechanical Design</h1>
             <p style="font-family: Georgia, serif; font-size: 18px; color: #555; margin-bottom: 36px;">Team: <em>Big Red Stompers</em> &nbsp;·&nbsp; MAE 2250</p>
- 
+
             <!-- ── TABLE OF CONTENTS (immediately visible, no scrolling needed) ── -->
             <div class="p5-toc">
                 <h2>Project Milestones</h2>
@@ -803,40 +867,40 @@
                     </li>
                 </ul>
             </div>
- 
+
             <!-- ── MILESTONE 1: CLIENT PITCH ── -->
             <h2 id="p5-client-pitch" class="p5-section-header">1 &nbsp; Client Pitch</h2>
- 
+
             <div class="proj-doc">
                 <h1 class="doc-title">Client Pitch</h1>
                 <p class="team-line"><strong>Team:</strong> <em>Big Red Stompers</em> &nbsp; <strong>Clients:</strong> Cornell CALS Extension / E&amp;J Gallo Winery / National Grape</p>
- 
+
                 <h2>Problem Statement</h2>
                 <p>Spotted lanternflies (SLF) mainly target grapevines. As a result, grape farmers are trying to manage SLF populations in vineyards and nearby trees. SLF egg masses contain around 30-60 eggs, creating rapid population growth that affects later growing seasons. Current SLF population reduction methods, such as netting and manual egg removal are difficult to scale across larger vineyards.</p>
- 
+
                 <h2>Impact</h2>
                 <p>Elimination of SLF eggs prevents the development of adult populations causing the most damage to vineyards. The average SLFs per vine starts low, increasing sharply following the transition from nymph to adult stages (Figure 1). As a result, attacking the root cause would protect regions like Lake Erie and the Finger Lakes from losses between $1.5 million in year one and $8.8 million by year three of infestation (Hayes).</p>
- 
+
                 <h2>Proposed Concept: Stomp n' Scrape</h2>
                 <p><strong>What it is:</strong> Handheld egg removal device.</p>
                 <p><strong>How it would be used:</strong> Designed to crush SLF egg mass shells and immediately scrape them into a rubbing-alcohol-filled vessel to prevent hatching.</p>
- 
+
                 <h2>Why it's better than the status quo:</h2>
                 <ul>
                     <li>Reduces the chance of leaving viable eggs behind.</li>
                     <li>Minimizes mess and user discomfort by sealing egg material instantly.</li>
                     <li>Improved output and efficiency compared to manual scraping alone.</li>
                 </ul>
- 
+
                 <p><strong>End-of-semester proof-of-concept:</strong> A functional prototype with a crushing feature, integrated scraper, and removable alcohol container, fabricated using 3D-printed components and accessible materials, and tested on simulated SLF egg masses to evaluate effectiveness and ease of cleaning.</p>
- 
+
                 <h2>Key Risks / Unknowns</h2>
                 <ul>
                     <li>1 - Egg masses harden, making it difficult to ensure they are fully damaged. Two methods to kill the egg masses: crushing them and then scraping them into rubbing alcohol to kill the remaining ones.</li>
                     <li>2 &mdash; Public aversion to kill/interact with SLF, as crushing egg masses may be off-putting. Test with user trials and gauge user comfort.</li>
                     <li>3 &mdash; Many eggs are laid on high surfaces; 98% of eggs are found at unreachable heights (+10 feet) on trees (Krawczyk). Test attachments to extendable tools for users to reach higher egg masses.</li>
                 </ul>
- 
+
                 <h2>Questions for Client</h2>
                 <ol>
                     <li>
@@ -852,24 +916,24 @@
                         <span class="da"><em>Decision affected:</em> This would affect how we determine the force needed and how we design our crushing/scraping mechanism.</span>
                     </li>
                 </ol>
- 
+
                 <h2>References</h2>
                 <ul class="refs-list">
                     <li>New York State Integrated Pest Management. (n.d.). Spotted lanternfly management. <a href="https://cals.cornell.edu/integrated-pest-management/outreach-education/whats-bugging-you/spotted-lanternfly" target="_blank">https://cals.cornell.edu/integrated-pest-management/outreach-education/whats-bugging-you/spotted-lanternfly</a></li>
                     <li>Hayes, C. (2025, January 27). Spotted lanternflies could cost NYS grape industry millions. Cornell Chronicle. <a href="https://news.cornell.edu/stories/2025/01/spotted-lanternflies-could-cost-nys-grape-industry-millions" target="_blank">https://news.cornell.edu/stories/2025/01/spotted-lanternflies-could-cost-nys-grape-industry-millions</a></li>
                     <li>Krawczyk, G. (2023, August 30). What should you do with spotted lanternfly egg masses? PennState Extension. <a href="https://extension.psu.edu/what-should-you-do-with-spotted-lanternfly-egg-masses" target="_blank">https://extension.psu.edu/what-should-you-do-with-spotted-lanternfly-egg-masses</a></li>
                 </ul>
- 
+
                 <div class="figure-wrap">
                     <h2>Figure</h2>
                     <img src="Images/avg_slf_per_vine.png" alt="Figure 1: Average SLFs per Vine (2018-2020)" style="max-width:650px; width:100%; height:auto; display:block; margin:0 auto;" onerror="this.onerror=null; this.src='Images/brslogo.png';">
                     <p class="figure-caption">Figure 1: Average SLFs per Vine (2018-2020)</p>
                 </div>
             </div>
- 
+
             <!-- ── MILESTONE 2: FUNCTIONAL PROTOTYPE ── -->
             <h2 id="p5-functional-prototype" class="p5-section-header">2 &nbsp; Functional Prototype</h2>
- 
+
             <div class="fp-doc">
                 <div class="fp-header-block">
                     <div>
@@ -880,7 +944,7 @@
                     <img src="Images/brslogo.png" alt="Big Red Stompers Logo">
                 </div>
                 <hr>
- 
+
                 <h3>Design Intent and Functionality</h3>
                 <p>The prototype is intended to combine three main functions into one handheld device:</p>
                 <ol>
@@ -888,7 +952,7 @@
                     <li><strong>Crushing / Stomping</strong>: a spring-loaded internal stomper compresses the egg mass material to destroy the eggs.</li>
                     <li><strong>Collection</strong>: the lower opening funnels egg residue into an attached bottle for containment and later neutralization.</li>
                 </ol>
- 
+
                 <h3>Parts List and Fabrication Details</h3>
                 <p>The functional prototype consists of the following parts:</p>
                 <ul>
@@ -899,18 +963,18 @@
                     <li><strong>Bottle Interface</strong> – 3D printed funnel adapter connecting the housing exit to a standard rubbing alcohol bottle for containment.</li>
                     <li><strong>Fasteners / Assembly Hardware</strong> – standard hardware (screws, pins) used to secure printed components during testing.</li>
                 </ul>
- 
+
                 <!-- Prototype Images -->
                 <div style="margin: 30px 0 10px;">
                     <h3>Design Sketches and CAD Models</h3>
                 </div>
- 
+
                 <!-- Full-width prototype sketch -->
                 <div style="margin-bottom: 30px;">
                     <img src="Images/Prototype%20Sketch.png" alt="Components and Function Illustration" style="width:100%; height:auto; display:block; max-width:700px; margin:0 auto;" onerror="this.onerror=null; this.src='Images/brslogo.png';">
                     <p style="text-align:center; font-style:italic; font-size:11pt; margin-top:8px; color:#444;">Components and Function Illustration</p>
                 </div>
- 
+
                 <!-- Two CAD sketches side by side -->
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:30px; margin-bottom:30px;">
                     <div>
@@ -922,13 +986,13 @@
                         <p style="text-align:center; font-style:italic; font-size:11pt; margin-top:8px; color:#444;">CAD Sketch #2: Scraper and Inside Assembly</p>
                     </div>
                 </div>
- 
+
                 <!-- Sketch #4 full width -->
                 <div style="margin-bottom:30px;">
                     <img src="Images/Sketch%20%234.png" alt="Sketch #4" style="width:100%; height:auto; display:block; max-width:700px; margin:0 auto;" onerror="this.onerror=null; this.src='Images/brslogo.png';">
                     <p style="text-align:center; font-style:italic; font-size:11pt; margin-top:8px; color:#444;">Assembly Process</p>
                 </div>
- 
+
                 <h3>Assembly Process</h3>
                 <p>The prototype is assembled in the following order:</p>
                 <ol>
@@ -945,7 +1009,7 @@
                     <li><strong>Attach the scraper plate to the rigid rod</strong><br>
                         Secure the scraper plate to the rigid rod so that motion of the rod and spring mechanism drives the scraper/stomping action.</li>
                 </ol>
- 
+
                 <h3>Design Test</h3>
                 <h4>Test 1: Sliding Rail Motion and Interference</h4>
                 <p><strong>Part being tested:</strong> Housing rail and slider/stomper interface.</p>
@@ -957,7 +1021,7 @@
                     During assembly and initial actuation, the rail exhibited excessive friction due to insufficient CAD tolerance and printing inaccuracy. The force required to initiate motion was 10 N. The mean user difficulty score before modification was 7/10, indicating poor usability. After sanding the rail surfaces, the slider moved more smoothly and the mean user difficulty score improved to 5/10, but this remained outside the desired usability range of 1–4.</p>
                 <p><strong>Conclusion / design changes for next prototype:</strong><br>
                     The next prototype will increase clearance tolerances between the housing and slider by 5mm and switch from PLA to PETG to reduce print irregularities and improve sliding performance. Additional testing over repeated cycles will be conducted to confirm that the rail does not bind over time.</p>
- 
+
                 <h4>Test 2: Spring Mechanism Force and Usability</h4>
                 <p><strong>Part being tested:</strong> Compression spring and stomping mechanism.</p>
                 <p><strong>What is being tested:</strong><br>
@@ -968,7 +1032,7 @@
                     The McMaster spring was too stiff for practical hand use and could only be compressed by several millimeters, which was far below the required displacement. A replacement spring from the workshop displaced 1.5 in under a 500 g force, corresponding to a spring constant of approximately 129 N/m or 0.74 lb/in. This value was close to the team’s rough estimated range, but later trials suggested that to more confidently generate sufficient crushing force with a displacement of about 2 in (~50 mm), the design would require a higher spring constant of approximately 3–3.5 lbf/in.</p>
                 <p><strong>Conclusion / design changes for next prototype:</strong><br>
                     The next prototype will use a spring with a slightly higher spring constant than the workshop spring while still remaining hand-operable. The team will also redesign the rod/attachment geometry to improve load transfer between the spring and stomper.</p>
- 
+
                 <h3>Success Criteria</h3>
                 <p>Our project aims to create a portable product that provides a faster, cleaner, and more effective way to destroy spotted lanternfly egg masses than current scraping methods. For the final prototype, success will be evaluated using the following quantitative criteria.</p>
                 <ol>
@@ -981,29 +1045,29 @@
                     <li><strong>Residue Capture</strong><br>
                         The device must funnel at least 80% of the egg residue into the attached bottle. This criterion assesses cleanliness and collection performance. It will be measured by comparing the mass or count of collected residue in the bottle to the total removed residue. Increasing the capture percentage is a high priority.</li>
                 </ol>
- 
+
                 <h3>Exhibit-Day Demonstration Criterion</h3>
                 <p>Our exhibit-day demonstration will focus on two criteria that produce visible and measurable outcomes: complete egg-mass removal in under 10 seconds and at least 80% residue capture in the bottle. During the demo, the team will use a substitute egg mass on a test surface, time the removal process, and show that most of the residue is visibly directed into the bottle attachment.</p>
- 
+
                 <h3>Outcome</h3>
                 <div class="outcome-box">
                     <p>The prototype successfully demonstrated the integrated scrape-crush-collect workflow. The spring-loaded stomper provided sufficient force to compress simulated egg masses, and the funnel interface contained the displaced material effectively. Areas identified for improvement in future iterations include tightening the scraper blade seating to reduce flex during use, refining the spring selection for more consistent actuation force, and improving the seal at the bottle interface to prevent leakage during transport. Overall, the functional prototype confirmed the viability of the core concept and provided clear direction for the next design iteration.</p>
                 </div>
             </div>
- 
+
             <!-- ── MILESTONE 3: CLIENT REPORT ── -->
             <h2 id="p5-client-report" class="p5-section-header">3 &nbsp; Client Report</h2>
             <div class="proj-doc">
                 <h1 class="doc-title">ODP 20: Client Report</h1>
                 <p class="team-line"><strong>Team:</strong> Joaquin Perez (jep369), Keira He (kph55), Andrew Ordway (aso39), Felicity Wu (fyw5), Wasif Atcha (wa79)</p>
- 
+
                 <h2>Context and Problem Statement</h2>
                 <p>Spotted lanternflies (SLF) pose growing threats to vineyards. Each egg mass contains anywhere from 30-60 eggs, causing exponential population growth and peak crop damage as nymphs develop into adults (Chamberlin). Infestations can cost regions like Lake Erie and the Finger Lakes around $1.5 million in year one to $8.8 million by year three (Hayes). Targeting SLF at the egg stage is the most effective intervention point. Current SLF population reduction methods like netting are difficult to scale. The eggs harden over time, making them difficult to remove, and the public may be discouraged to remove them because of the off-putting aspect of the process. These constraints are why we decided to design a more effective, user-friendly egg removal solution.</p>
- 
+
                 <h2>Final Prototype and Application</h2>
                 <p>The Stomp N' Scrape is a handheld device that targets egg masses through a stomper that crushes the eggs and a scraper that scrapes them into a sealed bottle. This product may encourage a wider population to address SLF populations by providing a portable, cost-efficient, and easy-to-manufacture device that is accessible to the public.</p>
                 <p><strong>How it works:</strong> The housing is threaded onto a plastic water bottle. The spring sits on the stomper's rod, which is then threaded onto the knob. The scraper sits in its holder when the device is not in use. To stomp, the user pulls the knob back and releases it, repeating this process until the eggs are crushed to the user's satisfaction. Then, the scraper is inserted through the slits to clean the face.</p>
- 
+
                 <h2>Prototype and Testing Details</h2>
                 <p>The prototype used in the tests is the final 3D print that we manufactured, given the time constraints of the course. It was printed with PETG and included the scraper attachment on the left side of the housing.</p>
                 <div style="text-align: center; margin: 20px 0;">
@@ -1016,7 +1080,7 @@
                 <p>We tested the time for one full stomp-and-scrape cycle. Five sets of five stomps and one scrape were conducted at different heights on a tree, using a mixture of chia and mustard seeds to simulate egg masses. This was repeated three times.</p>
                 <h3>Test 3: Scraper Effectiveness</h3>
                 <p>To test the scraper, we covered the stomper with different amounts of chia seeds relative to its surface area: 100%, 75%, 50%, 25%, and 10%. We recorded the percentage of the surface area still covered in seeds after one pass.</p>
- 
+
                 <h2>Testing and Results</h2>
                 <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 20px;">
                     <div style="text-align: center;">
@@ -1035,11 +1099,11 @@
                 <p><strong>Test 1:</strong> Our results indicate that the stomping component of our prototype has been optimized to destroy the egg masses within a reasonable number of repeated stomps. Further testing should be done on the durability of our prototype to ensure it does not break after consistent use.</p>
                 <p><strong>Test 2:</strong> Our results satisfy the requirement that the device must be used within 120 seconds. To reduce the time of use, the scraper holder could be relocated to the right-hand side, making it easier for right-handed users to access the scraper faster. Also, a stopper could be added to the end of the scraper so that it aligns with the device, reducing the time needed for positioning before scraping.</p>
                 <p><strong>Test 3:</strong> To increase scraper effectiveness, we can increase the length of the slots on both sides of the housing to allow a larger range of motion for the scraper. The remaining seeds were on the top edge and bottom corners of the stomper, which increasing the range of motion would address.</p>
- 
+
                 <h2>Conclusion and Recommendation</h2>
                 <p>Testing showed several areas for improvement. The scraper could be redesigned with longer tracks to increase its range of motion and allow it to scrape a larger area. Our second test results show that there are weak spots on the edges of the face that the scraper cannot access. Second, the knob could be changed to a hook-shaped design to facilitate grip, decreasing time of use. Future iterations should test different print materials for durability to ensure the product is reliable while maintaining crushing efficiency.</p>
                 <p>Since the prototype is cheap to manufacture, the Stomp N' Scrape has potential to be scaled for public use with minor design improvements. However, since the target users are the general public, marketing through social media platforms could help promote the product. Outreach to environmental entities with an interest in reducing the SLF population can help increase the use of the product through sponsorships and purchasing the product for consumers who would use the product if they could get it for free.</p>
- 
+
                 <h2>Bill of Materials</h2>
                 <table style="width:100%; border-collapse: collapse; margin-top:0.8rem;">
                     <thead>
@@ -1061,24 +1125,24 @@
                     </tbody>
                 </table>
                 <p style="margin-top:0.6rem;"><strong>Total Cost:</strong> $38.22 &nbsp; • &nbsp; <strong>Total Final Prototype Cost:</strong> $7.74</p>
- 
+
                 <h2>Final Component List</h2>
                 <ul>
                     <li>3D Printed Shell, Plate, Knob, Scraper</li>
                     <li>Compression Spring #1 (McMaster Code: 8969T983)</li>
                     <li>Compression Spring #2 (McMaster Code: 8969T575)</li>
                 </ul>
- 
+
                 <h2>References</h2>
                 <ul class="refs-list">
                     <li>Chamberlin, Lori. "Spotted Lanternfly Egg Mass Scouting – DIY!" Virginia Department of Forestry, 23 Feb. 2022. <a href="https://dof.virginia.gov/spotted-lanternfly-egg-mass-scouting-diy/" target="_blank">https://dof.virginia.gov/spotted-lanternfly-egg-mass-scouting-diy/</a></li>
                     <li>Hayes, C. (2025, January 27). Spotted lanternflies could cost NYS grape industry millions. Cornell Chronicle. <a href="https://news.cornell.edu/stories/2025/01/spotted-lanternflies-could-cost-nys-grape-industry-millions" target="_blank">https://news.cornell.edu/stories/2025/01/spotted-lanternflies-could-cost-nys-grape-industry-millions</a></li>
                 </ul>
             </div>
- 
+
         </div>
     </div>
- 
+
     <!-- Project 1: Seattle Hologram -->
     <div id="project1" class="page">
         <div class="container">
@@ -1086,16 +1150,16 @@
             <div class="project-detail">
                 <h1>Seattle Hologram: 3D-Printed CAD City Model</h1>
             </div>                        
- 
+
             <div class="video-grid">
                 <video class="project1-video" src="IMG_2236.MOV" controls preload="metadata"></video>
                 <video class="project1-video" src="IMG_2207.MOV" controls preload="metadata"></video>
             </div> 
- 
+
             <div class="project-description">
                 For this project, I designed a hologram display system combining CAD modeling, mechanical design, and optical physics. Using CAD modeling software, I created two Seattle skyscrapers for a rotating platform display. The project used the Pepper's Ghost illusion with plexiglass positioned at 45 degrees to project the hologram against a laser-engraved Seattle Seahawks logo. Also, I integrated Arduino-controlled LED lighting to complete the system, showcasing my CAD skills and hands-on engineering abilities.
             </div> 
- 
+
             <div class="cad-section">
                 <h2>CAD Design Components</h2>
                 <div class="cad-grid">
@@ -1111,7 +1175,7 @@
                         <div class="cad-title">Pepper's Ghost Overall Project Setup</div>
                         <div class="cad-description">Complete hologram display system showing the assembled box housing with angled glass positioned at 45 degrees, rotating platform mechanism, and integrated components that create the optical illusion effect.</div>
                     </div>
- 
+
                     <div class="cad-card">
                         <div class="cad-embed" style="aspect-ratio: 16/9;">
                             <iframe title="Seattle Space Needle Assembly" frameborder="0" allowfullscreen
@@ -1124,7 +1188,7 @@
                         <div class="cad-title">Seattle Space Needle</div>
                         <div class="cad-description">3D model of Seattle's iconic Space Needle featuring the distinctive observation deck, tapered shaft, and tripod base that defines the city's skyline.</div>
                     </div>
- 
+
                     <div class="cad-card">
                         <div class="cad-embed" style="aspect-ratio: 16/9;">
                             <iframe title="Assembly 1 (2) by Andy Ordway" frameborder="0" allowfullscreen
@@ -1138,7 +1202,7 @@
                         <div class="cad-description">Detailed CAD model of the 800 Fifth Avenue skyscraper, capturing the building's modern architectural grid structure and rectangular tower design.</div>
                     </div>
                 </div>
- 
+
                 <div class="other-section">
                     <h2>Other Components</h2>
                     <div class="other-grid">
@@ -1149,7 +1213,7 @@
             </div>
         </div>
     </div>
- 
+
     <!-- Project 2: BrahMos Ramjet -->
     <div id="project2" class="page">
         <div class="container">
@@ -1157,18 +1221,18 @@
             <div class="project-detail">
                 <h1>BrahMos Ramjet Thermodynamic Analysis</h1>
             </div>
- 
+
             <div class="brahmos-images">
                 <img src="Images/BrahMos Image.png" alt="BrahMos Ramjet Diagram 1">
                 <img src="Images/Ramjet_Schematic.png" alt="BrahMos Ramjet Diagram 2">
             </div>
- 
+
             <div style="max-width: 900px; margin: 0 auto;">
                 <div class="intro-section">
                     <p>With my newfound knowledge of thermodynamics from ENGRD 2210, I decided to apply what I learned to analyze ramjets and specifically the BrahMos Ramjet. On a high level, ramjet engines are open Brayton cycle engines used when aircraft are already traveling at incredibly fast supersonic speeds; however, ramjets have a couple key differences.</p>
                     <p>Firstly, instead of relying on a compressor as is used in conventional open Brayton cycles, the ramjet rather uses the aircraft's high speeds to compress incoming air. Because the ramjet does not have a compressor, it also does not have a turbine (which is typically needed to drive the compressor), allowing for all of the engine's work to be transferred into thrust. With no turbine, compressor, or shaft connecting the two, ramjets actually have no moving parts. Consequently, ramjets are only beneficial for aircraft traveling at speeds upwards of Mach 2 (meaning also that these aircraft must have some other booster to initially reach these supersonic speeds). In other words, ramjets are primarily used to "feed" off the aircraft's speed, becoming exponentially more powerful the faster the aircraft is moving.</p>
                 </div>
- 
+
                 <div class="diagram-container">
                     <h2>Control Volume: Heat, Mass, and Work Transfers</h2>
                     <svg viewBox="0 0 900 350" style="max-width: 850px;">
@@ -1219,13 +1283,13 @@
                         <text x="600" y="330" font-size="12" fill="#27ae60">• No shaft work (ramjet has no moving parts)</text>
                     </svg>
                 </div>
- 
+
                 <div class="intro-section">
                     <p>So what exactly happens in a Brayton cycle with no compressor or turbine? First, the forward speed of the aircraft compresses air into the inlet. From there, the inlet directs the air into a diffuser, which slows it down—converting much of the air's kinetic energy to potential energy in the form of pressure and in turn heat. When a ramjet flies at supersonic speed, the incoming air must be slowed down before fuel can burn properly. This is done using a series of oblique shock waves that gradually reduce the air's speed, followed by a normal shock that brings the airflow to subsonic speed before combustion.</p>
                     <p>Once the pressure is great enough—typically when the air has slowed to Mach 0.3-0.5—the compressed air is mixed and ignited with fuel in a combustion heat exchanger. Through the combustor, energy is added to the airflow, and the resulting high-energy flow is accelerated through a converging-diverging nozzle to produce thrust.</p>
                     <p>A used change in design is that when the aircraft speed reaches above Mach 5, the ramjet engine begins to fail because the normal shock required to achieve subsonic speeds before combustion causes extremely high temperatures and low pressures.</p>
                 </div>
- 
+
                 <div class="given-data">
                     <strong>Typical BrahMos Operating Conditions:</strong><br>
                     Cruise altitude: h = 10 km, M<sub>1</sub> = 2.8<br>
@@ -1233,7 +1297,7 @@
                     γ = 1.4, R = 287 J/(kg·K)<br>
                     a₁ = <span class="sqrt"><span class="radicand">γRT₁</span></span> = 299.3 m/s
                 </div>
- 
+
                 <div class="calc-section">
                 <h2>1. Mass Balance</h2>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
@@ -1269,7 +1333,7 @@
                 Using the specific BrahMos data, I started by finding the mass flow rate of air entering the engine. Using the freestream velocity of the air (838 m/s, calculated from Mach 2.8 and the speed of sound 299.3 m/s) and the engine inlet area (0.09 m²), I determined that about 31.2 kg of air flows through the engine per second. The Fuel–Air Ratio (FAR) –which is the fuel to air mass flow ratio– of 0.057 is then used to calculate the fuel flow rate, giving 1.78 kg/s of fuel. By adding the air and fuel flows, I got a total exhaust mass flow of 33.0 kg/s, which is a number that will be used later to calculate thrust and energy.
                 </div>
                 </div>
- 
+
                 <div class="calc-section">
                 <h2>2. Initial (Total) Conditions from Ram Compression</h2>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
@@ -1306,7 +1370,7 @@
                 Next, I calculated the total temperature and pressure of the air after it is compressed in the inlet. The freestream air that enters at 223 K and 26.5 kPa is compressed to 573 K and 578 kPa. After taking into account diffuser efficiency, the pressure drops to 416 kPa and the temperature rises to 659 K. This step illustrates how the engine converts the kinetic energy of high-speed air into pressure and heat, which are both crucial for the later combustion step.
                 </div>
                 </div>
- 
+
                 <div class="calc-section">
                 <h2>3. Energy Balance (First Law of Thermodynamics)</h2>
                 <div class="diagram-container">
@@ -1363,7 +1427,7 @@
                     As described above, the ramjet T-s diagram shows a sharp rise in temperature and entropy during compression (① → ②), corresponding to the shocks slowing down the air and increasing its pressure. Next, during combustion (② → ③), the temperature increases further (at roughly constant pressure) as fuel is mixed in with and burned in the airflow. The temperature subsequently drops during expansion through the nozzle (③ → ④) as the air's thermal energy is converted into kinetic energy to generate thrust. Notice that unlike a closed-cycle engine, the diagram is not a loop because the ramjet is an open cycle, meaning that the inflow air exits at the exhaust without ever returning to its initial state.
                     </div>
                 </div>
- 
+
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
                     <div>
                         <strong>Step 1: Fuel energy</strong><br>
@@ -1409,7 +1473,7 @@
                 I then combined the energy contributions from fuel, air enthalpy, and the kinetic energy of the incoming air. Combining the fuel's 74.8 MW with the air's kinetic energy 10.95 MW and the air's enthalpy 6.99 MW, the total starting input energy is 92.7 MW. When leaving the nozzle, the energy output is 39.8 MW in enthalpy and 12.78 MW in kinetic energy, meaning that around 43% of the total energy is lost to irreversibilities like shocks and friction. From this percentage, I am able to calculate the fuel's efficiency in converting energy to thrust.
                 </div>
                 </div>
- 
+
                 <div class="calc-section">
                 <h2>4. Thrust Calculation</h2>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
@@ -1433,7 +1497,7 @@
                 The thrust was calculated by comparing the momentum of the exhaust (880 m/s) and the incoming air (838 m/s). This comparison yielded a net thrust of 2.9 kN and a specific impulse of 166 seconds. This step directly demonstrates not only the ability of the BrahMos ramjet to accelerate the missile but it also reflects the efficiency of its said thrust and propulsion.
                 </div>
                 </div>
- 
+
                 <div class="calc-section">
                 <h2>5. Entropy Generation</h2>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
@@ -1456,7 +1520,7 @@
                 Entropy increases were determined from the oblique shocks, the normal shock, combustion, and friction. The total entropy rise per kilogram of air is 1,030 J/kg·K, with a rate of 32.1 kW/K. The importance of this calculation is twofold. Firstly, this entropy increase reflects (and quantifies) the energy that the BrahMos ramjet loses to irreversibilities. Secondly, these calculations help break down precisely where and by how much the engine is less efficient due to shocks and mixing.
                 </div>
                 </div>
- 
+
                 <div class="calc-section">
                 <h2>6. Efficiency Calculations</h2>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 15px 0;">
@@ -1491,7 +1555,7 @@
                 To gauge the efficiency of the BrahMos ramjet, I looked at both the thermal efficiency and propulsive efficiency measures. The thermal efficiency (calculated to be 43.9%) indicates how well the engine converts fuel energy into mechanical energy. The propulsive efficiency (calculated to be 97.6%) reflects how effective the kinetic energy at the exhaust is to actually produce meaningful thrust. Combining these gives an overall efficiency of 42.8%, which represents the fraction of fuel energy that is ultimately converted into useful thrust.
                 </div>
                 </div>
- 
+
                 <div class="calc-section">
                 <h2>7. Transition from Ramjet to Scramjet at Hypersonic Speeds</h2>
                 <div style="margin: 15px 0;">
@@ -1536,21 +1600,21 @@
             </div>
         </div>
     </div>
- 
- 
+
+
     <script>
         function showPage(pageId) {
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => page.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
             window.scrollTo(0, 0);
- 
+
             const navTarget = (pageId === 'home' || pageId === 'about') ? pageId : null;
             document.querySelectorAll('nav a[data-page]').forEach(link => {
                 link.classList.toggle('active', link.getAttribute('data-page') === navTarget);
             });
         }
- 
+
         // Handle anchor links within project5 without triggering page navigation
         document.addEventListener('click', function(e) {
             const a = e.target.closest('a[href^="#p5-"]');
@@ -1565,4 +1629,3 @@
     </script>
 </body>
 </html>
- 
