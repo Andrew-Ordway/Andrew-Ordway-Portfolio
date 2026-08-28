@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andrew Ordway — Mechanical Engineering Portfolio</title>
-    <meta name="description" content="Portfolio of Andrew Ordway, Mechanical Engineering student at Cornell University — CAD design, mechanical systems, and prototyping projects.">
+    <title>Andrew Ordway | Mechanical Engineering Portfolio</title>
+    <meta name="description" content="Portfolio of Andrew Ordway, Mechanical Engineering student at Cornell University, featuring CAD design, mechanical systems, and prototyping projects.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -146,7 +146,7 @@
 
         .page-intro p {
             font-size: 17px;
-            color: var(--ink-soft);
+            color: var(--ink);
             line-height: 1.7;
         }
 
@@ -249,7 +249,7 @@
         .about-text {
             font-size: 18px;
             line-height: 1.85;
-            color: var(--ink-soft);
+            color: var(--ink);
         }
 
         .about-image {
@@ -287,7 +287,7 @@
         .project-description {
             font-size: 18px;
             line-height: 1.85;
-            color: var(--ink-soft);
+            color: var(--ink);
             text-align: center;
             max-width: 880px;
             margin: 0 auto 80px;
@@ -347,7 +347,7 @@
         .cad-description {
             font-size: 15px;
             line-height: 1.65;
-            color: var(--ink-soft);
+            color: var(--ink);
         }
 
         .other-section {
@@ -465,7 +465,7 @@
         .intro-section {
             margin: 25px 0;
             text-align: justify;
-            color: var(--ink-soft);
+            color: var(--ink);
         }
 
         .intro-section p {
@@ -517,7 +517,7 @@
             border-left: 3px solid var(--accent);
             border-radius: 0 var(--radius-md) var(--radius-md) 0;
             text-align: justify;
-            color: var(--ink-soft);
+            color: var(--ink);
         }
 
         /* ===== FRACTIONS ===== */
@@ -616,7 +616,7 @@
             gap: 10px;
             margin-bottom: 14px;
             font-size: 13.5px;
-            color: var(--ink-soft);
+            color: var(--ink);
         }
 
         .p6-slider-row input[type="range"] {
@@ -739,23 +739,34 @@
         <div class="container">
             <a href="#" onclick="showPage('home')" class="back-button">← Back to Portfolio</a>
             <div class="project-detail">
-                <h1>Genetic Algorithm Airfoil Optimization</h1>
+                <h1>Trial and Error: Using a Genetic Algorithm to Optimize Airfoil Shape</h1>
             </div>
 
             <div class="project-description">
-                A self-directed project combining evolutionary computation with aerodynamics. The first version used a genetic algorithm to evolve NACA 4-digit airfoils against thin-airfoil-theory lift predictions &mdash; a fast but idealized model. I later rebuilt the aerodynamic core around a validated vortex panel method, extended the optimizer to multiple flight conditions and a second objective (pitching moment), let the genetic algorithm evolve free-form shapes beyond the NACA family, ran a sensitivity study, and profiled/parallelized the solver. Each section below covers one of those upgrades, with the actual numbers produced by each run.
+                A self-directed project that uses a genetic algorithm to search for the airfoil shape with the best lift-to-drag ratio. The first version scored each shape with thin-airfoil theory, a fast but idealized model. I later rebuilt the aerodynamics around a vortex panel method, validated it against published data, and extended the search to multiple flight conditions, free-form shapes, and a second objective. Each section below covers one of those upgrades and the numbers it produced.
             </div>
 
             <div style="max-width: 900px; margin: 0 auto;">
-                <div class="eyebrow">Method</div>
+                <div class="eyebrow">Introduction</div>
                 <div class="intro-section">
-                    <p><strong>Representation.</strong> Each airfoil starts as three genes: max camber (m), the chordwise location of max camber (p), and max thickness (t) &mdash; the same parameters that define a NACA 4-digit airfoil. A genetic algorithm (elitism + tournament selection + crossover + Gaussian mutation) evolves a population of these against an aerodynamic fitness function.</p>
+                    <p>This project grew out of MAE 3230, Fluid Mechanics, where the treatment of lift, drag, and boundary layers made me want to see how those relationships behave when you let a computer search over them rather than solving a single case by hand. I also wanted to carry over the computational side of my work as a catastrophe modeling predictive analytics intern at Aon, where I built automated tools in Python and SQL to evaluate large datasets against defined criteria and applied classical algorithms to problems in risk analysis. Combining the two gave me a way to apply an analytical toolset I already had to a subject I want to keep working in.</p>
+                </div>
+
+                <h2 class="section-heading" id="p6-overview" style="font-size: 30px; margin-top: 56px;">Overview</h2>
+                <div class="intro-section">
+                    <p>The goal is to find the airfoil shape that maximizes the lift-to-drag ratio (L/D) at a fixed angle of attack and Reynolds number. Airfoils are described using the NACA 4-digit system, which encodes a shape with three numbers: the maximum camber, the chordwise position of that maximum camber, and the maximum thickness. Lift is computed from thin-airfoil theory using Glauert's Fourier-series expansion of the camber line, and drag is estimated from an empirical buildup combining skin friction with a thickness-dependent form factor. Together these give a fast evaluation of any candidate shape, which matters because the search method requires evaluating thousands of them.</p>
+                    <p>The search itself uses a genetic algorithm, which borrows the logic of natural selection. It begins with a population of randomly generated airfoils and evaluates the L/D of each one; that score is the shape's fitness. The best-performing shapes are selected to become parents, and new airfoils are produced by mixing the parents' defining parameters, with small random mutations applied so the population can explore shapes that no parent contained. The new generation replaces the old, and the process repeats. Over successive generations the poorly performing shapes are filtered out and the population drifts toward higher-performing regions of the design space. The method requires no gradients and no analytical solution for the optimum, only the ability to rank candidates against each other, which makes it well suited to a design problem where the objective is easy to evaluate but hard to invert.</p>
+                </div>
+
+                <h2 class="section-heading" id="p6-method" style="font-size: 30px; margin-top: 56px;">Method</h2>
+                <div class="intro-section">
+                    <p><strong>Representation.</strong> Each airfoil starts as three genes: max camber (m), the chordwise location of max camber (p), and max thickness (t), the same parameters that define a NACA 4-digit airfoil. A genetic algorithm (elitism + tournament selection + crossover + Gaussian mutation) evolves a population of these against an aerodynamic fitness function.</p>
                     <p><strong>What changed between versions.</strong> V1 evaluated lift with Glauert's thin-airfoil theory (camber-line-only, no thickness effects, no way to check itself against anything). V2 replaces that with a constant-strength vortex panel method that solves for the flow around the <em>actual</em> upper and lower surfaces, which I validated against classical theory and a published NACA moment coefficient before trusting it for anything else (below). Drag in both versions comes from the same empirical skin-friction + thickness-form-factor buildup, since a full viscous solve was out of scope.</p>
                 </div>
 
                 <h2 class="section-heading" id="p6-demo" style="font-size: 30px; margin-top: 56px;">Try it yourself</h2>
                 <div class="intro-section">
-                    <p>A live, in-browser version of the shape/lift model &mdash; drag the sliders to change the NACA parameters and watch the airfoil shape and estimated aerodynamics update in real time. This runs the same thin-airfoil-theory math as the original v1 solver (a closed-form Fourier calculation, fast enough for a browser); it's a quick-feel preview, not the full validated panel method used for the actual optimization results below.</p>
+                    <p>A live, in-browser version of the shape/lift model. Drag the sliders to change the NACA parameters and watch the airfoil shape and estimated aerodynamics update in real time. This runs the same thin-airfoil-theory math as the original v1 solver (a closed-form Fourier calculation, fast enough for a browser); it's a quick-feel preview, not the full validated panel method used for the actual optimization results below.</p>
                 </div>
                 <div id="p6-widget" class="p6-widget">
                     <div class="p6-widget-canvas">
@@ -792,11 +803,11 @@
 
                 <h2 class="section-heading" id="p6-validation" style="font-size: 30px; margin-top: 56px;">Validating the aerodynamic model</h2>
                 <div class="intro-section">
-                    <p>Before trusting the panel method for optimization, I checked it against two things a real solver has to get right: the classical thin-airfoil lift-curve slope of 2π per radian for a symmetric section, and the published quarter-chord pitching moment of a cambered NACA airfoil. Both checks passed within a few percent &mdash; and, while building this, I actually caught a real bug: certain thin, heavily-cambered shapes produced a numerically ill-conditioned panel geometry that gave a nonsensical, nearly flat lift curve. I added geometry-validity and lift-slope sanity checks that reject any shape the solver can't be trusted on, before it ever reaches the optimizer.</p>
+                    <p>Before trusting the panel method for optimization, I checked it against two things a real solver has to get right: the classical thin-airfoil lift-curve slope of 2π per radian for a symmetric section, and the published quarter-chord pitching moment of a cambered NACA airfoil. Both checks passed within a few percent. While building this, I also caught a real bug: certain thin, heavily-cambered shapes produced a numerically ill-conditioned panel geometry that gave a nonsensical, nearly flat lift curve. I added geometry-validity and lift-slope sanity checks that reject any shape the solver can't be trusted on, before it ever reaches the optimizer.</p>
                 </div>
                 <div class="diagram-container">
                     <img src="Images/v2_validation.png" alt="Panel method validation against thin airfoil theory and published NACA data" style="max-width: 100%; height: auto; border-radius: 12px;">
-                    <p style="font-size: 13px; color: #5a5d64; margin-top: 12px;">Left: panel-method lift slope for NACA 0012 (6.92/rad) against the theoretical 2π. Right: panel-method quarter-chord moment for NACA 2412, constant with angle of attack and matching the published value of about −0.05.</p>
+                    <p style="font-size: 13px; color: #17181c; margin-top: 12px;">Left: panel-method lift slope for NACA 0012 (6.92/rad) against the theoretical 2π. Right: panel-method quarter-chord moment for NACA 2412, constant with angle of attack and matching the published value of about −0.05.</p>
                 </div>
 
                 <h2 class="section-heading" id="p6-robust" style="font-size: 30px; margin-top: 56px;">Optimizing across multiple conditions</h2>
@@ -810,52 +821,52 @@
                 </div>
                 <div class="diagram-container">
                     <img src="Images/v2_convergence.png" alt="Robust multi-condition optimization convergence" style="max-width: 100%; height: auto; border-radius: 12px;">
-                    <p style="font-size: 13px; color: #5a5d64; margin-top: 12px;">Best-individual fitness converges within a few generations to a design with mean L/D ≈ 37 across all six conditions. The population mean stays noisy because random mutation keeps sampling geometrically invalid (self-intersecting) shapes, which are correctly rejected rather than silently mis-scored.</p>
+                    <p style="font-size: 13px; color: #17181c; margin-top: 12px;">Best-individual fitness converges within a few generations to a design with mean L/D ≈ 37 across all six conditions. The population mean stays noisy because random mutation keeps sampling geometrically invalid (self-intersecting) shapes, which are correctly rejected rather than silently mis-scored.</p>
                 </div>
 
                 <h2 class="section-heading" id="p6-pareto" style="font-size: 30px; margin-top: 56px;">Trading off lift and pitching moment</h2>
                 <div class="intro-section">
-                    <p>Real aircraft designers don't optimize L/D in isolation &mdash; a high-camber, high-lift section usually also wants to pitch nose-down harder, which costs trim drag and control authority. I ran a small NSGA-II-style multi-objective GA (non-dominated sorting + crowding distance) with two goals: maximize L/D at α = 5°, and minimize the magnitude of the quarter-chord pitching moment. The result is a Pareto front: a set of designs where improving one objective necessarily costs the other.</p>
+                    <p>Real aircraft designers don't optimize L/D in isolation, since a high-camber, high-lift section usually also wants to pitch nose-down harder, which costs trim drag and control authority. I ran a small NSGA-II-style multi-objective GA (non-dominated sorting + crowding distance) with two goals: maximize L/D at α = 5°, and minimize the magnitude of the quarter-chord pitching moment. The result is a Pareto front: a set of designs where improving one objective necessarily costs the other.</p>
                 </div>
                 <div class="diagram-container">
                     <img src="Images/v2_pareto.png" alt="Pareto front trading lift-to-drag ratio against pitching moment" style="max-width: 100%; height: auto; border-radius: 12px;">
-                    <p style="font-size: 13px; color: #5a5d64; margin-top: 12px;">The symmetric, zero-camber design sits at exactly |C<sub>m,c/4</sub>| = 0 (a nice internal consistency check &mdash; symmetric airfoils really do have zero pitching moment), while accepting more moment buys a smoothly increasing L/D up to about 40.5.</p>
+                    <p style="font-size: 13px; color: #17181c; margin-top: 12px;">The symmetric, zero-camber design sits at exactly |C<sub>m,c/4</sub>| = 0 (a nice internal consistency check, since symmetric airfoils really do have zero pitching moment), while accepting more moment buys a smoothly increasing L/D up to about 40.5.</p>
                 </div>
 
                 <h2 class="section-heading" id="p6-cst" style="font-size: 30px; margin-top: 56px;">Letting the shape evolve freely</h2>
                 <div class="intro-section">
-                    <p>The NACA parameterization has only 3 degrees of freedom, so it can only ever produce a member of the NACA family. I added a second genome using Class-Shape-Transformation (CST) coefficients &mdash; 4 Bernstein-polynomial coefficients each for the upper and lower surface (8 DOF total) &mdash; and re-ran the same robust, panel-method-evaluated optimization. With more shape freedom to work with, the optimizer found a design with mean L/D ≈ 38.2, modestly ahead of the 3-DOF NACA optimum's 36.6, using a visibly different, more forward-loaded profile.</p>
+                    <p>The NACA parameterization has only 3 degrees of freedom, so it can only ever produce a member of the NACA family. I added a second genome using Class-Shape-Transformation (CST) coefficients, 4 Bernstein-polynomial coefficients each for the upper and lower surface (8 DOF total), and re-ran the same robust, panel-method-evaluated optimization. With more shape freedom to work with, the optimizer found a design with mean L/D ≈ 38.2, modestly ahead of the 3-DOF NACA optimum's 36.6, using a visibly different, more forward-loaded profile.</p>
                 </div>
                 <div class="diagram-container">
                     <img src="Images/v2_cst_vs_naca.png" alt="CST free-form shape compared to NACA-family optimum" style="max-width: 100%; height: auto; border-radius: 12px;">
-                    <p style="font-size: 13px; color: #5a5d64; margin-top: 12px;">The CST optimum is not a NACA shape at all &mdash; it has a flatter pressure (lower) surface and different camber distribution than any 3-parameter NACA section could represent.</p>
+                    <p style="font-size: 13px; color: #17181c; margin-top: 12px;">The CST optimum is not a NACA shape at all. It has a flatter pressure (lower) surface and a different camber distribution than any 3-parameter NACA section could represent.</p>
                 </div>
 
                 <h2 class="section-heading" id="p6-sensitivity" style="font-size: 30px; margin-top: 56px;">Which variables actually matter</h2>
                 <div class="intro-section">
-                    <p>The convergence plot shows <em>that</em> the GA found an optimum, not <em>why</em> it's there. I perturbed each of the three NACA genes independently by ±7% around the robust optimum and re-evaluated fitness. Perturbing in either direction reduces fitness, as expected at a local optimum &mdash; but for thickness and camber, one direction doesn't just reduce fitness, it immediately produces a self-intersecting (physically impossible) shape. The optimizer has settled right at the edge of what's geometrically buildable, not just what's aerodynamically ideal.</p>
+                    <p>The convergence plot shows <em>that</em> the GA found an optimum, not <em>why</em> it's there. I perturbed each of the three NACA genes independently by ±7% around the robust optimum and re-evaluated fitness. Perturbing in either direction reduces fitness, as expected at a local optimum. But for thickness and camber, one direction doesn't just reduce fitness, it immediately produces a self-intersecting (physically impossible) shape. The optimizer has settled right at the edge of what's geometrically buildable, not just what's aerodynamically ideal.</p>
                 </div>
                 <div class="diagram-container">
                     <img src="Images/v2_sensitivity.png" alt="Sensitivity of fitness to each design variable" style="max-width: 100%; height: auto; border-radius: 12px;">
-                    <p style="font-size: 13px; color: #5a5d64; margin-top: 12px;">Camber position is the most forgiving variable; thickness and camber are both pinned against the feasibility boundary in one direction.</p>
+                    <p style="font-size: 13px; color: #17181c; margin-top: 12px;">Camber position is the most forgiving variable; thickness and camber are both pinned against the feasibility boundary in one direction.</p>
                 </div>
 
                 <h2 class="section-heading" id="p6-parallel" style="font-size: 30px; margin-top: 56px;">Parallelizing the search</h2>
                 <div class="intro-section">
-                    <p>My first attempt at parallelizing fitness evaluation with <code>multiprocessing.Pool</code> made things <em>slower</em> as I added workers &mdash; 4 workers took roughly 7&times; longer than 1 for the same batch. The cause: NumPy's OpenBLAS backend already multithreads each panel-method linear solve internally, so 4 worker processes were each spawning their own BLAS thread pool, oversubscribing the 4 physical cores several times over. Pinning each worker to a single BLAS thread (<code>OMP_NUM_THREADS=1</code>) before NumPy loads fixed it completely, recovering roughly linear scaling.</p>
+                    <p>My first attempt at parallelizing fitness evaluation with <code>multiprocessing.Pool</code> made things <em>slower</em> as I added workers, with 4 workers taking roughly 7&times; longer than 1 for the same batch. The cause: NumPy's OpenBLAS backend already multithreads each panel-method linear solve internally, so 4 worker processes were each spawning their own BLAS thread pool, oversubscribing the 4 physical cores several times over. Pinning each worker to a single BLAS thread (<code>OMP_NUM_THREADS=1</code>) before NumPy loads fixed it completely, recovering roughly linear scaling.</p>
                 </div>
                 <div class="diagram-container">
                     <img src="Images/v2_parallel.png" alt="Parallel speedup after fixing BLAS thread oversubscription" style="max-width: 100%; height: auto; border-radius: 12px;">
-                    <p style="font-size: 13px; color: #5a5d64; margin-top: 12px;">After the fix, both a production-resolution and a stress-test-resolution evaluator scale to roughly 2.8× on 4 cores.</p>
+                    <p style="font-size: 13px; color: #17181c; margin-top: 12px;">After the fix, both a production-resolution and a stress-test-resolution evaluator scale to roughly 2.8× on 4 cores.</p>
                 </div>
 
                 <h2 class="section-heading" id="p6-v1" style="font-size: 30px; margin-top: 56px;">The original version</h2>
                 <div class="intro-section">
-                    <p>For reference, this is what the project looked like before the panel-method upgrade: a 24-individual, 50-generation GA optimizing thin-airfoil-theory L/D at a single condition (α = 5°, Re = 5×10⁵). It converged from a worst-case L/D of about 10.5 to roughly 42, a ~299% improvement &mdash; the right qualitative story, just resting on a less rigorous aerodynamic model than the version above.</p>
+                    <p>For reference, this is what the project looked like before the panel-method upgrade: a 24-individual, 50-generation GA optimizing thin-airfoil-theory L/D at a single condition (α = 5°, Re = 5×10⁵). It converged from a worst-case L/D of about 10.5 to roughly 42, a ~299% improvement. That was the right qualitative story, just resting on a less rigorous aerodynamic model than the version above.</p>
                 </div>
                 <div class="diagram-container">
                     <img src="Images/ga_best_vs_worst.png" alt="Original v1 comparison of worst starting design and evolved optimum" style="max-width: 100%; height: auto; border-radius: 12px;">
-                    <p style="font-size: 13px; color: #5a5d64; margin-top: 12px;">V1 result: worst random starting airfoil vs. the thin-airfoil-theory-optimized design.</p>
+                    <p style="font-size: 13px; color: #17181c; margin-top: 12px;">V1 result: worst random starting airfoil vs. the thin-airfoil-theory-optimized design.</p>
                 </div>
 
                 <div class="intro-section">
@@ -1177,8 +1188,8 @@
                 <h2>Key Risks / Unknowns</h2>
                 <ul>
                     <li>1 - Egg masses harden, making it difficult to ensure they are fully damaged. Two methods to kill the egg masses: crushing them and then scraping them into rubbing alcohol to kill the remaining ones.</li>
-                    <li>2 &mdash; Public aversion to kill/interact with SLF, as crushing egg masses may be off-putting. Test with user trials and gauge user comfort.</li>
-                    <li>3 &mdash; Many eggs are laid on high surfaces; 98% of eggs are found at unreachable heights (+10 feet) on trees (Krawczyk). Test attachments to extendable tools for users to reach higher egg masses.</li>
+                    <li>2 - Public aversion to kill/interact with SLF, as crushing egg masses may be off-putting. Test with user trials and gauge user comfort.</li>
+                    <li>3 - Many eggs are laid on high surfaces; 98% of eggs are found at unreachable heights (+10 feet) on trees (Krawczyk). Test attachments to extendable tools for users to reach higher egg masses.</li>
                 </ul>
 
                 <h2>Questions for Client</h2>
@@ -1565,8 +1576,8 @@
                 </div>
 
                 <div class="intro-section">
-                    <p>So what exactly happens in a Brayton cycle with no compressor or turbine? First, the forward speed of the aircraft compresses air into the inlet. From there, the inlet directs the air into a diffuser, which slows it down—converting much of the air's kinetic energy to potential energy in the form of pressure and in turn heat. When a ramjet flies at supersonic speed, the incoming air must be slowed down before fuel can burn properly. This is done using a series of oblique shock waves that gradually reduce the air's speed, followed by a normal shock that brings the airflow to subsonic speed before combustion.</p>
-                    <p>Once the pressure is great enough—typically when the air has slowed to Mach 0.3-0.5—the compressed air is mixed and ignited with fuel in a combustion heat exchanger. Through the combustor, energy is added to the airflow, and the resulting high-energy flow is accelerated through a converging-diverging nozzle to produce thrust.</p>
+                    <p>So what exactly happens in a Brayton cycle with no compressor or turbine? First, the forward speed of the aircraft compresses air into the inlet. From there, the inlet directs the air into a diffuser, which slows it down, converting much of the air's kinetic energy to potential energy in the form of pressure and in turn heat. When a ramjet flies at supersonic speed, the incoming air must be slowed down before fuel can burn properly. This is done using a series of oblique shock waves that gradually reduce the air's speed, followed by a normal shock that brings the airflow to subsonic speed before combustion.</p>
+                    <p>Once the pressure is great enough, typically when the air has slowed to Mach 0.3-0.5, the compressed air is mixed and ignited with fuel in a combustion heat exchanger. Through the combustor, energy is added to the airflow, and the resulting high-energy flow is accelerated through a converging-diverging nozzle to produce thrust.</p>
                     <p>A used change in design is that when the aircraft speed reaches above Mach 5, the ramjet engine begins to fail because the normal shock required to achieve subsonic speeds before combustion causes extremely high temperatures and low pressures.</p>
                 </div>
 
@@ -1906,6 +1917,9 @@
                 }
             }
         });
+    </script>
+</body>
+</html>
     </script>
 </body>
 </html>
