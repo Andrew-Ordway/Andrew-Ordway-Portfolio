@@ -371,6 +371,50 @@
             box-shadow: var(--shadow-sm);
         }
 
+        /* Seattle Hologram write-up sections */
+        .holo-block {
+            max-width: 880px;
+            margin: 0 auto 72px;
+            text-align: center;
+        }
+
+        .holo-block h2.holo-heading {
+            font-size: 36px;
+            font-weight: 500;
+            text-align: center;
+            margin: 0 0 20px;
+        }
+
+        .holo-text {
+            font-size: 18px;
+            line-height: 1.85;
+            color: var(--ink);
+        }
+
+        .holo-media {
+            max-width: 720px;
+            margin: 32px auto 0;
+        }
+
+        .holo-media-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 32px;
+        }
+
+        .holo-media img,
+        .holo-media-pair img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            display: block;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow-sm);
+        }
+
         /* Page Navigation */
         .page {
             display: none;
@@ -441,7 +485,7 @@
                 padding: 44px 24px 72px;
             }
 
-            .portfolio-grid, .cad-grid, .other-grid, .brahmos-images {
+            .portfolio-grid, .cad-grid, .other-grid, .brahmos-images, .holo-media-pair {
                 grid-template-columns: 1fr;
             }
 
@@ -457,7 +501,7 @@
                 font-size: 34px;
             }
 
-            .section-heading, .cad-section h2 {
+            .section-heading, .cad-section h2, .holo-block h2.holo-heading {
                 font-size: 28px;
             }
         }
@@ -1089,12 +1133,16 @@
                 <video class="project1-video" src="IMG_2207.MOV" controls preload="metadata"></video>
             </div> 
 
-            <div class="project-description">
-                For this project, I designed a hologram display system combining CAD modeling, mechanical design, and optical physics. Using CAD modeling software, I created two Seattle skyscrapers for a rotating platform display. The project used the Pepper's Ghost illusion with plexiglass positioned at 45 degrees to project the hologram against a laser-engraved Seattle Seahawks logo. Also, I integrated Arduino-controlled LED lighting to complete the system, showcasing my CAD skills and hands-on engineering abilities.
-            </div> 
+            <div class="holo-block">
+                <h2 class="holo-heading">Overview</h2>
+                <p class="holo-text">Our team of three built a tabletop hologram of the Seattle skyline. The display uses the Pepper's Ghost illusion. A plexiglass sheet sits at 45 degrees and reflects a rotating model into view. The reflection appears to float in front of a laser-engraved Seahawks logo.</p>
+            </div>
 
             <div class="cad-section">
-                <h2>CAD Design Components</h2>
+                <div class="holo-block" style="margin-bottom: 48px;">
+                    <h2 class="holo-heading">CAD Modeling</h2>
+                    <p class="holo-text">We modeled two Seattle landmarks in CAD: the Space Needle and 800 Fifth Avenue. The Space Needle captures the tripod base, tapered shaft, and observation deck. 800 Fifth Avenue features the tower's repeating window grid. Both models were scaled to fit the platform and 3D printed.</p>
+                </div>
                 <div class="cad-grid">
                     <div class="cad-card">
                         <div class="cad-embed" style="aspect-ratio: 16/9;">
@@ -1135,13 +1183,32 @@
                         <div class="cad-description">Detailed CAD model of the 800 Fifth Avenue skyscraper, capturing the building's modern architectural grid structure and rectangular tower design.</div>
                     </div>
                 </div>
+            </div>
 
-                <div class="other-section">
-                    <h2>Other Components</h2>
-                    <div class="other-grid">
-                        <img src="Images/Laser_Engraving_Correct.jpg" alt="Laser Engraving" style="width:100%; height:100%; object-fit: cover;">
-                        <img src="Images/Seattle-Circuitry.jpg" alt="Seattle Circuitry" style="width:100%; height:100%; object-fit: cover;">
-                    </div>
+            <div class="holo-block">
+                <h2 class="holo-heading">Machining and Box Construction</h2>
+                <p class="holo-text">We cut wooden panels to size in the shop and assembled them into the housing. The box has two sections. The lower chamber holds the display, and the upper compartment holds the electronics. Black felt lines the display chamber to absorb stray light and make the reflection sharper.</p>
+                <!-- Machining photos:
+                <div class="holo-media-pair">
+                    <img src="Images/Machining_1.jpg" alt="Cutting the box panels">
+                    <img src="Images/Machining_2.jpg" alt="Assembling the box housing">
+                </div>
+                -->
+            </div>
+
+            <div class="holo-block">
+                <h2 class="holo-heading">Laser Engraving</h2>
+                <p class="holo-text">We converted the Seahawks logo into a digital design and laser engraved it into a wood panel. The panel sits behind the glass as the backdrop, so the hologram appears in front of it.</p>
+                <div class="holo-media">
+                    <img src="Images/Laser_Engraving_Correct.jpg" alt="Laser-engraved Seahawks logo on a wood panel">
+                </div>
+            </div>
+
+            <div class="holo-block">
+                <h2 class="holo-heading">Arduino Integration</h2>
+                <p class="holo-text">An Arduino Uno runs the full system on a 9V battery. It drives the motor that turns the rotating platform and controls two LED strips mounted above the models. We programmed lighting patterns and adjusted the brightness so the reflection stays bright without washing out the logo.</p>
+                <div class="holo-media">
+                    <img src="Images/Seattle-Circuitry.jpg" alt="Arduino, battery, and LED strip wiring inside the box">
                 </div>
             </div>
         </div>
