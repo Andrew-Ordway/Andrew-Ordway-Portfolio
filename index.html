@@ -403,6 +403,16 @@
             margin-top: 32px;
         }
 
+        .holo-media video {
+            width: 100%;
+            max-height: 480px;
+            display: block;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow-sm);
+            background: #000;
+        }
+
         .holo-media img,
         .holo-media-pair img {
             width: 100%;
@@ -1188,12 +1198,9 @@
             <div class="holo-block">
                 <h2 class="holo-heading">Machining and Box Construction</h2>
                 <p class="holo-text">We cut wooden panels to size in the shop and assembled them into the housing. The box has two sections. The lower chamber holds the display, and the upper compartment holds the electronics. Black felt lines the display chamber to absorb stray light and make the reflection sharper.</p>
-                <!-- Machining photos:
-                <div class="holo-media-pair">
-                    <img src="Images/Machining_1.jpg" alt="Cutting the box panels">
-                    <img src="Images/Machining_2.jpg" alt="Assembling the box housing">
+                <div class="holo-media">
+                    <video src="IMG_2204%202.MOV" controls preload="metadata"></video>
                 </div>
-                -->
             </div>
 
             <div class="holo-block">
@@ -1206,9 +1213,10 @@
 
             <div class="holo-block">
                 <h2 class="holo-heading">Arduino Integration</h2>
-                <p class="holo-text">An Arduino Uno runs the full system on a 9V battery. It drives the motor that turns the rotating platform and controls two LED strips mounted above the models. We programmed lighting patterns and adjusted the brightness so the reflection stays bright without washing out the logo.</p>
-                <div class="holo-media">
+                <p class="holo-text">An Arduino Uno runs the full system on a 9V battery. It drives the motor that turns the rotating platform and controls two LED strips mounted above the models. We soldered the wiring connections and programmed lighting patterns, adjusting the brightness so the reflection stays bright without washing out the logo.</p>
+                <div class="holo-media-pair">
                     <img src="Images/Seattle-Circuitry.jpg" alt="Arduino, battery, and LED strip wiring inside the box">
+                    <img src="IMG_2188%202.jpg" alt="Soldered electronics for the hologram display">
                 </div>
             </div>
         </div>
