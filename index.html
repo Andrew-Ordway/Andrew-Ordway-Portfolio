@@ -422,6 +422,18 @@
             background: #000;
         }
 
+        .holo-media-pair video {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            display: block;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow-sm);
+            background: #000;
+        }
+
         .holo-media img,
         .holo-media-pair img {
             width: 100%;
@@ -1259,10 +1271,8 @@
             <div class="holo-block">
                 <h2 class="holo-heading">Machining and Box Construction</h2>
                 <p class="holo-text">We built the housing from MDF panels in the shop. A table saw cut each panel to size with straight, clean edges. For interior openings, we drilled pilot holes at the corners and cut between them with a jigsaw. A drill with a hole saw cut the circular openings. The box has two sections. The lower chamber holds the display, and the upper compartment holds the electronics. Black felt lines the display chamber to absorb stray light and make the reflection sharper.</p>
-                <div class="holo-media">
+                <div class="holo-media-pair">
                     <video src="IMG_2204%202.MOV" controls preload="metadata"></video>
-                </div>
-                <div class="holo-media">
                     <img src="Images/IMG_2145.jpg" data-fallback="IMG_2145.jpg|Images/IMG_2145.JPG|IMG_2145.JPG|Images/IMG_2145.jpeg|IMG_2145.jpeg" onerror="nextSrc(this)" alt="Machining the box panels in the shop">
                 </div>
             </div>
@@ -1281,6 +1291,14 @@
                 <div class="holo-media-pair">
                     <img src="Images/Seattle-Circuitry.jpg" alt="Arduino, battery, and LED strip wiring inside the box">
                     <img src="Images/IMG_2188%202.jpg" data-fallback="IMG_2188%202.jpg|Images/IMG_2188%202.JPG|IMG_2188%202.JPG|Images/IMG_2188-2.jpg|IMG_2188-2.jpg" onerror="nextSrc(this)" alt="Soldered electronics for the hologram display">
+                </div>
+            </div>
+
+            <div class="holo-block">
+                <h2 class="holo-heading">Reflection</h2>
+                <div class="reflection">
+                    <p>Pepper's Ghost is a simple trick. Making it convincing was not. The illusion lived or died on small details: the 45-degree glass, the felt that killed stray light, and LEDs tuned bright enough to sell the reflection without washing out the logo.</p>
+                    <p>This project took me through the full build, from CAD to the shop floor to the circuit board. The biggest lesson: a design is not done when the model looks right. It is done when the real thing works.</p>
                 </div>
             </div>
 
@@ -1313,14 +1331,6 @@
                             <li>LED strips</li>
                         </ul>
                     </div>
-                </div>
-            </div>
-
-            <div class="holo-block">
-                <h2 class="holo-heading">Reflection</h2>
-                <div class="reflection">
-                    <p>Pepper's Ghost is a simple trick. Making it convincing was not. The illusion lived or died on small details: the 45-degree glass, the felt that killed stray light, and LEDs tuned bright enough to sell the reflection without washing out the logo.</p>
-                    <p>This project took me through the full build, from CAD to the shop floor to the circuit board. The biggest lesson: a design is not done when the model looks right. It is done when the real thing works.</p>
                 </div>
             </div>
         </div>
