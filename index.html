@@ -8,6 +8,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        // Tries each path in data-fallback (separated by |) until one loads
+        function nextSrc(img) {
+            var list = (img.getAttribute('data-fallback') || '').split('|').filter(Boolean);
+            if (!list.length) { img.onerror = null; return; }
+            img.src = list.shift();
+            img.setAttribute('data-fallback', list.join('|'));
+        }
+    </script>
     <style>
         :root {
             --bg: #f7f5f1;
@@ -425,6 +434,58 @@
             box-shadow: var(--shadow-sm);
         }
 
+        /* Tools Used */
+        .tools-groups {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 28px;
+            text-align: left;
+        }
+
+        .tools-group h3 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: var(--accent);
+        }
+
+        .tools-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tools-list li {
+            font-size: 14px;
+            font-weight: 500;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            color: var(--ink);
+        }
+
+        /* Reflection */
+        .reflection {
+            max-width: 680px;
+            margin: 0 auto;
+            padding-left: 22px;
+            border-left: 3px solid var(--accent);
+            text-align: left;
+        }
+
+        .reflection p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--ink);
+        }
+
+        .reflection p + p {
+            margin-top: 14px;
+        }
+
         /* Page Navigation */
         .page {
             display: none;
@@ -495,7 +556,7 @@
                 padding: 44px 24px 72px;
             }
 
-            .portfolio-grid, .cad-grid, .other-grid, .brahmos-images, .holo-media-pair {
+            .portfolio-grid, .cad-grid, .other-grid, .brahmos-images, .holo-media-pair, .tools-groups {
                 grid-template-columns: 1fr;
             }
 
@@ -1202,7 +1263,7 @@
                     <video src="IMG_2204%202.MOV" controls preload="metadata"></video>
                 </div>
                 <div class="holo-media">
-                    <img src="IMG_2145.JPG" alt="Machining the box panels in the shop">
+                    <img src="Images/IMG_2145.jpg" data-fallback="IMG_2145.jpg|Images/IMG_2145.JPG|IMG_2145.JPG|Images/IMG_2145.jpeg|IMG_2145.jpeg" onerror="nextSrc(this)" alt="Machining the box panels in the shop">
                 </div>
             </div>
 
@@ -1219,7 +1280,47 @@
                 <p class="holo-text">An Arduino Uno runs the full system on a 9V battery. It drives the motor that turns the rotating platform and controls two LED strips mounted above the models. We soldered the wiring connections and programmed lighting patterns, adjusting the brightness so the reflection stays bright without washing out the logo.</p>
                 <div class="holo-media-pair">
                     <img src="Images/Seattle-Circuitry.jpg" alt="Arduino, battery, and LED strip wiring inside the box">
-                    <img src="IMG_2188%202.jpg" alt="Soldered electronics for the hologram display">
+                    <img src="Images/IMG_2188%202.jpg" data-fallback="IMG_2188%202.jpg|Images/IMG_2188%202.JPG|IMG_2188%202.JPG|Images/IMG_2188-2.jpg|IMG_2188-2.jpg" onerror="nextSrc(this)" alt="Soldered electronics for the hologram display">
+                </div>
+            </div>
+
+            <div class="holo-block">
+                <h2 class="holo-heading">Tools Used</h2>
+                <div class="tools-groups">
+                    <div class="tools-group">
+                        <h3>Design</h3>
+                        <ul class="tools-list">
+                            <li>CAD modeling</li>
+                            <li>3D printing</li>
+                            <li>Laser engraving</li>
+                        </ul>
+                    </div>
+                    <div class="tools-group">
+                        <h3>Fabrication</h3>
+                        <ul class="tools-list">
+                            <li>Table saw</li>
+                            <li>Jigsaw</li>
+                            <li>Drill and hole saw</li>
+                            <li>MDF, plexiglass, felt</li>
+                        </ul>
+                    </div>
+                    <div class="tools-group">
+                        <h3>Electronics</h3>
+                        <ul class="tools-list">
+                            <li>Arduino Uno</li>
+                            <li>Soldering</li>
+                            <li>DC motor</li>
+                            <li>LED strips</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="holo-block">
+                <h2 class="holo-heading">Reflection</h2>
+                <div class="reflection">
+                    <p>Pepper's Ghost is a simple trick. Making it convincing was not. The illusion lived or died on small details: the 45-degree glass, the felt that killed stray light, and LEDs tuned bright enough to sell the reflection without washing out the logo.</p>
+                    <p>This project took me through the full build, from CAD to the shop floor to the circuit board. The biggest lesson: a design is not done when the model looks right. It is done when the real thing works.</p>
                 </div>
             </div>
         </div>
