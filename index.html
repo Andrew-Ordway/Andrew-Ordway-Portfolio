@@ -241,6 +241,39 @@
             transform: translateX(4px);
         }
 
+        /* Upcoming (in-progress) project card */
+        .project-card.upcoming {
+            cursor: default;
+        }
+
+        .project-card.upcoming:hover {
+            transform: none;
+            box-shadow: var(--shadow-sm);
+            border-color: var(--line);
+        }
+
+        .project-card .card-media.upcoming-media {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent-soft);
+        }
+
+        .upcoming-media svg {
+            width: 60%;
+            height: auto;
+            opacity: 0.5;
+        }
+
+        .project-status {
+            display: block;
+            margin-top: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--ink-faint);
+        }
+
         /* About Page */
         .about-section {
             display: grid;
@@ -748,6 +781,23 @@
                         <img class="project-image" src="Images/IMG_4A55CA53B7A8-1.jpeg" alt="Project Image">
                     </div>
                     <div class="project-title">Seattle Hologram: 3D-Printed CAD City Model <span class="arrow">→</span></div>
+                </div>
+                <!-- Project 4: Fluid-Mechanical Dissection (in progress, not clickable yet) -->
+                <div class="project-card upcoming">
+                    <div class="card-media upcoming-media">
+                        <span class="card-number">04</span>
+                        <svg viewBox="0 0 200 120" fill="none" stroke="#2c4a6e" stroke-width="3" stroke-linecap="round" aria-hidden="true">
+                            <path d="M10 30 C 60 30, 80 15, 120 25 S 180 40, 190 35"/>
+                            <path d="M10 60 C 60 60, 80 45, 120 55 S 180 65, 190 62"/>
+                            <path d="M10 90 C 60 90, 80 80, 120 85 S 180 92, 190 90"/>
+                        </svg>
+                    </div>
+                    <div class="project-title">
+                        <div>
+                            Fluid-Mechanical Dissection
+                            <span class="project-status">MAE 3230, in progress (Fall 2026)</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
